@@ -1,0 +1,2 @@
+# Joint-
+Se propone desarrollar un sistema web, el cual le permita a una empresa de transportes y entregas pesadas, hacer una evaluación a sus choferes, así como al personal encargado de darles gestión, para mejorar el proceso de la misma empresa.   El sistema ayudara a evaluar la eficacia y eficiencia del proceso de la empresa, así como a mejorarlo por medio de incentivaciones al personal con el fin de que trabajen de manera más responsable y proactiva, logrando así, para la empresa, mayor rendimiento y posiblemente menos perdidas y más ingresos. 
