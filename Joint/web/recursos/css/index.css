@@ -1,21 +1,60 @@
 /*Navbar*/
-.navbar-brand{
-	font-size: 30px;
+.navbar{
+    background-color: #00aba9;
+    height: 90px;
+
 }
-.navbar-logo{
-	padding-top: 5px;
-	padding-right: 10px;
+.navbar-nav{
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float:none;
 }
-/*jumbotron*/
-.jumbo{
-	background-color: #00aba9;
-	/*rgb(0,171,169)*/
+.navbar-default .navbar-nav > li > a {
+  color:rgb(255,255,255) ;
 }
-/***********/
+
+.img-nabvar{
+    padding-top: 20px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.img-nabvar:hover{
+    padding-top: 20px;
+    -webkit-transform:scale(1.2);
+    transform:scale(1.2);
+}
+.img-logo{
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.img-logo:hover{
+  -webkit-transform:scale(1.2);
+  transform:scale(1.2);
+}
 /*Cuerpo*/
 body{
 	font-family: 'roboto_condensedregular';
-	padding-top: 51px;
+    background-color: rgb(255,255,255);
+}
+.img-index{
+    padding-top: 50px;
+}
+.container-index{
+  padding-bottom: 120px;
+}
+.contenedor-novedad{
+  max-height: 700px;
+  overflow-y: scroll;
+}
+.novedad{
+    border-radius: 10px;
+    border: 2px solid rgb(200,200,200);
+}
+.novedad:hover{
+    border-radius: 10px;
+    border: 2px solid rgb(100,100,100);
+    transition: all 0.8s ease;
 }
 /*************/
 /*Fuentes*/
