@@ -38,17 +38,23 @@ body{
     background-color: rgb(255,255,255);
 }
 .img-index{
-    padding-top: 25px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.img-index:hover{
-    padding-top: 25px;
-    -webkit-transform:scale(1.1);
-    transform:scale(1.1);
+    padding-top: 50px;
 }
 .container-index{
   padding-bottom: 120px;
+}
+.contenedor-novedad{
+  max-height: 700px;
+  overflow-y: scroll;
+}
+.novedad{
+    border-radius: 10px;
+    border: 2px solid rgb(200,200,200);
+}
+.novedad:hover{
+    border-radius: 10px;
+    border: 2px solid rgb(100,100,100);
+    transition: all 0.8s ease;
 }
 /*************/
 /*Fuentes*/
