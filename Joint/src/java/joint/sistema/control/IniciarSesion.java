@@ -23,20 +23,25 @@ public class IniciarSesion extends HttpServlet {
     
     private void iniciarGestionTrabajador(int noEmpleado){
         trabajador=new Trabajador(noEmpleado);
+        System.out.println(trabajador.getNoEmpleado());
         gestionadorT = new GestionadorTrabajador(trabajador);
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         int noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
+        System.out.println("numero empleado request "+noEmpleado);
         int intento = Integer.parseInt(request.getParameter("robot"));
+        
         iniciarGestionTrabajador(noEmpleado);
+        
         boolean existeUsuario = gestionadorT.existeTrabajador();
         if(existeUsuario){
             RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
         }else{
             String estadoSesion="false";
             String robot = request.getParameter("g-recaptcha-response");
+            System.out.println(robot);
             request.setAttribute("sesion", estadoSesion);
             request.setAttribute("intento", intento++);
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

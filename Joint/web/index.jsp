@@ -13,13 +13,21 @@
 
 <%
     String estadoSesion=(String)request.getAttribute("sesion");
-    //int intento=(Integer)request.getAttribute("intento");
+    String intento=(String)request.getAttribute("intento");
+    int contador;
     if(estadoSesion==null){
         estadoSesion="vacio";
-        //intento=0;
+        System.out.println("hacer vacio sesion");
     }
-    int intento=3;
-    
+    if(intento==null){
+        System.out.println("hacer vacio contador");
+        contador=0;
+        intento="vacio";
+    }else{
+        contador=Integer.parseInt(intento); 
+    }
+    System.out.println(contador);
+    System.out.println(estadoSesion);
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,7 +71,7 @@
         <div class="navbar-collapse collapse bottom-collapse"> <!-- NOTE! The extra bottom-collapse class put on here -->
           <ul class="nav navbar-nav">
             <li>
-                <a class="text-center " href="#inicio">
+                <a class="text-center ">
                     <img src="recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
                 </a>
             </li>
@@ -140,11 +148,11 @@
 	                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	                    <h2 class="modal-title text-center">Iniciar Sesión</h2>
 	                </div>
-	                <div class="modal-body">
-	                    <form role="form"> 
+                        <form class="form-horizontal" method="POST" action="IniciarSesion">
+                            <div class="modal-body">
                                 <%
                                     //Eres un robot?
-                                    if(intento==3){
+                                    if(contador==3){
                                         System.out.println("Es robot?");
                                         out.println("<div class='row'>");
                                             out.println("<h3 class='text-center'>¿Eres un robot?</h3>");
@@ -157,24 +165,26 @@
                                     }else{
                                     System.out.println("No Es robot");
                                         out.print("<div class='form-group has-feedback has-feedback-left'>");
-                                            out.print("<label class='control-label'>Usuario</label>");
-                                            out.print("<input type='text' class='form-control' placeholder='Usuario' />");
+                                            out.print("<label class='control-label'>Número de empleado</label>");
+                                            out.print("<input type='text' class='form-control' placeholder='Número de empleado' id='noEmpleado' name='noEmpleado'/>");
+                                            out.print("<input type='hidden' name='robot' value="+contador+">");
                                             out.print("<i class='form-control-feedback glyphicon glyphicon-user'></i>");
                                           out.print("</div>");
                                           out.print("<div class='form-group has-feedback has-feedback-left'>");
                                             out.print("<label class='control-label'>Contraseña</label>");
-                                            out.print("<input type='text' class='form-control' placeholder='Contraseña' />");
+                                            out.print("<input type='text' class='form-control' placeholder='Contraseña' id='contrasenia' name='contrasenia'/>");
                                             out.print("<i class='form-control-feedback glyphicon glyphicon-console'></i>");
                                         out.print("</div>");
                                     }
                                 %>
                                 
-                            </form>
-	                </div>
-	                <div class="modal-footer">
-	                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-triangle-right"></i>Ok</button>
-	                </div>
+                            
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-triangle-right"></i>Ok</button>
+                            </div>
+                        </form>        
 	            </div>
 	        </div>
 	    </div>
