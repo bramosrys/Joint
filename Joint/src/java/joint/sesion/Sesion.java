@@ -8,8 +8,17 @@ import joint.sistema.Trabajador;
  */
 public class Sesion {
     private Trabajador trabajador;
-  
-    public Sesion() {
+
+    public Sesion(Trabajador trabajador) {
+        this.trabajador = trabajador;
+    }
+
+    public Trabajador getTrabajador() {
+        return trabajador;
+    }
+
+    public void setTrabajador(Trabajador trabajador) {
+        this.trabajador = trabajador;
     }
     
 }
