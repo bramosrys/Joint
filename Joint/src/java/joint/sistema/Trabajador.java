@@ -18,6 +18,9 @@ public class Trabajador extends Persona{
         this.fechaContratacion = fechaContratacion;
         this.contrasenia = contrasenia;
     }
+    public Trabajador(int noEmpleado){
+         this.noEmpleado = noEmpleado;
+    }
     
     public int getNoEmpleado() {
         return noEmpleado;

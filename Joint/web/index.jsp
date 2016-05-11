@@ -4,7 +4,23 @@
     Author     : jdiaz
 --%>
 
+
+<%@page import="net.tanesha.recaptcha.ReCaptchaResponse"%>
+<%@page import="net.tanesha.recaptcha.ReCaptchaImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="net.tanesha.recaptcha.ReCaptcha" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
+
+<%
+    String estadoSesion=(String)request.getAttribute("sesion");
+    //int intento=(Integer)request.getAttribute("intento");
+    if(estadoSesion==null){
+        estadoSesion="vacio";
+        //intento=0;
+    }
+    int intento=3;
+    
+%>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -126,17 +142,34 @@
 	                </div>
 	                <div class="modal-body">
 	                    <form role="form"> 
-						  <div class="form-group has-feedback has-feedback-left">
-						    <label class="control-label">Usuario</label>
-						    <input type="text" class="form-control" placeholder="Usuario" />
-						    <i class="form-control-feedback glyphicon glyphicon-user"></i>
-						  </div>
-						  <div class="form-group has-feedback has-feedback-left">
-						    <label class="control-label">Contraseña</label>
-						    <input type="text" class="form-control" placeholder="Contraseña" />
-						    <i class="form-control-feedback glyphicon glyphicon-console"></i>
-						  </div>
-						</form>
+                                <%
+                                    //Eres un robot?
+                                    if(intento==3){
+                                        System.out.println("Es robot?");
+                                        out.println("<div class='row'>");
+                                            out.println("<h3 class='text-center'>¿Eres un robot?</h3>");
+                                            out.println("<div class='col-md-12'>");
+                                                out.println("<center><div class='g-recaptcha text-center' data-sitekey='6Lfapx8TAAAAABCUTgD6ztTQLSGerpyHWbA9Io60'></div></center>");
+                                            out.println("</div>");
+                                        out.println("</div>");
+                                %>
+                                <%
+                                    }else{
+                                    System.out.println("No Es robot");
+                                        out.print("<div class='form-group has-feedback has-feedback-left'>");
+                                            out.print("<label class='control-label'>Usuario</label>");
+                                            out.print("<input type='text' class='form-control' placeholder='Usuario' />");
+                                            out.print("<i class='form-control-feedback glyphicon glyphicon-user'></i>");
+                                          out.print("</div>");
+                                          out.print("<div class='form-group has-feedback has-feedback-left'>");
+                                            out.print("<label class='control-label'>Contraseña</label>");
+                                            out.print("<input type='text' class='form-control' placeholder='Contraseña' />");
+                                            out.print("<i class='form-control-feedback glyphicon glyphicon-console'></i>");
+                                        out.print("</div>");
+                                    }
+                                %>
+                                
+                            </form>
 	                </div>
 	                <div class="modal-footer">
 	                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -148,7 +181,7 @@
 
     </div>
     <!-- scripts -->
-    
+    <script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

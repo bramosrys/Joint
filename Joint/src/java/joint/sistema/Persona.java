@@ -20,6 +20,14 @@ public class Persona {
         this.correo = correo;
         this.direccion = direccion;
     }
+    public Persona() {
+        this.nombre = "";
+        this.edad = 0;
+        this.fechaNacimiento = "";
+        this.telefono = null;
+        this.correo = "";
+        this.direccion = null;
+    }
 
     public String getNombre() {
         return nombre;
