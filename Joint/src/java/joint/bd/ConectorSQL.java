@@ -19,7 +19,7 @@ public class ConectorSQL {
     public ConectorSQL() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
             String driver = "com.mysql.jdbc.Driver";
             Class.forName(driver);
-            urlBD ="jdbc:mysql://127.0.0.1:3306/joiny";
+            urlBD ="jdbc:mysql://127.0.0.1:3306/joint";
             contrasenia="46143**/";
             nombreU="root";
     }

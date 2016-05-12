@@ -167,7 +167,7 @@
                                         out.print("<div class='form-group has-feedback has-feedback-left'>");
                                             out.print("<label class='control-label'>Número de empleado</label>");
                                             out.print("<input type='text' class='form-control' placeholder='Número de empleado' id='noEmpleado' name='noEmpleado'/>");
-                                            out.print("<input type='hidden' name='robot' value="+contador+">");
+                                            out.print("<input type='hidden' name='contador' id='contador' value="+contador+">");
                                             out.print("<i class='form-control-feedback glyphicon glyphicon-user'></i>");
                                           out.print("</div>");
                                           out.print("<div class='form-group has-feedback has-feedback-left'>");
@@ -182,7 +182,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-triangle-right"></i>Ok</button>
+                                <button type="submit" name="submit" class="btn btn-primary"><i class="glyphicon glyphicon-triangle-right"></i>Ok</button>
                             </div>
                         </form>        
 	            </div>

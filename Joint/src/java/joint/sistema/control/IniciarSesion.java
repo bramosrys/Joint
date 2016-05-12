@@ -1,7 +1,6 @@
 package joint.sistema.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,29 +22,46 @@ public class IniciarSesion extends HttpServlet {
     
     private void iniciarGestionTrabajador(int noEmpleado){
         trabajador=new Trabajador(noEmpleado);
-        System.out.println(trabajador.getNoEmpleado());
         gestionadorT = new GestionadorTrabajador(trabajador);
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
-        System.out.println("numero empleado request "+noEmpleado);
-        int intento = Integer.parseInt(request.getParameter("robot"));
+        int noEmpleado;
+        int contador;
+        boolean existeUsuario;
+        String robot;
         
-        iniciarGestionTrabajador(noEmpleado);
-        
-        boolean existeUsuario = gestionadorT.existeTrabajador();
-        if(existeUsuario){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
-        }else{
-            String estadoSesion="false";
-            String robot = request.getParameter("g-recaptcha-response");
-            System.out.println(robot);
-            request.setAttribute("sesion", estadoSesion);
-            request.setAttribute("intento", intento++);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        if(request.getParameter("g-recaptcha-response")!=null){
+            robot = request.getParameter("g-recaptcha-response");
+            if(!robot.equals("")){
+                System.out.println("Pide ayuda al administrador");
+            }
         }
+
+        if(request.getParameter("noEmpleado")!=null){
+            noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
+            iniciarGestionTrabajador(noEmpleado);
+            
+            existeUsuario=gestionadorT.existeTrabajador();
+            if(existeUsuario){
+                RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
+                a.forward(request, response);
+            }else{
+                if(request.getParameter("contador")!=null){
+                    contador = Integer.parseInt(request.getParameter("contador"));
+                    contador++;
+                    String intento=String.valueOf(contador);
+                    String estadoSesion="false";
+                    request.setAttribute("sesion", estadoSesion);
+                    request.setAttribute("intento", intento);
+                    RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                    a.forward(request, response);
+                }
+            }
+        }
+         
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
