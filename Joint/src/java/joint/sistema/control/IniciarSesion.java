@@ -33,9 +33,15 @@ public class IniciarSesion extends HttpServlet {
         String robot;
         
         if(request.getParameter("g-recaptcha-response")!=null){
+            System.out.println("entre a robot");
             robot = request.getParameter("g-recaptcha-response");
-            if(!robot.equals("")){
-                System.out.println("Pide ayuda al administrador");
+            System.out.println("soy robot"+robot);
+            if(robot.equals("")){
+                System.out.println("No se valido Robot");
+                String estadoSesion="robot";
+                request.setAttribute("sesion", estadoSesion);
+                RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                a.forward(request, response);
             }
         }
 
@@ -52,7 +58,7 @@ public class IniciarSesion extends HttpServlet {
                     contador = Integer.parseInt(request.getParameter("contador"));
                     contador++;
                     String intento=String.valueOf(contador);
-                    String estadoSesion="false";
+                    String estadoSesion="intento";
                     request.setAttribute("sesion", estadoSesion);
                     request.setAttribute("intento", intento);
                     RequestDispatcher a = request.getRequestDispatcher("index.jsp");

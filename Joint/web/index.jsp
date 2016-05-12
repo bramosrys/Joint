@@ -153,28 +153,42 @@
                                 <%
                                     //Eres un robot?
                                     if(contador==3){
-                                        System.out.println("Es robot?");
                                         out.println("<div class='row'>");
                                             out.println("<h3 class='text-center'>¿Eres un robot?</h3>");
                                             out.println("<div class='col-md-12'>");
                                                 out.println("<center><div class='g-recaptcha text-center' data-sitekey='6Lfapx8TAAAAABCUTgD6ztTQLSGerpyHWbA9Io60'></div></center>");
                                             out.println("</div>");
                                         out.println("</div>");
-                                %>
-                                <%
                                     }else{
-                                    System.out.println("No Es robot");
-                                        out.print("<div class='form-group has-feedback has-feedback-left'>");
-                                            out.print("<label class='control-label'>Número de empleado</label>");
-                                            out.print("<input type='text' class='form-control' placeholder='Número de empleado' id='noEmpleado' name='noEmpleado'/>");
-                                            out.print("<input type='hidden' name='contador' id='contador' value="+contador+">");
-                                            out.print("<i class='form-control-feedback glyphicon glyphicon-user'></i>");
-                                          out.print("</div>");
-                                          out.print("<div class='form-group has-feedback has-feedback-left'>");
-                                            out.print("<label class='control-label'>Contraseña</label>");
-                                            out.print("<input type='text' class='form-control' placeholder='Contraseña' id='contrasenia' name='contrasenia'/>");
-                                            out.print("<i class='form-control-feedback glyphicon glyphicon-console'></i>");
-                                        out.print("</div>");
+                                        if(estadoSesion.equals("robot")){
+                                            out.print("<div class='row'>");
+                                                out.print("<div class='col-md-2'></div>");
+                                                    out.print("<div class='col-md-8'>");
+                                                        out.print("<div class='alert alert-danger'>");
+                                                            out.print("<a href='' class='alert-link'>Contacte con el administrador, No podra acceder al sistema</a>");
+                                                        out.print("</div>");
+                                                    out.print("</div>");
+                                                out.print("<div class='col-md-2'></div>");    
+                                            out.print("</div>");
+                                        }else{
+                                            out.print("<div class='row'>");
+                                                out.print("<div class='col-md-2'></div>");
+                                                    out.print("<div class='col-md-8'>");
+                                                        out.print("<div class='form-group has-feedback has-feedback-left'>");
+                                                            out.print("<label class='control-label'>Número de empleado</label>");
+                                                            out.print("<input type='text' class='form-control' placeholder='Número de empleado' id='noEmpleado' name='noEmpleado'/>");
+                                                            out.print("<input type='hidden' name='contador' id='contador' value="+contador+">");
+                                                            out.print("<i class='form-control-feedback glyphicon glyphicon-user'></i>");
+                                                          out.print("</div>");
+                                                          out.print("<div class='form-group has-feedback has-feedback-left'>");
+                                                            out.print("<label class='control-label'>Contraseña</label>");
+                                                            out.print("<input type='text' class='form-control' placeholder='Contraseña' id='contrasenia' name='contrasenia'/>");
+                                                            out.print("<i class='form-control-feedback glyphicon glyphicon-console'></i>");
+                                                        out.print("</div>");
+                                                    out.print("</div>");
+                                                out.print("<div class='col-md-2'></div>");    
+                                            out.print("</div>");
+                                        }
                                     }
                                 %>
                                 
@@ -182,7 +196,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" name="submit" class="btn btn-primary"><i class="glyphicon glyphicon-triangle-right"></i>Ok</button>
+                                <% 
+                                    if(!estadoSesion.equals("robot")){
+                                         out.print("<button type='submit' name='submit' class='btn btn-primary'><i class='glyphicon glyphicon-triangle-right'></i>Ok</button>");
+                                    }
+                                %>
+                                
                             </div>
                         </form>        
 	            </div>
