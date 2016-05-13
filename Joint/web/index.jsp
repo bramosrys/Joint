@@ -4,7 +4,6 @@
     Author     : jdiaz
 --%>
 
-
 <%@page import="net.tanesha.recaptcha.ReCaptchaResponse"%>
 <%@page import="net.tanesha.recaptcha.ReCaptchaImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -195,6 +194,7 @@
                             
                             </div>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-info pull-left" onclick="location='registro.jsp'">Registrate</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                 <% 
                                     if(!estadoSesion.equals("robot")){
@@ -206,7 +206,7 @@
                         </form>        
 	            </div>
 	        </div>
-	    </div>
+	    </div><!-- termina modal-->
 
     </div>
     <!-- scripts -->
