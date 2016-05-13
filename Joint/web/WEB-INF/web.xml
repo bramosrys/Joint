@@ -4,9 +4,17 @@
         <servlet-name>IniciarSesion</servlet-name>
         <servlet-class>joint.sistema.control.IniciarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RespuestaExiste</servlet-name>
+        <servlet-class>joint.sistema.control.ajax.RespuestaExiste</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RespuestaExiste</servlet-name>
+        <url-pattern>/RespuestaExiste</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

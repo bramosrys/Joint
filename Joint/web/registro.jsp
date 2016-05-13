@@ -23,11 +23,10 @@
 
     <!-- Custom styles for this template -->
     <link href="recursos/css/registro.css" rel="stylesheet">
-    
+    <script src="recursos/js/jquery-2.2.3.min.js"></script>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="recursos/bootstrap336/dist/js/ie-emulation-modes-warning.js"></script>
-    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -83,16 +82,23 @@
 
         <hr>
         <div class="container">
-          <div class="col-md-6" id="ingresar-empleado">
-            <h2 class="text-center">Ingresa tu numero de empleado</h2><hr>
-            <form class="form-horizontal" method="POST" action="Registro">
-              <div class='form-group has-feedback has-feedback-left'>
-                  <input type='text' class='form-control' placeholder='Número de empleado' value="" id='noEmpleado' name='noEmpleado' onkeyup="existeEmpleado(this.value)"/>
-                  <i class='form-control-feedback glyphicon glyphicon-user'></i>
+          <div class="col-md-6">
+              <div class="col-md-12" id="ingresar-empleado">
+                    <h2 class="text-center">Ingresa tu numero de empleado</h2><hr>
+                    <form class="form-horizontal" method="POST" action="Registro">
+                      <div class='form-group has-feedback has-feedback-left'>
+                          <input type='text' class='form-control' placeholder='Número de empleado' value="" id='noEmpleado' name='noEmpleado' onkeyup="existeEmpleado(this.value)"/>
+                          <i class='form-control-feedback glyphicon glyphicon-user'></i>
+                      </div>
+                    </form>
               </div>
-            </form>
+              <div class="col-md-12">
+                  <div class="row" id="respuesta-empleado">
+                      
+                  </div>
+              </div>
           </div>
-          <div class="col-md-6" id="respuesta-empleado">
+          <div class="col-md-6" id="registro">
             
           </div>
         </div>
@@ -104,7 +110,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="recursos/js/jquery-2.2.3.min.js"></script>
+    
     <script src="recursos/bootstrap336/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="recursos/bootstrap336/dist/js/ie10-viewport-bug-workaround.js"></script>

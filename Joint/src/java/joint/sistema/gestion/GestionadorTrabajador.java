@@ -41,5 +41,37 @@ public class GestionadorTrabajador extends Gestionador{
             return false;
         }
     }
-    
+    public Trabajador getFechaContratacion(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select fechaContratacion from trabajador where noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+";");
+            if(resultset.next()){
+                this.trabajador.setFechaContratacion(resultset.getString("fechaContratacion"));
+                return trabajador;
+            }else{
+                System.out.println("Error al obtener fecha de contratación");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener fecha de contratación " +ex);
+            return null;
+        }
+    }
+    public Trabajador getCargo(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select cargo from trabajador t, cargo c where t.noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+""
+                    + "and t.idcargo=c.idcargo;");
+            if(resultset.next()){
+                this.trabajador.setCargo(resultset.getString("cargo"));
+                return trabajador;
+            }else{
+                System.out.println("Error al obtener cargo");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener cargo " +ex);
+            return null;
+        }
+    }
 }

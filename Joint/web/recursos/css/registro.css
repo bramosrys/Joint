@@ -40,6 +40,9 @@ body{
 .container-registro{
   padding-bottom: 120px;
 }
+.btn-registro{
+    margin-top: 8px;
+}
 /*************/
 /*Fuentes*/
 @font-face {

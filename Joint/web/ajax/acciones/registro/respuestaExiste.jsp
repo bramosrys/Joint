@@ -8,20 +8,16 @@
 <%@page import="joint.sistema.Trabajador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
-    String noEmp= request.getParameter("noEmpleado");
 
-    Trabajador trabajador=new Trabajador(Integer.parseInt(noEmp));
-    GestionadorTrabajador gTrabajador= new GestionadorTrabajador(trabajador);
-    
-    if(gTrabajador.existeTrabajador()){
-        out.println("<div class='alert alert-success'>");
-        out.println("<strong>Empleado Encontrado <i class='icon-thumbs-up'></i></strong>");
+<%
+    if(request.getParameter("noEmpleado")!=null){
+       String noEmpleado=request.getParameter("noEmpleado");
+       int noEmp =Integer.parseInt(noEmpleado);
+       out.println("<div class='col-md-8 alert alert-success'>");
+            out.println("<strong>Empleado Encontrado </strong>");
         out.println("</div>");
-    }else{
-        out.println("<div class='alert alert-warning'>");
-            out.println("<strong>Número de empleado no encontrado  </strong>Contacte con el administrador");
-        out.println("</div>");
+        out.println("<div class='col-md-4 btn-registro'>");
+            out.println("<button type='button' class='btn btn-success btn-block ' value='"+noEmp+"'onclick=registro(this.value)>Registrarme</button>");
+        out.println("</div>");   
     }
-    
 %>
