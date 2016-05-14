@@ -1,4 +1,4 @@
-package joint.sistema.control;
+package joint.sistema.controlInterfaz;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;

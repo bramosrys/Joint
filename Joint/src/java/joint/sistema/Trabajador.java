@@ -27,7 +27,11 @@ public class Trabajador extends Persona{
         this.fechaContratacion ="";
         this.contrasenia ="";
     }
-    
+    public Trabajador(int noEmpleado,String nombre, int edad, String correo, String contrasenia, String fechaNacimiento){
+        super(nombre,edad,correo,fechaNacimiento);
+        this.noEmpleado =noEmpleado;
+        this.contrasenia =contrasenia;
+    }
     public int getNoEmpleado() {
         return noEmpleado;
     }

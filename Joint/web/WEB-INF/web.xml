@@ -2,15 +2,19 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>IniciarSesion</servlet-name>
-        <servlet-class>joint.sistema.control.IniciarSesion</servlet-class>
+        <servlet-class>joint.sistema.controlInterfaz.IniciarSesion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RespuestaExiste</servlet-name>
-        <servlet-class>joint.sistema.control.ajax.RespuestaExiste</servlet-class>
+        <servlet-class>joint.sistema.controlInterfaz.RespuestaExiste</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RespuestaRegistro</servlet-name>
-        <servlet-class>joint.sistema.control.ajax.RespuestaRegistro</servlet-class>
+        <servlet-class>joint.sistema.controlInterfaz.RespuestaRegistro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarTrabajador</servlet-name>
+        <servlet-class>joint.sistema.controlInterfaz.RegistrarTrabajador</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>RespuestaRegistro</servlet-name>
         <url-pattern>/RespuestaRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarTrabajador</servlet-name>
+        <url-pattern>/RegistrarTrabajador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

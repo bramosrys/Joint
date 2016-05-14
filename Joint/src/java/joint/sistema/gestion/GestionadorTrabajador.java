@@ -27,6 +27,15 @@ public class GestionadorTrabajador extends Gestionador{
             Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public GestionadorTrabajador() {
+        try {
+            this.con=getConnection();
+            statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    //*************************************Verificadores*********************************************
     public boolean existeTrabajador(){
         try {
             resultset=null;
@@ -60,6 +69,8 @@ public class GestionadorTrabajador extends Gestionador{
             return false;
         }
     }
+    //*****************************************************************************************************
+    //*************************************************Getters*********************************************
     public Trabajador getFechaContratacion(){
         try {
             resultset=null;
@@ -93,6 +104,26 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    //******************************************************************************************************************
+    //*****************************************************Registradores************************************************
+    public void registrarTrabajador(Trabajador t){
+        try {
+            statement.execute("INSERT INTO trabajador " +
+                    "(nombre,fechaNacimiento,correo,contrasenia)" +
+                    "VALUES("
+                    + "'" + t.getNombre() + "',"
+                    + "'" + t.getFechaNacimiento() + "',"
+                    + "'" + t.getCorreo() + "',"
+                    + "'" + t.getContrasenia() + ");" );
+            String sentencia = "UPDATE trabajador SET nombre='"+t.getNombre()+"', fechaNacimiento='"+t.getFechaNacimiento()+"'"
+                    + " edad="+t.getEdad()+" correo='"+t.getCorreo()+"', contrasenia='"+t.getContrasenia()+"', "
+                    + "registro='true' WHERE noEmpleado="+t.getNoEmpleado()+";";
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en registro de trabajador" + ex);
+        }
+    }
+    //******************************************************************************************************************
     public void destruirGestionador(){
         try {
             statement.close();

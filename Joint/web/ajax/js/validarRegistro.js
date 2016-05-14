@@ -27,6 +27,21 @@ function validarContrasenias(str2){
 }
 function registroValido(){
     if(contador==valido){
-        console.log("todo es valido")
+        console.log("todo es valido");
+        var conexion;
+        if (window.XMLHttpRequest){
+            conexion=new XMLHttpRequest();
+        }else{
+            conexion=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        conexion.onreadystatechange=function(){
+            if (conexion.readyState===4 && conexion.status===200){
+                document.getElementById("pass2").innerHTML=conexion.responseText;
+            }
+        }
+        conexion.open("POST","ajax/acciones/registro/validarRegistro/repetirContrasenia.jsp?contrasenia="+pass,true);
+        conexion.send();
+    }else{
+        
     }
 }

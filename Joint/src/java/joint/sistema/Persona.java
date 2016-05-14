@@ -20,6 +20,12 @@ public class Persona {
         this.correo = correo;
         this.direccion = direccion;
     }
+    public Persona(String nombre, int edad,String correo,String fechaNacimiento) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
+        this.correo = correo;
+    }
     public Persona() {
         this.nombre = "";
         this.edad = 0;
