@@ -41,6 +41,25 @@ public class GestionadorTrabajador extends Gestionador{
             return false;
         }
     }
+    public boolean estaRegistrado(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select registro from trabajador where noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+";");
+            if(resultset.next()){
+                String registro=resultset.getString("registro");
+                if(registro.equals("true")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo recuperar el registro del trabajador" + ex);
+            return false;
+        }
+    }
     public Trabajador getFechaContratacion(){
         try {
             resultset=null;

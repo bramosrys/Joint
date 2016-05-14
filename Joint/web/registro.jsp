@@ -87,7 +87,7 @@
                     <h2 class="text-center">Ingresa tu numero de empleado</h2><hr>
                     <form class="form-horizontal" method="POST" action="Registro">
                       <div class='form-group has-feedback has-feedback-left'>
-                          <input type='text' class='form-control' placeholder='Número de empleado' value="" id='noEmpleado' name='noEmpleado' onkeyup="existeEmpleado(this.value)"/>
+                          <input type='text' class='form-control' placeholder='Número de empleado' value="" id='noEmpleado' name='noEmpleado' onkeydown="existeEmpleado(this.value)"/>
                           <i class='form-control-feedback glyphicon glyphicon-user'></i>
                       </div>
                     </form>

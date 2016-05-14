@@ -68,7 +68,7 @@ public class RespuestaExiste extends HttpServlet {
             }else{
                 try (PrintWriter out = response.getWriter()) {
                     out.println("<div class='alert alert-warning'>");
-                        out.println("<strong>Número de empleado no encontrado  </strong>Contacte con el administrador");
+                        out.println("<strong>Número de empleado no encontrado </strong> &nbsp Contacte con el administrador");
                     out.println("</div>");
                 }
             }

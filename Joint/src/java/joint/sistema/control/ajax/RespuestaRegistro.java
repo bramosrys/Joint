@@ -42,16 +42,25 @@ public class RespuestaRegistro extends HttpServlet {
             noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
             
-            trabajador=gestionadorT.getFechaContratacion();
-            String fechaContratacion =trabajador.getFechaContratacion();
-            trabajador=gestionadorT.getCargo();
-            String cargo = trabajador.getCargo();
+            if(gestionadorT.estaRegistrado()){
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("<div class='alert alert-warning'>");
+                        out.println("<strong>El empleado ya se encuentra registrado</strong>Contacte con el administrador");
+                    out.println("</div>");
+                }
+            }else{
+                trabajador=gestionadorT.getFechaContratacion();
+                String fechaContratacion =trabajador.getFechaContratacion();
+                trabajador=gestionadorT.getCargo();
+                String cargo = trabajador.getCargo();
+
+                request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
+                request.setAttribute("fechaContratacion", fechaContratacion);
+                request.setAttribute("cargo", cargo);
+                RequestDispatcher a = request.getRequestDispatcher("ajax/acciones/registro/respuestaRegistro.jsp");
+                a.forward(request, response);
+            }
             
-            request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
-            request.setAttribute("fechaContratacion", fechaContratacion);
-            request.setAttribute("cargo", cargo);
-            RequestDispatcher a = request.getRequestDispatcher("ajax/acciones/registro/respuestaRegistro.jsp");
-            a.forward(request, response);
         }
         limpiar();
     }
