@@ -31,7 +31,7 @@ public class Edad {
     public int calcularEdad(String fecha){
     Date fechaNac=null;
         try {
-            fechaNac = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
+            fechaNac = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
         } catch (Exception ex) {
             System.out.println("Error:"+ex);
         }

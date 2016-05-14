@@ -107,17 +107,11 @@ public class GestionadorTrabajador extends Gestionador{
     //******************************************************************************************************************
     //*****************************************************Registradores************************************************
     public void registrarTrabajador(Trabajador t){
-        try {
-            statement.execute("INSERT INTO trabajador " +
-                    "(nombre,fechaNacimiento,correo,contrasenia)" +
-                    "VALUES("
-                    + "'" + t.getNombre() + "',"
-                    + "'" + t.getFechaNacimiento() + "',"
-                    + "'" + t.getCorreo() + "',"
-                    + "'" + t.getContrasenia() + ");" );
-            String sentencia = "UPDATE trabajador SET nombre='"+t.getNombre()+"', fechaNacimiento='"+t.getFechaNacimiento()+"'"
-                    + " edad="+t.getEdad()+" correo='"+t.getCorreo()+"', contrasenia='"+t.getContrasenia()+"', "
+        try {         
+            String sentencia = "UPDATE trabajador SET nombre='"+t.getNombre()+"', fechaNacimiento='"+t.getFechaNacimiento()+"',"
+                    + " edad="+t.getEdad()+", correo='"+t.getCorreo()+"', contrasenia='"+t.getContrasenia()+"', "
                     + "registro='true' WHERE noEmpleado="+t.getNoEmpleado()+";";
+            System.out.println(sentencia);
             statement.executeUpdate(sentencia);
         } catch (SQLException ex) {
             System.out.println("Error en registro de trabajador" + ex);

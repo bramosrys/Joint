@@ -6,11 +6,11 @@
     </servlet>
     <servlet>
         <servlet-name>RespuestaExiste</servlet-name>
-        <servlet-class>joint.sistema.controlInterfaz.RespuestaExiste</servlet-class>
+        <servlet-class>joint.sistema.control.ajax.RespuestaExiste</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RespuestaRegistro</servlet-name>
-        <servlet-class>joint.sistema.controlInterfaz.RespuestaRegistro</servlet-class>
+        <servlet-class>joint.sistema.control.ajax.RespuestaRegistro</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegistrarTrabajador</servlet-name>

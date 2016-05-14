@@ -32,20 +32,35 @@ public class RegistrarTrabajador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println("entre a registrar trabajador");
         String correo;
         String nombre;
         String contrasenia;
         String fechaNacimiento;
         int noEmpleado,años;
         Edad edad=new Edad();
-        if(request.getParameter("noEmpleado")!=null && request.getParameter("nombre")!=null){
+        System.out.println("no empleado"+request.getParameter("noEmpleado"));
+        System.out.println("nombre"+request.getParameter("nombre"));
+        System.out.println("correo"+request.getParameter("correo"));
+        System.out.println("contrasenia"+request.getParameter("contrasenia"));
+        System.out.println("fechanacimiento"+request.getParameter("fechaNacimiento"));
+        if(request.getParameter("noEmpleado")!=null && request.getParameter("nombre")!=null && request.getParameter("correo")!=null &&
+                request.getParameter("contrasenia")!=null && request.getParameter("fechaNacimiento")!=null){
+            System.out.println("entre al if de registrar");
             noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
             nombre=request.getParameter("nombre");
             correo=request.getParameter("correo");
             contrasenia=request.getParameter("contrasenia");
             fechaNacimiento=request.getParameter("fechaNacimiento");
-            años=edad.calcularEdad(nombre);
+            años=edad.calcularEdad(fechaNacimiento);
             iniciarGestionTrabajador(noEmpleado,nombre,años,correo,contrasenia,fechaNacimiento);
+            gestionadorT.registrarTrabajador(trabajador);
+            try (PrintWriter out = response.getWriter()) {
+                    out.println("<div class='alert alert-success'>");
+                        out.println("<strong>¡Registro realizado exitosamente! </strong> Ahora puede iniciar sesion");
+                    out.println("</div>");
+            }
+            limpiar();
         }
         
     }
