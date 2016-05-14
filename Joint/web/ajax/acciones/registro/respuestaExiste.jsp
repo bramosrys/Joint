@@ -10,8 +10,9 @@
 
 
 <%
+    String noEmpleado="";
     if(request.getParameter("noEmpleado")!=null){
-       String noEmpleado=request.getParameter("noEmpleado");
+       noEmpleado=request.getParameter("noEmpleado");
        int noEmp =Integer.parseInt(noEmpleado);
        out.println("<div class='col-md-8 alert alert-success'>");
             out.println("<strong>Empleado Encontrado </strong>");
@@ -20,4 +21,5 @@
             out.println("<button type='button' class='btn btn-success btn-block ' value='"+noEmp+"'onclick=registro(this.value)>Registrarme</button>");
         out.println("</div>");   
     }
+    noEmpleado=null;
 %>

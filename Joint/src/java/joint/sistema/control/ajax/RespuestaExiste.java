@@ -39,6 +39,13 @@ public class RespuestaExiste extends HttpServlet {
         trabajador=new Trabajador(noEmpleado);
         gestionadorT = new GestionadorTrabajador(trabajador);
     }
+    private void limpiar(){
+        gestionadorT.destruirGestionador();
+        trabajador.destruirTrabajador();
+        noEmpleado=0;
+        existeUsuario=false;
+        System.gc();
+    }
     private boolean existeTrabajador(){
         gestionadorT.existeTrabajador();
          if(existeUsuario){
@@ -53,7 +60,6 @@ public class RespuestaExiste extends HttpServlet {
         if(request.getParameter("noEmpleado")!=null){
             noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
-            
             existeUsuario=gestionadorT.existeTrabajador();
             if(existeUsuario){
                 request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
@@ -61,12 +67,12 @@ public class RespuestaExiste extends HttpServlet {
                 a.forward(request, response);
             }else{
                 try (PrintWriter out = response.getWriter()) {
-                    System.out.println("no existia");
                     out.println("<div class='alert alert-warning'>");
                         out.println("<strong>Número de empleado no encontrado  </strong>Contacte con el administrador");
                     out.println("</div>");
                 }
             }
+        limpiar();
         }
     }
 

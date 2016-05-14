@@ -59,5 +59,11 @@ public class Trabajador extends Persona{
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
+    public void destruirTrabajador(){
+        noEmpleado=0;
+        cargo=null;
+        fechaContratacion=null;
+        contrasenia=null;
+        System.gc();
+    }
 }

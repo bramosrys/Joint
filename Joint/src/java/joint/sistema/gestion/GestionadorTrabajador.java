@@ -74,4 +74,15 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    public void destruirGestionador(){
+        try {
+            statement.close();
+            resultset.close();
+            con.close();
+            trabajador.destruirTrabajador();
+            System.gc();
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
