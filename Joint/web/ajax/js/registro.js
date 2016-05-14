@@ -34,3 +34,4 @@ function registro(str){
         conexion.open("POST","RespuestaRegistro?noEmpleado="+noEmpleado,true);
         conexion.send();
 }
+

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package joint.sistema.control.ajax;
 
 import java.io.IOException;
@@ -53,7 +48,6 @@ public class RespuestaRegistro extends HttpServlet {
                 String fechaContratacion =trabajador.getFechaContratacion();
                 trabajador=gestionadorT.getCargo();
                 String cargo = trabajador.getCargo();
-
                 request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
                 request.setAttribute("fechaContratacion", fechaContratacion);
                 request.setAttribute("cargo", cargo);

@@ -27,7 +27,7 @@
         <h4 class="">Número de empleado: <%out.println(noEmp);%></h4>
         <h4 class="">Fecha de Contratación: <%out.println(fechaContratacion);%></h4>
         <h4 class="">Cargo: <%out.println(cargo);%></h4>
-        <form role="form"> 
+        <form role="form" method="POST" onsubmit="registroValido()"> 
             <div class="form-group has-feedback has-feedback-left">
               <label class="control-label">Nombre Completo</label>
               <input type="text" class="form-control" placeholder="Nombre Completo" />
@@ -45,9 +45,12 @@
             </div>
             <div class="form-group has-feedback has-feedback-left">
               <label class="control-label">Contraseña</label>
-              <input type="password" class="form-control" placeholder="Contraseña" />
+              <input type="password" class="form-control" placeholder="Contraseña" id="pass" value="" onkeyup="validarContrasenia(this.value)"/>
               <i class="form-control-feedback glyphicon glyphicon-console"></i>
             </div>
+            <div class="form-group has-feedback has-feedback-left" id="pass2">
+            </div>
+            <button type='submit' name='submit' class='btn btn-primary btn-block'><i class='glyphicon glyphicon-triangle-right'></i>Ok</button>
         </form>
     </div>
 </div>
