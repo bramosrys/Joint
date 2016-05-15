@@ -59,15 +59,69 @@
   </head>
 
   <body>
+    <div class="navbar navbar-default navegacion">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse-right"> <!-- NOTE! data-target was changed to .bottom-collapse -->
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="row">
+              
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 visible-lg">
+                <ul class="nav navbar-nav">
+                  <h2 class="text-center nav-titulo">¡Bienvenido a Joint!</h2>
+                </ul>
+            </div>
+            
+            <div class="col-md-4 visible-xs">
+                <ul class="nav navbar-nav">
+                  <h2 class="text-center nav-titulo">¡Bienvenido!</h2>
+                </ul>
+            </div>
+            
+            <div class="col-md-4">
+              <div class="navbar-collapse collapse bottom-collapse-right"> <!-- NOTE! The extra bottom-collapse class put on here -->
+                <ul class="nav navbar-nav pull-right">
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+    </div>
     <!-- Static bottom navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">
       <div class="container">
       	<div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse"> <!-- NOTE! data-target was changed to .bottom-collapse -->
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse-2"> <!-- NOTE! data-target was changed to .bottom-collapse -->
 	        <span class="icon-bar"></span>
 	      </button>
 	    </div>
-        <div class="navbar-collapse collapse bottom-collapse"> <!-- NOTE! The extra bottom-collapse class put on here -->
+        <div class="navbar-collapse collapse bottom-collapse-2"> <!-- NOTE! The extra bottom-collapse class put on here -->
           <ul class="nav navbar-nav">
             <li>
                 <a class="text-center ">
@@ -83,30 +137,6 @@
 
 
     <div class="container-fluid container-index">
-        <div class="row">
-            <div class='col-md-4'></div>
-            <div class='col-md-4'>
-                <h1 class="text-center">¡Bienvenido a Joint!</h1>
-            </div>
-            <div class='col-md-4'>
-
-                     <div class='col-md-3'>
-                         <img src='recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
-                     </div>
-                     <div class='col-md-3'>
-                         <img src='recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
-                     </div>
-                     <div class='col-md-3'>
-                         <img src='recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
-                     </div>
-                     <div class='col-md-3'>
-                         <img src='recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
-                     </div>
-
-            </div>
-        </div>
-
-        <hr>
         <div class="row ">
         	<div class='col-md-4'>
         		<div class="col-md-12">

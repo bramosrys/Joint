@@ -1,8 +1,10 @@
 /*Navbar*/
 .navbar{
-    background-color: #00aba9;
     height: 90px;
-
+    background-color: #00aba9;
+}
+.navegacion{
+  background-color: #ffffff;
 }
 .navbar-nav{
     margin: 0 auto;
@@ -10,17 +12,20 @@
     table-layout: fixed;
     float:none;
 }
+.nav-titulo{
+  color:#000000
+}
 .navbar-default .navbar-nav > li > a {
   color:rgb(255,255,255) ;
 }
 
 .img-nabvar{
-    padding-top: 20px;
+    padding-top: 5px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 .img-nabvar:hover{
-    padding-top: 20px;
+    padding-top: 5px;
     -webkit-transform:scale(1.2);
     transform:scale(1.2);
 }

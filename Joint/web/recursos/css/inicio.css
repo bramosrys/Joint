@@ -1,6 +1,12 @@
 /*Navbar*/
-.navbar{
+.nav{
     height: 90px;
+}
+.nav-titulo{
+  color:#000000
+}
+.navegacion{
+  background-color: #ffffff;
 }
 .navbar-nav{
     margin: 0 auto;
@@ -8,17 +14,13 @@
     table-layout: fixed;
     float:none;
 }
-.navbar-default .navbar-nav > li > a {
-  color:rgb(255,255,255) ;
-}
-
 .img-nabvar{
-    margin-top: 25px;
+    margin-top: 5px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 .img-nabvar:hover{
-    margin-top: 20px;
+    margin-top: 5px;
     -webkit-transform:scale(1.2);
     transform:scale(1.2);
 }
@@ -30,11 +32,9 @@
   -webkit-transform:scale(1.2);
   transform:scale(1.2);
 }
-
 .nombre-usuario{
-  margin-top: 10px;
+  padding-top: 25px;
 }
-
 /*Cuerpo*/
 body{
 	font-family: 'roboto_condensedregular';

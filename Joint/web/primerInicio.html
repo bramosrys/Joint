@@ -29,18 +29,93 @@
   </head>
 
   <body>
+    <div class="navbar navbar-default navegacion">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".bottom-collapse-left"> <!-- NOTE! data-target was changed to .bottom-collapse -->
+              <span class="icon-bar"></span>
+            </button>
+            <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".bottom-collapse-right"> <!-- NOTE! data-target was changed to .bottom-collapse -->
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <div class="navbar-collapse collapse bottom-collapse-left"> <!-- NOTE! The extra bottom-collapse class put on here -->
+                <ul class="nav navbar-nav pull-left">
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4 visible-lg">
+                <ul class="nav navbar-nav">
+                  <h2 class="text-center nav-titulo">Este es tu primer inicio</h2>
+                </ul>
+            </div>
+            <div class="col-md-4 visible-xs">
+                <ul class="nav navbar-nav">
+                  <h2 class="text-center nav-titulo">Inicio</h2>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+              <div class="navbar-collapse collapse bottom-collapse-right">
+                <ul class="nav navbar-nav pull-right">
+                  <li>
+                    <h4 class="text-center nombre-usuario">Nombre Usuario</h4>
+                  </li>
+                  <li>
+                      <a class="text-center"> 
+                          <img src='recursos/imagenes/inicio/nav/settings.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="text-center">
+                          <img src='recursos/imagenes/inicio/nav/exit.png' class='img-responsive center-block img-nabvar'>
+                      </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+
     <!-- Static bottom navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom" style="background:#303030;">
       <div class="container">
       	<div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse"> <!-- NOTE! data-target was changed to .bottom-collapse -->
-	        <span class="icon-bar"></span>
-	      </button>
-	    </div>
-        <div class="navbar-collapse collapse bottom-collapse"> <!-- NOTE! The extra bottom-collapse class put on here -->
+  	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse-2"> <!-- NOTE! data-target was changed to .bottom-collapse -->
+  	        <span class="icon-bar"></span>
+  	      </button>
+	      </div>
+        <div class="navbar-collapse collapse bottom-collapse-2"> <!-- NOTE! The extra bottom-collapse class put on here -->
           <ul class="nav navbar-nav">
             <li>
-                <a class="text-center " href="#inicio">
+                <a class="text-center" href="#inicio">
                     <img src="recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
                 </a>
             </li>
@@ -50,57 +125,6 @@
       </div>
     </div>
 
-
-
-    <div class="container-fluid container-primer-inicio">
-        <div class="row">
-        <!-- elementos de navegacion -->
-          <div class='col-md-3'>
-             <div class='col-md-3'>
-                 <img src='recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
-             </div>
-             <div class='col-md-3'>
-                 <img src='recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
-             </div>
-             <div class='col-md-3'>
-                 <img src='recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
-             </div>
-             <div class='col-md-3'>
-                 <img src='recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
-             </div>
-          </div>
-          <!-- termina elementos de navegacion -->
-        
-          <div class="col-md-1"></div>
-          <div class='col-md-4'>
-            <h1 class="text-center">Este es tu primer inicio</h1>
-          </div>
-          <div class="col-md-1"></div>
-
-        <!-- Elementos de sesion -->
-          <div class='col-md-3'>
-              <div class="col-md-7 nav-usuario">
-                <div class="col-md-12 nombre-usuario">
-                  <h3 class=text-center>Nombre Usuario</h3>
-                </div>
-              </div>
-
-              <div class="col-md-5 nav-usuario-accion">
-                <div class='col-md-6'>
-                 <img src='recursos/imagenes/inicio/nav/settings.png' class='img-responsive center-block img-nabvar'>
-                </div>
-                <div class='col-md-6'>
-                 <img src='recursos/imagenes/inicio/nav/exit.png' class='img-responsive center-block img-nabvar'>
-                </div>
-              </div>
-          </div>
-        <!-- termina elementos de sesion -->
-        </div><!-- termina row --><hr>
-
-      <div class="container">
-        <h2 class="">Solo falta personalizar tu espacio</h2>
-      </div>
-    </div>
     <!-- scripts -->
     
     <!-- Bootstrap core JavaScript
