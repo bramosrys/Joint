@@ -1,8 +1,6 @@
 /*Navbar*/
 .navbar{
-    background-color: #00aba9;
     height: 90px;
-
 }
 .navbar-nav{
     margin: 0 auto;
@@ -15,12 +13,12 @@
 }
 
 .img-nabvar{
-    padding-top: 20px;
+    margin-top: 25px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 .img-nabvar:hover{
-    padding-top: 20px;
+    margin-top: 20px;
     -webkit-transform:scale(1.2);
     transform:scale(1.2);
 }
@@ -32,22 +30,18 @@
   -webkit-transform:scale(1.2);
   transform:scale(1.2);
 }
+
+.nombre-usuario{
+  margin-top: 10px;
+}
+
 /*Cuerpo*/
 body{
 	font-family: 'roboto_condensedregular';
     background-color: rgb(255,255,255);
 }
-.img-index{
-    padding-top: 25px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.img-index:hover{
-    padding-top: 25px;
-    -webkit-transform:scale(1.1);
-    transform:scale(1.1);
-}
-.container-index{
+
+.container-primer-inicio{
   padding-bottom: 120px;
 }
 /*************/
