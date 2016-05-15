@@ -15,7 +15,7 @@ function validarContrasenia(str){
                 document.getElementById("pass2").innerHTML=conexion.responseText;
             }
         }
-        conexion.open("POST","ajax/acciones/registro/validarRegistro/repetirContrasenia.jsp?contrasenia="+pass,true);
+        conexion.open("POST","sistema/vista/registro/validarRegistro/repetirContrasenia.jsp?contrasenia="+pass,true);
         conexion.send();
     }
 }

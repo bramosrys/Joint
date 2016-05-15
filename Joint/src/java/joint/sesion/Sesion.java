@@ -1,6 +1,6 @@
 package joint.sesion;
 
-import joint.sistema.Trabajador;
+import joint.sistema.principal.Trabajador;
 
 /**
  *

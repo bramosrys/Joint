@@ -1,4 +1,6 @@
-package joint.sistema.control.ajax;
+package joint.sistema.accion;
+
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,56 +9,52 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.Trabajador;
+import joint.sistema.principal.Trabajador;
+import joint.sistema.auxiliares.Edad;
 import joint.sistema.gestion.GestionadorTrabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class RespuestaRegistro extends HttpServlet {
+public class RegistrarTrabajador extends HttpServlet {
     private GestionadorTrabajador gestionadorT;
     private Trabajador trabajador;
-    private int noEmpleado;
 
-    private void iniciarGestionTrabajador(int noEmpleado){
-        trabajador=new Trabajador(noEmpleado);
+    private void iniciarGestionTrabajador(int noEmpleado,String nombre,int edad,String correo,String contrasenia,String fechaNacimiento){
+        trabajador=new Trabajador(noEmpleado,nombre,edad,correo,contrasenia,fechaNacimiento);
         gestionadorT = new GestionadorTrabajador(trabajador);
     }
     private void limpiar(){
         gestionadorT.destruirGestionador();
-        trabajador.destruirTrabajador();
-        noEmpleado=0;
         System.gc();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        if(request.getParameter("noEmpleado")!=null){
-            noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
-            iniciarGestionTrabajador(noEmpleado);
+        String correo;
+        String nombre;
+        String contrasenia;
+        String fechaNacimiento;
+        int noEmpleado,años;
+        Edad edad=new Edad();
+        if(request.getParameter("noEmpleado")!=null && request.getParameter("nombre")!=null && request.getParameter("correo")!=null &&
+                request.getParameter("contrasenia")!=null && request.getParameter("fechaNacimiento")!=null){
+
+            noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            nombre=request.getParameter("nombre");
+            correo=request.getParameter("correo");
+            contrasenia=request.getParameter("contrasenia");
+            fechaNacimiento=request.getParameter("fechaNacimiento");
+            años=edad.calcularEdad(fechaNacimiento);
             
-            if(gestionadorT.estaRegistrado()){
-                try (PrintWriter out = response.getWriter()) {
-                    out.println("<div class='alert alert-warning'>");
-                        out.println("<strong>El empleado ya se encuentra registrado</strong>Contacte con el administrador");
-                    out.println("</div>");
-                }
-            }else{
-                trabajador=gestionadorT.getFechaContratacion();
-                String fechaContratacion =trabajador.getFechaContratacion();
-                trabajador=gestionadorT.getCargo();
-                String cargo = trabajador.getCargo();
-                request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
-                request.setAttribute("fechaContratacion", fechaContratacion);
-                request.setAttribute("cargo", cargo);
-                RequestDispatcher a = request.getRequestDispatcher("ajax/acciones/registro/respuestaRegistro.jsp");
-                a.forward(request, response);
-            }
-            
+                iniciarGestionTrabajador(noEmpleado,nombre,años,correo,contrasenia,fechaNacimiento);
+                gestionadorT.registrarTrabajador(trabajador);
+            RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaRegistrado.jsp");
+            a.forward(request, response);
+            limpiar();
         }
-        limpiar();
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

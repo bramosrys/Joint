@@ -1,4 +1,6 @@
-package joint.sistema.controlInterfaz;
+package joint.sistema.accion;
+
+
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -7,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.Trabajador;
+import joint.sistema.principal.Trabajador;
 import joint.sistema.gestion.GestionadorTrabajador;
 
 /**

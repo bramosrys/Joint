@@ -3,9 +3,6 @@
     Created on : May 12, 2016, 11:49:32 PM
     Author     : jdiaz
 --%>
-
-<%@page import="joint.sistema.gestion.GestionadorTrabajador"%>
-<%@page import="joint.sistema.Trabajador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 

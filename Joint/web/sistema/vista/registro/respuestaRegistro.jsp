@@ -4,8 +4,6 @@
     Author     : jdiaz
 --%>
 
-<%@page import="joint.sistema.gestion.GestionadorTrabajador"%>
-<%@page import="joint.sistema.Trabajador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%  
     String fechaContratacion="";

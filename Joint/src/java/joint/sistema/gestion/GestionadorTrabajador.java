@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import joint.sistema.Trabajador;
+import joint.sistema.principal.Trabajador;
 
 /**
  *

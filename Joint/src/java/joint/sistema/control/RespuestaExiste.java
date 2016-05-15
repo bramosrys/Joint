@@ -1,4 +1,4 @@
-package joint.sistema.control.ajax;
+package joint.sistema.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.Trabajador;
+import joint.sistema.principal.Trabajador;
 import joint.sistema.gestion.GestionadorTrabajador;
 
 /**
@@ -41,14 +41,6 @@ public class RespuestaExiste extends HttpServlet {
         existeUsuario=false;
         System.gc();
     }
-    private boolean existeTrabajador(){
-        gestionadorT.existeTrabajador();
-         if(existeUsuario){
-                return true;
-            }else{
-                return false;
-            }
-    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -58,14 +50,11 @@ public class RespuestaExiste extends HttpServlet {
             existeUsuario=gestionadorT.existeTrabajador();
             if(existeUsuario){
                 request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
-                RequestDispatcher a = request.getRequestDispatcher("ajax/acciones/registro/respuestaExiste.jsp");
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaExiste.jsp");
                 a.forward(request, response);
             }else{
-                try (PrintWriter out = response.getWriter()) {
-                    out.println("<div class='alert alert-warning'>");
-                        out.println("<strong>Número de empleado no encontrado </strong> &nbsp Contacte con el administrador");
-                    out.println("</div>");
-                }
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaNoExiste.jsp");
+                a.forward(request, response);
             }
         limpiar();
         }
