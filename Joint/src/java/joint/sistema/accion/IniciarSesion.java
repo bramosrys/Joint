@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import joint.sistema.principal.Trabajador;
 import joint.sistema.gestion.GestionadorTrabajador;
 
@@ -26,13 +27,14 @@ public class IniciarSesion extends HttpServlet {
     private boolean existeUsuario;
     private String robot;
     
+    
+    
     private void iniciarGestionTrabajador(int noEmpleado){
         trabajador=new Trabajador(noEmpleado);
         gestionadorT = new GestionadorTrabajador(trabajador);
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         
         
         if(request.getParameter("g-recaptcha-response")!=null){
@@ -45,6 +47,14 @@ public class IniciarSesion extends HttpServlet {
                 request.setAttribute("sesion", estadoSesion);
                 RequestDispatcher a = request.getRequestDispatcher("index.jsp");
                 a.forward(request, response);
+            }else{
+                contador=0;
+                String intento=String.valueOf(contador);
+                String estadoSesion="intento";
+                request.setAttribute("sesion", estadoSesion);
+                request.setAttribute("intento", intento);
+                RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                a.forward(request, response);
             }
         }
 
@@ -54,8 +64,42 @@ public class IniciarSesion extends HttpServlet {
             
             existeUsuario=gestionadorT.existeTrabajador();
             if(existeUsuario){
-                RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
-                a.forward(request, response);
+                System.out.println("entre a iniciar existe");
+                if(request.getParameter("contrasenia")!=null){
+                    System.out.println("entre a iniciar contraseña");
+                    HttpSession sesion = request.getSession();
+                    String passFormulario,passBD;
+                    passFormulario = request.getParameter("contrasenia");
+                    trabajador=gestionadorT.getContrasenia();
+                    passBD=trabajador.getContrasenia();
+                    if(passFormulario.equals(passBD)){
+                        System.out.println("entre a iniciar coinciden");
+                        sesion.setAttribute("usuario", noEmpleado);
+                        String estado =gestionadorT.getEstadoInicial();
+                        if(sesion.getAttribute("usuario") == null){
+                            RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
+                            a.forward(request, response);
+                        }else{
+                            if(estado.equals("false")){
+                            RequestDispatcher a = request.getRequestDispatcher("primerInicio.jsp");
+                            a.forward(request, response);
+                            }else{
+                                RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
+                                a.forward(request, response);
+                            }
+                        }
+                        
+                    }else{
+                        contador = Integer.parseInt(request.getParameter("contador"));
+                        contador++;
+                        String intento=String.valueOf(contador);
+                        String estadoSesion="intento";
+                        request.setAttribute("sesion", estadoSesion);
+                        request.setAttribute("intento", intento);
+                        RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                        a.forward(request, response);
+                    }
+                }   
             }else{
                 if(request.getParameter("contador")!=null){
                     contador = Integer.parseInt(request.getParameter("contador"));

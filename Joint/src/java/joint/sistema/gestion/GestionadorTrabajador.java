@@ -104,6 +104,38 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    public Trabajador getContrasenia(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select contrasenia from trabajador where noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+";");
+            if(resultset.next()){
+                this.trabajador.setContrasenia(resultset.getString("contrasenia"));
+                return trabajador;
+            }else{
+                System.out.println("Error al obtener contrasenia");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener contrasenia " +ex);
+            return null;
+        }
+    }
+    public String getEstadoInicial(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select configuracionInicial from trabajador t, configuraciontrabajador c "
+                    + "where t.noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+" and t.idtrabajador = c.idtrabajador;");
+            if(resultset.next()){
+                return resultset.getString("configuracionInicial");
+            }else{
+                System.out.println("Error al obtener estado inicial");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener estado inicial " +ex);
+            return null;
+        }
+    }
     //******************************************************************************************************************
     //*****************************************************Registradores************************************************
     public void registrarTrabajador(Trabajador t){

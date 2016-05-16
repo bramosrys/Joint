@@ -1,3 +1,10 @@
+<%-- 
+    Document   : primerIncio
+    Created on : May 15, 2016, 8:39:15 PM
+    Author     : jdiaz
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
   <head>

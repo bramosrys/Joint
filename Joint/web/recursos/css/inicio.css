@@ -40,9 +40,14 @@ body{
 	font-family: 'roboto_condensedregular';
     background-color: rgb(255,255,255);
 }
+.contacto-btn{
 
+}
 .container-primer-inicio{
   padding-bottom: 120px;
+}
+.btn-continuar{
+  margin-top: 30px;
 }
 /*************/
 /*Fuentes*/
