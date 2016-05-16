@@ -5,6 +5,23 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    String id= sesion.getId();
+    String noEmpleado=(String)sesion.getAttribute("sesionActual");
+    
+    if(sesion.isNew()){
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    if(sesion==null){
+        response.sendRedirect("index.jsp");
+    }else{
+        if(sesion.getAttribute("sesionActual")==null){
+            response.sendRedirect("index.jsp");
+        }
+    }
+%>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -91,7 +108,7 @@
               <div class="navbar-collapse collapse bottom-collapse-right">
                 <ul class="nav navbar-nav pull-right">
                   <li>
-                    <h4 class="text-center nombre-usuario">Nombre Usuario</h4>
+                    <h4 class="text-center nombre-usuario"><%out.println(noEmpleado);%></h4>
                   </li>
                   <li>
                       <a class="text-center"> 
@@ -100,7 +117,9 @@
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='recursos/imagenes/inicio/nav/exit.png' class='img-responsive center-block img-nabvar'>
+                            <form method="POST" onsubmit="window.location.href = 'CerrarSesion'; return false;">
+                                <input type="image" name="submit" src='recursos/imagenes/inicio/nav/exit.png' border="0" alt="Submit" class='img-responsive center-block img-nabvar'/>
+                            </form>
                       </a>
                   </li>
                 </ul>
@@ -179,7 +198,7 @@
       </div>
     </div>
     <!-- scripts -->
-    
+    <script src="sistema/vista/inicio/js/inicio.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

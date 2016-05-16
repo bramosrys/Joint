@@ -74,9 +74,9 @@ public class IniciarSesion extends HttpServlet {
                     passBD=trabajador.getContrasenia();
                     if(passFormulario.equals(passBD)){
                         System.out.println("entre a iniciar coinciden");
-                        sesion.setAttribute("usuario", noEmpleado);
+                        sesion.setAttribute("sesionActual", request.getParameter("noEmpleado"));
                         String estado =gestionadorT.getEstadoInicial();
-                        if(sesion.getAttribute("usuario") == null){
+                        if(sesion.getAttribute("sesionActual") == null){
                             RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
                             a.forward(request, response);
                         }else{
