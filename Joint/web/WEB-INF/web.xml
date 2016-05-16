@@ -20,6 +20,10 @@
         <servlet-name>CerrarSesion</servlet-name>
         <servlet-class>joint.sistema.accion.CerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RespuestaColores</servlet-name>
+        <servlet-class>joint.sistema.control.RespuestaColores</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RespuestaColores</servlet-name>
+        <url-pattern>/RespuestaColores</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

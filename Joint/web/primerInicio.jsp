@@ -9,7 +9,7 @@
     HttpSession sesion = request.getSession(true);
     String id= sesion.getId();
     String noEmpleado=(String)sesion.getAttribute("sesionActual");
-    
+    String nombre=(String)sesion.getAttribute("nombre");
     if(sesion.isNew()){
         response.sendRedirect("index.jsp");
         return;
@@ -108,7 +108,7 @@
               <div class="navbar-collapse collapse bottom-collapse-right">
                 <ul class="nav navbar-nav pull-right">
                   <li>
-                    <h4 class="text-center nombre-usuario"><%out.println(noEmpleado);%></h4>
+                    <h4 class="text-center nombre-usuario"><%out.println(nombre);%></h4>
                   </li>
                   <li>
                       <a class="text-center"> 
@@ -152,7 +152,7 @@
     </div>
 
     <div class="container">
-      <div class="row">
+      <div class="row" id="row-principal">
         <h2 class="text-left">Completa tu informacion</h2><hr>
         <div class="col-md-6">
           <h3 class="text-center">Elige una imagen de usuario (Opcional)</h3><hr>

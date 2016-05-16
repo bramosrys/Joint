@@ -1,62 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package joint.sistema.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.principal.Trabajador;
-import joint.sistema.gestion.GestionadorTrabajador;
+import joint.sistema.gestion.GestionInterfaz;
 
 /**
  *
  * @author jdiaz
  */
-public class RespuestaExiste extends HttpServlet {
+public class RespuestaColores extends HttpServlet {
+    private GestionInterfaz gestionadorI;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    private GestionadorTrabajador gestionadorT;
-    private Trabajador trabajador;
-    private int noEmpleado;
-    private boolean existeUsuario;
-
-    private void iniciarGestionTrabajador(int noEmpleado){
-        trabajador=new Trabajador(noEmpleado);
-        gestionadorT = new GestionadorTrabajador(trabajador);
-    }
-    private void limpiar(){
-        gestionadorT.destruirGestionador();
-        trabajador.destruirTrabajador();
-        noEmpleado=0;
-        existeUsuario=false;
-        System.gc();
+    private void iniciarGestionInterfaz(){
+        gestionadorI = new GestionInterfaz();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(request.getParameter("noEmpleado")!=null){
-            noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
-            iniciarGestionTrabajador(noEmpleado);
-            existeUsuario=gestionadorT.existeTrabajador();
-            if(existeUsuario){
-                request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
-                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaExiste.jsp");
-                a.forward(request, response);
-            }else{
-                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaNoExiste.jsp");
-                a.forward(request, response);
-            }
-        limpiar();
-        }
+        iniciarGestionInterfaz();
+        ResultSet colores;
+        colores=gestionadorI.obtenerColores();
+        request.setAttribute("colores", colores);
+        RequestDispatcher a = request.getRequestDispatcher("sistema/vista/inicio/respuestaColores.jsp");
+        a.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

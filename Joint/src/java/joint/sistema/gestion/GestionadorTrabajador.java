@@ -120,6 +120,22 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    public Trabajador getNombre(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select nombre from trabajador where noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+";");
+            if(resultset.next()){
+                this.trabajador.setNombre(resultset.getString("nombre"));
+                return trabajador;
+            }else{
+                System.out.println("Error al obtener nombre");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener nombre " +ex);
+            return null;
+        }
+    }
     public String getEstadoInicial(){
         try {
             resultset=null;
@@ -136,6 +152,7 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    
     //******************************************************************************************************************
     //*****************************************************Registradores************************************************
     public void registrarTrabajador(Trabajador t){
