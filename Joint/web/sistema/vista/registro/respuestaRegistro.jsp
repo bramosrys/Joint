@@ -49,7 +49,7 @@
             </div>
             <div class="form-group has-feedback has-feedback-left" id="pass2">
             </div>
-            <button type="button" value="Input" name='submit' class='btn btn-primary btn-block'onclick="validarRegistro()"><i class='glyphicon glyphicon-triangle-right'></i>Ok</button>
+            <button type="button" value="Input" name='submit' class='btn btn-primary btn-block' onclick="validarRegistro()"><i class='glyphicon glyphicon-triangle-right'></i>Ok</button>
         </form>
     </div>
 </div>

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
@@ -38,5 +39,14 @@ public class GestionInterfaz extends Gestionador{
             Logger.getLogger(GestionInterfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
         return resultset;
+    }
+    public void cambiarColor(Trabajador t,String color){
+        try {         
+            String sentencia = "UPDATE configuraciontrabajador SET idcolor='"+color+"' WHERE noEmpleado="+t.getNoEmpleado()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en cambio de color" + ex);
+        }
     }
 }

@@ -3,41 +3,42 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package joint.sistema.control;
+package joint.sistema.accion;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.auxiliares.Convertir;
 import joint.sistema.gestion.GestionInterfaz;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class RespuestaColores extends HttpServlet {
-    private GestionInterfaz gestionadorI;
-    private Convertir con =new Convertir();
-    private void iniciarGestionInterfaz(){
-        gestionadorI = new GestionInterfaz();
-    }
+public class GuardarColor extends HttpServlet {
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        iniciarGestionInterfaz();
-        ResultSet colores;
-        colores=gestionadorI.obtenerColores();
-        request.setAttribute("colores",con.ResultSetToArray(colores));
-        RequestDispatcher a = request.getRequestDispatcher("sistema/vista/inicio/respuestaColores.jsp");
-        a.forward(request, response);
+        
+        String color;
+        int noEmpleado;
+        if(request.getParameter("color")!=null && request.getParameter("noEmpleado")!=null){
+            color=request.getParameter("color");
+            noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            Trabajador t = new Trabajador(noEmpleado);
+            GestionInterfaz gI =new GestionInterfaz();
+            gI.cambiarColor(t, color);
+            RequestDispatcher a = request.getRequestDispatcher("sistema/vista/inicio/respuestaColor.jsp");
+            a.forward(request, response);
+        }else{
+            /*RequestDispatcher a = request.getRequestDispatcher("sistema/vista/error.jsp");
+            a.forward(request, response);*/
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

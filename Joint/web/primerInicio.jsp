@@ -32,9 +32,9 @@
     <meta name="description" content="Sistema de evaluación">
     <meta name="author" content="ReaTeam">
     <link rel="icon" href="recursos/imagenes/navegacion/favicon.ico">
-
+    
     <title>Sistema de Evaluación</title>
-
+    <script src="sistema/vista/inicio/js/inicio.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
 
@@ -193,12 +193,12 @@
           </div>
         </div>
         <div class="col-md-12" >
-            <button type="button" class="btn btn-success center-block btn-continuar">Continuar</button>
+            <button type="button" class="btn btn-success center-block btn-continuar" onclick="continuar()" value="">Continuar</button>
         </div>
       </div>
     </div>
     <!-- scripts -->
-    <script src="sistema/vista/inicio/js/inicio.js"></script>
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

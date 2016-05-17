@@ -24,6 +24,10 @@
         <servlet-name>RespuestaColores</servlet-name>
         <servlet-class>joint.sistema.control.RespuestaColores</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GuardarColor</servlet-name>
+        <servlet-class>joint.sistema.accion.GuardarColor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>RespuestaColores</servlet-name>
         <url-pattern>/RespuestaColores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardarColor</servlet-name>
+        <url-pattern>/GuardarColor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
