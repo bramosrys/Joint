@@ -45,7 +45,7 @@ public class IniciarSesion extends HttpServlet {
                 System.out.println("No se valido Robot");
                 String estadoSesion="robot";
                 request.setAttribute("sesion", estadoSesion);
-                RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher a = request.getRequestDispatcher("/index.jsp");
                 a.forward(request, response);
             }else{
                 contador=0;
@@ -53,7 +53,7 @@ public class IniciarSesion extends HttpServlet {
                 String estadoSesion="intento";
                 request.setAttribute("sesion", estadoSesion);
                 request.setAttribute("intento", intento);
-                RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher a = request.getRequestDispatcher("/index.jsp");
                 a.forward(request, response);
             }
         }
@@ -78,14 +78,12 @@ public class IniciarSesion extends HttpServlet {
                         sesion.setAttribute("nombre", trabajador.getNombre());
                         String estado =gestionadorT.getEstadoInicial();
                         if(sesion.getAttribute("sesionActual") == null){
-                            RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
-                            a.forward(request, response);
+                            response.sendRedirect("/joint/Inicio.jsp");
                         }else{
                             if(estado.equals("false")){
-                            request.getRequestDispatcher("primerInicio.jsp").forward(request, response);
+                                response.sendRedirect("/joint/primerInicio.jsp");
                             }else{
-                                RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
-                                a.forward(request, response);
+                                response.sendRedirect("/joint/Inicio.jsp");
                             }
                         }
                         
@@ -96,7 +94,7 @@ public class IniciarSesion extends HttpServlet {
                         String estadoSesion="intento";
                         request.setAttribute("sesion", estadoSesion);
                         request.setAttribute("intento", intento);
-                        RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                        RequestDispatcher a = request.getRequestDispatcher("/index.jsp");
                         a.forward(request, response);
                     }
                 }   
@@ -108,7 +106,7 @@ public class IniciarSesion extends HttpServlet {
                     String estadoSesion="intento";
                     request.setAttribute("sesion", estadoSesion);
                     request.setAttribute("intento", intento);
-                    RequestDispatcher a = request.getRequestDispatcher("index.jsp");
+                    RequestDispatcher a = request.getRequestDispatcher("/index.jsp");
                     a.forward(request, response);
                 }
             }

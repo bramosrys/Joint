@@ -26,8 +26,7 @@ public class CerrarSesion extends HttpServlet {
         System.out.println("Entre a cerrar sesion");
         request.getSession().removeAttribute("sesionActual");
         sesion.invalidate();
-        RequestDispatcher a = request.getRequestDispatcher("index.jsp");
-        a.forward(request, response);
+        response.sendRedirect("/joint/index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
