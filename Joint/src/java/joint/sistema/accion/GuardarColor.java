@@ -6,13 +6,12 @@
 package joint.sistema.accion;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.gestion.GestionInterfaz;
+import joint.sistema.gestion.*;
 import joint.sistema.principal.Trabajador;
 
 /**
@@ -20,24 +19,38 @@ import joint.sistema.principal.Trabajador;
  * @author jdiaz
  */
 public class GuardarColor extends HttpServlet {
-    
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
         String color;
         int noEmpleado;
+        
         if(request.getParameter("color")!=null && request.getParameter("noEmpleado")!=null){
             color=request.getParameter("color");
             noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            
             Trabajador t = new Trabajador(noEmpleado);
+            GestionadorTrabajador gt=new GestionadorTrabajador(t);
+            int idTrabajador=gt.getIdTrabajador(t);
             GestionInterfaz gI =new GestionInterfaz();
-            gI.cambiarColor(t, color);
+            int idColor=gI.obtenerIdColor(color);
+            gI.cambiarColor(idTrabajador, idColor);
+            gI=null;
+            gt=null;
+            t.destruirTrabajador();
             RequestDispatcher a = request.getRequestDispatcher("sistema/vista/inicio/respuestaColor.jsp");
             a.forward(request, response);
-        }else{
-            /*RequestDispatcher a = request.getRequestDispatcher("sistema/vista/error.jsp");
-            a.forward(request, response);*/
         }
     }
 

@@ -25,14 +25,14 @@
         <% 
             String color;
             String nombre;
+            out.println("<input type='hidden' id='noEmpleado' value='"+noEmpleado+"'>");
             for (int i=0;i<colores.length;i++){
                 for(int j=0;j<1;j++){
-                    //System.out.println(colores[i][j]);
                     nombre=String.valueOf(colores[i][j]);
                     color=String.valueOf(colores[i][j+1]);
                     out.println("<div class='col-md-2'>");
                         out.println("<h4 class='text-center'>"+nombre+"</h4>");
-                        out.println("<button class='btn btn-default btn-block btn-color' style='background-color: "+color+"' value='"+color+"' onclick='guardarColor(this.value,"+noEmpleado+")'></button>");
+                        out.println("<button class='btn btn-default btn-block btn-color' value="+color+" style='background-color:#"+color+";' onclick='guardarColor(this.value)'></button>");
                     out.println("</div>");
                 }
             }

@@ -40,9 +40,23 @@ public class GestionInterfaz extends Gestionador{
         }
         return resultset;
     }
-    public void cambiarColor(Trabajador t,String color){
-        try {         
-            String sentencia = "UPDATE configuraciontrabajador SET idcolor='"+color+"' WHERE noEmpleado="+t.getNoEmpleado()+";";
+    public int obtenerIdColor(String color){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select idcolor from color where color='"+color+"';");
+            if(resultset.next()){
+                return Integer.parseInt(resultset.getString("idcolor"));
+            }else{
+                return 0;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id de color " +ex);
+            return 0;
+        }
+    }
+    public void cambiarColor(int idtrabajador,int idcolor){
+        try {        
+            String sentencia = "UPDATE configuraciontrabajador SET idcolor="+idcolor+" WHERE idtrabajador="+idtrabajador+";";
             System.out.println(sentencia);
             statement.executeUpdate(sentencia);
         } catch (SQLException ex) {

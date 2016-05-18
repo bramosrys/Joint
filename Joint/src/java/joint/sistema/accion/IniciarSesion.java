@@ -82,8 +82,7 @@ public class IniciarSesion extends HttpServlet {
                             a.forward(request, response);
                         }else{
                             if(estado.equals("false")){
-                            RequestDispatcher a = request.getRequestDispatcher("primerInicio.jsp");
-                            a.forward(request, response);
+                            request.getRequestDispatcher("primerInicio.jsp").forward(request, response);
                             }else{
                                 RequestDispatcher a = request.getRequestDispatcher("inicio.jsp");
                                 a.forward(request, response);

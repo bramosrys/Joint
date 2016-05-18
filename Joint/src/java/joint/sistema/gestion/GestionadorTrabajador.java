@@ -152,7 +152,20 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
-    
+    public int getIdTrabajador(Trabajador t){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select idtrabajador from trabajador where noEmpleado="+t.getNoEmpleado()+";");
+            if(resultset.next()){
+                return Integer.parseInt(resultset.getString("idtrabajador"));
+            }else{
+                return 0;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id de trabajador " +ex);
+            return 0;
+        }
+    }
     //******************************************************************************************************************
     //*****************************************************Registradores************************************************
     public void registrarTrabajador(Trabajador t){

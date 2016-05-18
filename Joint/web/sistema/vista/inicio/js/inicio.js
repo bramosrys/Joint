@@ -14,11 +14,11 @@ function continuar(){
     conexion.open("POST","RespuestaColores",true);
     conexion.send();
 }
-function guardarColor(str,str2){
+function guardarColor(str){
     var color=str;
-    var noEmpleado=str2;
+    var noEmpleado=document.getElementById("noEmpleado").value;
     console.log(color);
-    console.log(noEmpleado);
+    console.log(noEmpleado)
     var conexion;
     if (window.XMLHttpRequest){
         conexion=new XMLHttpRequest();
@@ -30,6 +30,6 @@ function guardarColor(str,str2){
             document.getElementById("respuesta-color").innerHTML=conexion.responseText;
         }
     }
-    conexion.open("POST","GuardarColor?color="+color+"&noEmpleado="+noEmpleado,true);
+    conexion.open("POST","GuardarColor?noEmpleado="+noEmpleado+"&color="+color,true);
     conexion.send();
 }
