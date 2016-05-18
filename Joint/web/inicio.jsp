@@ -143,48 +143,7 @@
 
     <div class="container">
       <div class="row" id="row-principal">
-        <h2 class="text-left">Completa tu informacion</h2><hr>
-        <div class="col-md-6">
-          <h3 class="text-center">Elige una imagen de usuario (Opcional)</h3><hr>
-          <div class="col-md-12" id="imagenUsuario">
-            <a  class="thumbnail center-block">
-              <img src="sistema/imagenesUsuario/userImage.png" class="img-responsive" alt="...">
-            </a>
-            <button type="button" class="btn btn-info btn-block">Enviar</button>
-          </div>
-          <div class="col-md-12" id="respuesta-imagen">
-            
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h3 class="text-center">Completa tu contacto telefonico</h3><hr>
-          <form role="form"> 
-            <div class="form-group has-feedback has-feedback-left">
-              <label class="control-label">Telefono fijo</label>
-              <input type="text" class="form-control" placeholder="Telefono fijo (por ejemplo casa)" id="fijo"/>
-              <i class="form-control-feedback glyphicon glyphicon-home"></i>
-              <button type="button" class="btn btn-info pull-right contacto-btn">Guardar</button>
-            </div>
-            <div class="form-group has-feedback has-feedback-left">
-              <label class="control-label">Telefono Celular</label>
-              <input type="text" class="form-control" placeholder="Telefono celular" id="celular"/>
-              <i class="form-control-feedback glyphicon glyphicon-earphone"></i>
-              <button type="button" class="btn btn-info pull-right contacto-btn">Guardar</button>
-            </div>
-            <div class="form-group has-feedback has-feedback-left">
-              <label class="control-label">¿Tienes Extension en tu lugar de trabajo?</label>
-              <input type="text" class="form-control" placeholder="Extensión" id="ext"/>
-              <i class="form-control-feedback glyphicon glyphicon-phone-alt"></i>
-              <button type="button" class="btn btn-info pull-right contacto-btn">Guardar</button>
-            </div>
-          </form>
-          <div class="col-md-12" id="respuesta-contacto">
-            
-          </div>
-        </div>
-        <div class="col-md-12" >
-            <button type="button" class="btn btn-success center-block btn-continuar" onclick="continuar()" value="">Continuar</button>
-        </div>
+        
       </div>
     </div>
     <!-- scripts -->

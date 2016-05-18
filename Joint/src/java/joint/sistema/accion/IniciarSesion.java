@@ -74,16 +74,16 @@ public class IniciarSesion extends HttpServlet {
                     passBD=trabajador.getContrasenia();
                     if(passFormulario.equals(passBD)){
                         trabajador=gestionadorT.getNombre();
-                        sesion.setAttribute("sesionActual", request.getParameter("noEmpleado"));
-                        sesion.setAttribute("nombre", trabajador.getNombre());
+                        sesion.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
+                        sesion.setAttribute("nombreUsuario", trabajador.getNombre());
                         String estado =gestionadorT.getEstadoInicial();
                         if(sesion.getAttribute("sesionActual") == null){
-                            response.sendRedirect("/joint/Inicio.jsp");
+                            response.sendRedirect("/Joint/inicio.jsp");
                         }else{
                             if(estado.equals("false")){
-                                response.sendRedirect("/joint/primerInicio.jsp");
+                                response.sendRedirect("/Joint/primerInicio.jsp");
                             }else{
-                                response.sendRedirect("/joint/Inicio.jsp");
+                                response.sendRedirect("/Joint/inicio.jsp");
                             }
                         }
                         

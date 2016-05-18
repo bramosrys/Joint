@@ -50,6 +50,9 @@ public class RegistrarTrabajador extends HttpServlet {
             
                 iniciarGestionTrabajador(noEmpleado,nombre,años,correo,contrasenia,fechaNacimiento);
                 gestionadorT.registrarTrabajador(trabajador);
+                int idTrabajador=gestionadorT.getIdTrabajador(trabajador);
+                gestionadorT.iniciarConfiguracionTrabajador(idTrabajador);
+                
             RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaRegistrado.jsp");
             a.forward(request, response);
             limpiar();

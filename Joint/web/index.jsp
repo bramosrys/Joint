@@ -11,6 +11,13 @@
 <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 
 <%
+
+    String noEmpleado = (String)session.getAttribute("noEmpleado");
+    System.out.println(noEmpleado);
+    if(noEmpleado!=null){
+        response.sendRedirect("/Joint/inicio.jsp");
+    }
+    
     String estadoSesion=(String)request.getAttribute("sesion");
     String intento=(String)request.getAttribute("intento");
     int contador;

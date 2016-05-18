@@ -63,4 +63,13 @@ public class GestionInterfaz extends Gestionador{
             System.out.println("Error en cambio de color" + ex);
         }
     }
+    public void registrarTerminoConfiguracionInicial(int idTrabajador){
+        try {        
+            String sentencia = "UPDATE configuraciontrabajador SET configuracionInicial='true' WHERE idtrabajador="+idTrabajador+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en cambio de color" + ex);
+        }
+    }
 }

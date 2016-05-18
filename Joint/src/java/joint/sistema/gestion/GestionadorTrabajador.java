@@ -179,6 +179,16 @@ public class GestionadorTrabajador extends Gestionador{
             System.out.println("Error en registro de trabajador" + ex);
         }
     }
+    public void iniciarConfiguracionTrabajador(int idTrabajador){
+        try {
+            statement.execute("INSERT INTO configuraciontrabajador " +
+                    "(idTrabajador)" +
+                    "VALUES("
+                    + "" + idTrabajador + ");" );
+        } catch (SQLException ex) {
+            System.out.println("Error al iniciar configuracion de trabajador "+ ex);
+        }
+    }
     //******************************************************************************************************************
     public void destruirGestionador(){
         try {

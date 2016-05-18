@@ -41,3 +41,8 @@
     <div class="col-md-12" id="respuesta-color">
         
     </div>
+    <form method="POST" action="GuardarPrimerInicio">
+        <%out.println("<input type='hidden' id='noEmpleado' name='noEmpleado'value='"+noEmpleado+"'>"); %>
+        <button type="submit" name='submit' class='btn btn-default btn-block'>Terminar</button>
+    </form>
+    

@@ -6,25 +6,43 @@
 package joint.sistema.accion;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import joint.sistema.gestion.GestionInterfaz;
+import joint.sistema.gestion.GestionadorTrabajador;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class CerrarSesion extends HttpServlet {
+public class GuardarPrimerInicio extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession(true);
-        request.getSession().removeAttribute("sesionActual");
-        sesion.invalidate();
-        response.sendRedirect("/Joint/index.jsp");
+        
+        if(request.getParameter("noEmpleado")!=null){
+            int noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            Trabajador t=new Trabajador(noEmpleado);
+            GestionadorTrabajador gt=new GestionadorTrabajador(t);
+            int idTrabajador=gt.getIdTrabajador(t);
+            GestionInterfaz gi=new GestionInterfaz();
+            gi.registrarTerminoConfiguracionInicial(idTrabajador);
+            response.sendRedirect("/Joint/inicio.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
