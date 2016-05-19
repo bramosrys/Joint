@@ -36,7 +36,7 @@ public class IniciarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        //----------------------------------------------------------Verificador de robot
         if(request.getParameter("g-recaptcha-response")!=null){
             System.out.println("entre a robot");
             robot = request.getParameter("g-recaptcha-response");
@@ -57,7 +57,7 @@ public class IniciarSesion extends HttpServlet {
                 a.forward(request, response);
             }
         }
-
+        //----------------------------------------------------------termina vefificador robot
         if(request.getParameter("noEmpleado")!=null){
             noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
@@ -66,28 +66,27 @@ public class IniciarSesion extends HttpServlet {
             if(existeUsuario){
                 System.out.println("entre a iniciar existe");
                 if(request.getParameter("contrasenia")!=null){
-                    System.out.println("entre a iniciar contraseña");
-                    HttpSession sesion = request.getSession();
+                    
+                HttpSession sesion = request.getSession();
                     String passFormulario,passBD;
                     passFormulario = request.getParameter("contrasenia");
                     trabajador=gestionadorT.getContrasenia();
                     passBD=trabajador.getContrasenia();
-                    if(passFormulario.equals(passBD)){
+                    if(passFormulario.equals(passBD)){ //Usuario existe y la contraseña es valida
                         trabajador=gestionadorT.getNombre();
                         sesion.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
                         sesion.setAttribute("nombreUsuario", trabajador.getNombre());
                         String estado =gestionadorT.getEstadoInicial();
-                        if(sesion.getAttribute("sesionActual") == null){
-                            response.sendRedirect("/Joint/inicio.jsp");
-                        }else{
                             if(estado.equals("false")){
                                 response.sendRedirect("/Joint/primerInicio.jsp");
                             }else{
-                                response.sendRedirect("/Joint/inicio.jsp");
+                                trabajador.setNoEmpleado(noEmpleado);
+                                int idTrabajador = gestionadorT.getIdTrabajador(trabajador);
+                                sesion.setAttribute("idTrabajador", idTrabajador);
+                                request.getRequestDispatcher("CargarConfiguracionTrabajador").forward(request, response); 
+                                //response.sendRedirect("/Joint/inicio.jsp");
                             }
-                        }
-                        
-                    }else{
+                    }else{ //otro intento erroneo mas
                         contador = Integer.parseInt(request.getParameter("contador"));
                         contador++;
                         String intento=String.valueOf(contador);

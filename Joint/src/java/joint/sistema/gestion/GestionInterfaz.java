@@ -54,6 +54,34 @@ public class GestionInterfaz extends Gestionador{
             return 0;
         }
     }
+    public String getColor(int idColor){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select color from color where idcolor="+idColor+";");
+            if(resultset.next()){
+                return resultset.getString("color");
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener color " +ex);
+            return null;
+        }
+    }
+    public int getIDColorTrabajador(int idTrabajador){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select idcolor from configuracionTrabajador where idTRabajador="+idTrabajador+";");
+            if(resultset.next()){
+                return Integer.parseInt(resultset.getString("idcolor"));
+            }else{
+                return 0;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id de color " +ex);
+            return 0;
+        }
+    }
     public void cambiarColor(int idtrabajador,int idcolor){
         try {        
             String sentencia = "UPDATE configuraciontrabajador SET idcolor="+idcolor+" WHERE idtrabajador="+idtrabajador+";";

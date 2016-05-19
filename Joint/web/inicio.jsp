@@ -11,6 +11,7 @@
     if(noEmpleado==null){
         response.sendRedirect("/Joint/index.jsp");
     }
+    String color=(String)session.getAttribute("color");
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -85,12 +86,12 @@
 
             <div class="col-md-4 visible-lg">
                 <ul class="nav navbar-nav">
-                  <h2 class="text-center nav-titulo">Este es tu primer inicio</h2>
+                  <h2 class="text-center nav-titulo">Home</h2>
                 </ul>
             </div>
             <div class="col-md-4 visible-xs">
                 <ul class="nav navbar-nav">
-                  <h2 class="text-center nav-titulo">Inicio</h2>
+                  <h2 class="text-center nav-titulo">Home</h2>
                 </ul>
             </div>
 
@@ -121,7 +122,7 @@
     </div>
 
     <!-- Static bottom navbar -->
-    <div class="navbar navbar-default navbar-fixed-bottom" style="background:#303030;">
+    <div class="navbar navbar-default navbar-fixed-bottom" style="background:#<%out.println(color);%>;">
       <div class="container">
       	<div class="navbar-header">
   	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse-2"> <!-- NOTE! data-target was changed to .bottom-collapse -->

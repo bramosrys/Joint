@@ -32,6 +32,10 @@
         <servlet-name>GuardarPrimerInicio</servlet-name>
         <servlet-class>joint.sistema.accion.GuardarPrimerInicio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargarConfiguracionTrabajador</servlet-name>
+        <servlet-class>joint.sistema.accion.CargarConfiguracionTrabajador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>GuardarPrimerInicio</servlet-name>
         <url-pattern>/GuardarPrimerInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargarConfiguracionTrabajador</servlet-name>
+        <url-pattern>/CargarConfiguracionTrabajador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
