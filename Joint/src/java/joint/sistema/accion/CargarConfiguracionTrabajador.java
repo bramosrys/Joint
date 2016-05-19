@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import joint.sistema.gestion.GestionInterfaz;
+import joint.sistema.gestion.GestionadorTrabajador;
 
 /**
  *
@@ -34,11 +35,14 @@ public class CargarConfiguracionTrabajador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession();
         int idTrabajador=(Integer)sesion.getAttribute("idTrabajador");
-        GestionInterfaz gi=new GestionInterfaz();
-        int idColor =gi.getIDColorTrabajador(idTrabajador);
-        String color =gi.getColor(idColor);
-        sesion.setAttribute("color", color);
-        response.sendRedirect("/Joint/inicio.jsp");
+            GestionadorTrabajador gt=new GestionadorTrabajador();
+            String cargo=gt.getCargo(idTrabajador);
+            GestionInterfaz gi=new GestionInterfaz();
+            int idColor =gi.getIDColorTrabajador(idTrabajador);
+            String color =gi.getColor(idColor);
+            sesion.setAttribute("color", color);
+            sesion.setAttribute("cargo", cargo);
+            response.sendRedirect("/Joint/inicio.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

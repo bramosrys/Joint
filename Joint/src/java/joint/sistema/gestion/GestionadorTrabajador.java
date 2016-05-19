@@ -104,6 +104,22 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    public String getCargo(int idTrabajador){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select cargo from trabajador t, cargo c where t.idTrabajador = "+"'"+trabajador.getNoEmpleado()+"'"+""
+                    + "and t.idcargo=c.idcargo;");
+            if(resultset.next()){
+                return resultset.getNString("cargo");
+            }else{
+                System.out.println("Error al obtener cargo");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener cargo " +ex);
+            return null;
+        }
+    }
     public Trabajador getContrasenia(){
         try {
             resultset=null;
