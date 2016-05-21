@@ -146,7 +146,22 @@
       <div class="row" id="row-principal">
         <% 
             String cargo = (String)session.getAttribute("cargo");
-            
+            if(cargo.equals("Administrador")){
+                out.println("<h2 class='text-left'>¿Que desea hacer?</h2><hr>");
+    		out.println("<div class='col-md-3 accion'>");
+    			out.println("<h3 class='text-center'>Administrar Personal</h3>");
+    			 out.println("<img src='recursos/imagenes/inicio/administrador/management-group.png' class='img-responsive center-block img-action'>");
+    		out.println("</div>");
+            }
+            if(cargo.equals("Operador")){
+                
+            }
+            if(cargo.equals("Despachador")){
+                
+            }
+            if(cargo.equals("Gerente")){
+                
+            }
         %>
       </div>
     </div>

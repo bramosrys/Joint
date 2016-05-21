@@ -76,15 +76,14 @@ public class IniciarSesion extends HttpServlet {
                         trabajador=gestionadorT.getNombre();
                         sesion.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
                         sesion.setAttribute("nombreUsuario", trabajador.getNombre());
+                        trabajador.setNoEmpleado(noEmpleado);
+                        int idTrabajador = gestionadorT.getIdTrabajador(trabajador);
+                        sesion.setAttribute("idTrabajador", idTrabajador);
                         String estado =gestionadorT.getEstadoInicial();
                             if(estado.equals("false")){
                                 response.sendRedirect("/Joint/primerInicio.jsp");
                             }else{
-                                trabajador.setNoEmpleado(noEmpleado);
-                                int idTrabajador = gestionadorT.getIdTrabajador(trabajador);
-                                sesion.setAttribute("idTrabajador", idTrabajador);
                                 request.getRequestDispatcher("CargarConfiguracionTrabajador").forward(request, response); 
-                                //response.sendRedirect("/Joint/inicio.jsp");
                             }
                     }else{ //otro intento erroneo mas
                         contador = Integer.parseInt(request.getParameter("contador"));

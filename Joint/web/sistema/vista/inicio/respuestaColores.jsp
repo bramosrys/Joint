@@ -9,9 +9,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession sesion = request.getSession(true);
-    String id= sesion.getId();
-    String noEmpleado=(String)sesion.getAttribute("sesionActual");
+    String noEmpleado=(String)session.getAttribute("noEmpleado");
     Object colores[][];
     if(request.getAttribute("colores")!=null){
         colores=(Object[][])request.getAttribute("colores");

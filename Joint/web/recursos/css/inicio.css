@@ -40,9 +40,6 @@ body{
 	font-family: 'roboto_condensedregular';
     background-color: rgb(255,255,255);
 }
-.contacto-btn{
-
-}
 .container-primer-inicio{
   padding-bottom: 120px;
 }
@@ -52,6 +49,15 @@ body{
 .btn-color{
     height: 40px;
 }
+.accion{
+  border-radius: 5px;
+  border: 2px solid #707070;
+
+}
+.accion:hover{
+  border: 2px solid #222222;
+}
+
 /*************/
 /*Fuentes*/
 @font-face {

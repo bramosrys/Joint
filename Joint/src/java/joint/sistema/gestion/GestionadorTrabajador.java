@@ -107,8 +107,7 @@ public class GestionadorTrabajador extends Gestionador{
     public String getCargo(int idTrabajador){
         try {
             resultset=null;
-            resultset=statement.executeQuery("select cargo from trabajador t, cargo c where t.idTrabajador = "+"'"+trabajador.getNoEmpleado()+"'"+""
-                    + "and t.idcargo=c.idcargo;");
+            resultset=statement.executeQuery("select cargo from trabajador t, cargo c where t.idTrabajador ="+idTrabajador+" and t.idcargo=c.idcargo;");
             if(resultset.next()){
                 return resultset.getNString("cargo");
             }else{

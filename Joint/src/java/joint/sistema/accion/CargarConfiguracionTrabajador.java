@@ -35,8 +35,10 @@ public class CargarConfiguracionTrabajador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession();
         int idTrabajador=(Integer)sesion.getAttribute("idTrabajador");
+        System.out.println("id trabajador"+idTrabajador);
             GestionadorTrabajador gt=new GestionadorTrabajador();
             String cargo=gt.getCargo(idTrabajador);
+            System.out.println("cargo"+cargo);
             GestionInterfaz gi=new GestionInterfaz();
             int idColor =gi.getIDColorTrabajador(idTrabajador);
             String color =gi.getColor(idColor);
