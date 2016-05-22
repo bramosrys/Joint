@@ -7,6 +7,7 @@ package joint.sistema.accion;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,17 @@ public class NuevoTrabajador extends HttpServlet {
             noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
             cargo=request.getParameter("cargo");
             iniciarGestionTrabajador(noEmpleado,cargo);
-            gestionadorT.nuevoTrabajador(trabajador);
+            boolean existe =gestionadorT.existeTrabajador();
+            System.out.println(existe);
+            if(existe){
+                request.setAttribute("existe", "existe");
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaRegistroTrabajador.jsp");
+                a.forward(request, response);
+            }else{
+                gestionadorT.nuevoTrabajador(trabajador);
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaRegistroTrabajador.jsp");
+                a.forward(request, response);
+            }
         }else{
             response.sendRedirect("/Joint/error.jsp");
         }

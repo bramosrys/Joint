@@ -36,6 +36,7 @@ function regresar(str){
         document.location=url;
     }
 }
+/*********************************Trabajador*************************************/
 function formularioTrabajador(){
     var conexion;
     if (window.XMLHttpRequest){
@@ -45,11 +46,11 @@ function formularioTrabajador(){
     }
     conexion.onreadystatechange=function(){
         if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("accion").innerHTML=conexion.responseText;
+            document.getElementById("row-principal").innerHTML=conexion.responseText;
         }
     }
-    conexion.open("POST","CargarNuevoTrabajador.jsp",true);
-    conexion.send();
+        conexion.open("POST","../../../CargarNuevoTrabajador",true);
+        conexion.send();
 }
 function registrarTrabajador(){
     var noEmpleado=document.getElementById("noEmpleado").value;
@@ -70,3 +71,4 @@ function registrarTrabajador(){
     conexion.open("POST","../../../NuevoTrabajador?noEmpleado="+noEmpleado+"&cargo="+cargo,true);
     conexion.send();
 }
+/*********************************Termina Trabajador*************************************/
