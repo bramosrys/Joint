@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package joint.sistema.control;
+package joint.sistema.accion;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,38 +11,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import joint.sistema.gestion.GestionInterfaz;
 import joint.sistema.gestion.GestionadorTrabajador;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class CargarConfiguracionTrabajador extends HttpServlet {
+public class EliminarTrabajador extends HttpServlet {
+    private GestionadorTrabajador gestionadorT;
+    private Trabajador trabajador;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private void iniciarGestionTrabajador(int noEmpleado){
+        trabajador=new Trabajador(noEmpleado);
+        gestionadorT = new GestionadorTrabajador(trabajador);
+    }
+    private void limpiar(){
+        gestionadorT.destruirGestionador();
+        System.gc();
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession();
-        int idTrabajador=(Integer)sesion.getAttribute("idTrabajador");
-            GestionadorTrabajador gt=new GestionadorTrabajador();
-            String cargo=gt.getCargo(idTrabajador);
-            GestionInterfaz gi=new GestionInterfaz();
-            int idColor =gi.getIDColorTrabajador(idTrabajador);
-            String color =gi.getColor(idColor);
-            sesion.setAttribute("color", color);
-            sesion.setAttribute("cargo", cargo);
-            response.sendRedirect("/Joint/inicio.jsp");
+        int noEmpleado;
+        if(request.getParameter("noEmpleado")!=null){
+            noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            iniciarGestionTrabajador(noEmpleado);
+            gestionadorT.eliminarUsuario(trabajador);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

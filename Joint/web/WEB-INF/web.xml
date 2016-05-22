@@ -44,6 +44,14 @@
         <servlet-name>NuevoTrabajador</servlet-name>
         <servlet-class>joint.sistema.accion.NuevoTrabajador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargarModificarTrabajador</servlet-name>
+        <servlet-class>joint.sistema.control.CargarModificarTrabajador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarTrabajador</servlet-name>
+        <servlet-class>joint.sistema.accion.EliminarTrabajador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>NuevoTrabajador</servlet-name>
         <url-pattern>/NuevoTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargarModificarTrabajador</servlet-name>
+        <url-pattern>/CargarModificarTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarTrabajador</servlet-name>
+        <url-pattern>/EliminarTrabajador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

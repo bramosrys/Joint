@@ -109,7 +109,7 @@
                   </li>
                   <li>
                       <a class="text-center">
-                            <form method="POST" onsubmit="window.location.href = 'CerrarSesion'; return false;">
+                            <form method="POST" onsubmit="window.location.href = '../../../CerrarSesion'; return false;">
                                 <input type="image" name="submit" src='../../../recursos/imagenes/inicio/nav/exit.png' border="0" alt="Submit" class='img-responsive center-block img-nabvar'/>
                             </form>
                       </a>
@@ -157,14 +157,14 @@
          <img src='../../../recursos/imagenes/inicio/administrador/edit-user.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
-          <h3 class="text-center">Eliminar Trabajador</h3>
-          <input type='hidden' value='EliminarTrabajador' id='1'>
+          <h3 class="text-center">Dar de baja Trabajador</h3>
+          <input type='hidden' value='EliminarTrabajador' id='3'>
          <img src='../../../recursos/imagenes/inicio/administrador/remove-user.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
       </div>
     </div>
     <!-- scripts -->
-    <script src="../../../sistema/vista/accion/js/accion.js"></script>
+    <script src="../../../sistema/vista/accion/js/accionAdministrador.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

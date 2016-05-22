@@ -11,15 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import joint.sistema.gestion.GestionInterfaz;
-import joint.sistema.gestion.GestionadorTrabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class CargarConfiguracionTrabajador extends HttpServlet {
+public class CargarModificarTrabajador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +30,18 @@ public class CargarConfiguracionTrabajador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession();
-        int idTrabajador=(Integer)sesion.getAttribute("idTrabajador");
-            GestionadorTrabajador gt=new GestionadorTrabajador();
-            String cargo=gt.getCargo(idTrabajador);
-            GestionInterfaz gi=new GestionInterfaz();
-            int idColor =gi.getIDColorTrabajador(idTrabajador);
-            String color =gi.getColor(idColor);
-            sesion.setAttribute("color", color);
-            sesion.setAttribute("cargo", cargo);
-            response.sendRedirect("/Joint/inicio.jsp");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CargarModificarTrabajador</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CargarModificarTrabajador at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -20,11 +20,11 @@ function accion(str){
         conexion.send();
     }
     if(accion==="ModificarTrabajador"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp",true);
+        conexion.open("POST","../../../CargarModificarTrabajador.jsp",true);
         conexion.send();
     }
     if(accion==="EliminarTrabajador"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/respuestaEliminarTrabajador.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/formularioEliminarTrabajador.jsp",true);
         conexion.send();
     }
 }
@@ -36,7 +36,7 @@ function regresar(str){
         document.location=url;
     }
 }
-/*********************************Trabajador*************************************/
+/*********************************Nuevo Trabajador*************************************/
 function formularioTrabajador(){
     var conexion;
     if (window.XMLHttpRequest){
@@ -72,3 +72,22 @@ function registrarTrabajador(){
     conexion.send();
 }
 /*********************************Termina Trabajador*************************************/
+/*********************************Eliminar Trabajador*************************************/
+function eliminarTrabajador(){
+    var noEmpleado=document.getElementById("noEmpleado").value;
+    console.log(noEmpleado);
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("accion").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../EliminarTrabajador?noEmpleado="+noEmpleado,true);
+    conexion.send();
+}
+/*********************************Termina Eliminar Trabajador*************************************/

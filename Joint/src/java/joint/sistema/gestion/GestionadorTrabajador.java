@@ -69,6 +69,25 @@ public class GestionadorTrabajador extends Gestionador{
             return false;
         }
     }
+    public boolean estaActivo(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select activo from trabajador where noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+";");
+            if(resultset.next()){
+                String activo=resultset.getString("activo");
+                if(activo.equals("true")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo recuperar el activo del trabajador" + ex);
+            return false;
+        }
+    }
     //*****************************************************************************************************
     //*************************************************Getters*********************************************
     public Trabajador getFechaContratacion(){
@@ -246,6 +265,17 @@ public class GestionadorTrabajador extends Gestionador{
         }
     }
     //******************************************************************************************************************
+    //*******************************Eliminadores****************************************************************
+    public void eliminarUsuario(Trabajador t){
+        try {
+            String sentencia = "UPDATE trabajador SET activo='false' WHERE noEmpleado="+t.getNoEmpleado()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error al dar de baja trabajador" + ex);
+        }
+    }
+    //************************************************************************************************************
     public void destruirGestionador(){
         try {
             statement.close();

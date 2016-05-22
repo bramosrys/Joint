@@ -26,6 +26,7 @@ public class IniciarSesion extends HttpServlet {
     private int contador;
     private boolean existeUsuario;
     private String robot;
+    private boolean activo;
     
     
     
@@ -63,8 +64,8 @@ public class IniciarSesion extends HttpServlet {
             iniciarGestionTrabajador(noEmpleado);
             
             existeUsuario=gestionadorT.existeTrabajador();
-            if(existeUsuario){
-                System.out.println("entre a iniciar existe");
+            activo=gestionadorT.estaActivo();
+            if(existeUsuario && activo){
                 if(request.getParameter("contrasenia")!=null){
                     
                 HttpSession sesion = request.getSession();
