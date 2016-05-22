@@ -173,7 +173,7 @@
       </div>
     </div>
     <!-- scripts -->
-    <script src="sistema/vista/accion/js/accion.js"></script>
+    <script src="sistema/vista/inicio/js/accion.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

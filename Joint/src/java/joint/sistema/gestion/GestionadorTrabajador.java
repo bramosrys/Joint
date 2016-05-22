@@ -109,7 +109,7 @@ public class GestionadorTrabajador extends Gestionador{
             resultset=null;
             resultset=statement.executeQuery("select cargo from trabajador t, cargo c where t.idTrabajador ="+idTrabajador+" and t.idcargo=c.idcargo;");
             if(resultset.next()){
-                return resultset.getNString("cargo");
+                return resultset.getString("cargo");
             }else{
                 System.out.println("Error al obtener cargo");
                 return null;
@@ -117,6 +117,36 @@ public class GestionadorTrabajador extends Gestionador{
         } catch (SQLException ex) {
             System.out.println("Error al obtener cargo " +ex);
             return null;
+        }
+    }
+    public ResultSet getCargos(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select cargo from cargo;");
+            if(resultset.next()){
+                return resultset;
+            }else{
+                System.out.println("Error al obtener cargos");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener cargos " +ex);
+            return null;
+        }
+    }
+    public int getidCargo(String cargo){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select idcargo from cargo where  cargo='"+cargo+"';");
+            if(resultset.next()){
+                return Integer.parseInt(resultset.getString("idcargo"));
+            }else{
+                System.out.println("Error al obtener idcargo");
+                return -1;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener idcargo " +ex);
+            return -1;
         }
     }
     public Trabajador getContrasenia(){
@@ -183,6 +213,17 @@ public class GestionadorTrabajador extends Gestionador{
     }
     //******************************************************************************************************************
     //*****************************************************Registradores************************************************
+    public void nuevoTrabajador(Trabajador t){
+        try {
+            statement.execute("INSERT INTO trabajador " +
+                    "(noEmpleado,idcargo)" +
+                    "VALUES("
+                    + "" + t.getNoEmpleado() + ","
+                    + "" + getidCargo(t.getCargo()) + ");" );
+        } catch (SQLException ex) {
+            System.out.println("Error en crear nuevo trabajador"+ ex);
+        }
+    }
     public void registrarTrabajador(Trabajador t){
         try {         
             String sentencia = "UPDATE trabajador SET nombre='"+t.getNombre()+"', fechaNacimiento='"+t.getFechaNacimiento()+"',"

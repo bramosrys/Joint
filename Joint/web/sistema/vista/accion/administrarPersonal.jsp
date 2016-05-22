@@ -31,6 +31,7 @@
 
     <!-- Custom styles for this template -->
     <link href="../../../recursos/css/inicio.css" rel="stylesheet">
+    <link href="../../../recursos/css/accion.css" rel="stylesheet">
     
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -146,16 +147,19 @@
       <div class="row" id="row-principal">
         <h2 class='text-left'>¿Que desea hacer?</h2><hr>
         <div class="col-md-3 accion">
-            <h3 class="text-center">Registar Trabajador</h3>
-           <img src='../../../recursos/imagenes/inicio/administrador/add-user.png' class='img-responsive center-block img-action' onclick="location='registro.jsp'">
+           <h3 class="text-center">Registar Trabajador</h3>
+           <input type='hidden' value='RegistrarTrabajador' id='1'>
+           <img src='../../../recursos/imagenes/inicio/administrador/add-user.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Modificar Información</h3>
-         <img src='../../../recursos/imagenes/inicio/administrador/edit-user.png' class='img-responsive center-block img-action' onclick="location='registro.jsp'">
+          <input type='hidden' value='ModificarInformacion' id='2'>
+         <img src='../../../recursos/imagenes/inicio/administrador/edit-user.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Eliminar Trabajador</h3>
-         <img src='../../../recursos/imagenes/inicio/administrador/remove-user.png' class='img-responsive center-block img-action' onclick="location='registro.jsp'">
+          <input type='hidden' value='EliminarTrabajador' id='1'>
+         <img src='../../../recursos/imagenes/inicio/administrador/remove-user.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
       </div>
     </div>

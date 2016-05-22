@@ -11,40 +11,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import joint.sistema.gestion.GestionInterfaz;
 import joint.sistema.gestion.GestionadorTrabajador;
+import joint.sistema.principal.Trabajador;
 
-/**
- *
- * @author jdiaz
- */
-public class CargarConfiguracionTrabajador extends HttpServlet {
+public class NuevoTrabajador extends HttpServlet {
+    private GestionadorTrabajador gestionadorT;
+    private Trabajador trabajador;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private void iniciarGestionTrabajador(int noEmpleado,String cargo){
+        trabajador=new Trabajador(noEmpleado,cargo);
+        gestionadorT = new GestionadorTrabajador(trabajador);
+    }
+    private void limpiar(){
+        gestionadorT.destruirGestionador();
+        System.gc();
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession();
-        int idTrabajador=(Integer)sesion.getAttribute("idTrabajador");
-        System.out.println("id trabajador"+idTrabajador);
-            GestionadorTrabajador gt=new GestionadorTrabajador();
-            String cargo=gt.getCargo(idTrabajador);
-            System.out.println("cargo"+cargo);
-            GestionInterfaz gi=new GestionInterfaz();
-            int idColor =gi.getIDColorTrabajador(idTrabajador);
-            String color =gi.getColor(idColor);
-            sesion.setAttribute("color", color);
-            sesion.setAttribute("cargo", cargo);
-            response.sendRedirect("/Joint/inicio.jsp");
+        int noEmpleado;
+        String cargo;
+        if(request.getParameter("noEmpleado")!=null && request.getParameter("cargo")!=null){
+            noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            cargo=request.getParameter("cargo");
+            iniciarGestionTrabajador(noEmpleado,cargo);
+            gestionadorT.nuevoTrabajador(trabajador);
+        }else{
+            response.sendRedirect("/Joint/error.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -21,6 +21,10 @@ public class Trabajador extends Persona{
     public Trabajador(int noEmpleado){
          this.noEmpleado = noEmpleado;
     }
+    public Trabajador(int noEmpleado,String cargo){
+         this.noEmpleado = noEmpleado;
+         this.cargo=cargo;
+    }
     public Trabajador(){
         this.noEmpleado =0;
         this.cargo ="";
