@@ -1,5 +1,4 @@
 function continuar(){
-    console.log("Entre a continuar");
     var conexion;
     if (window.XMLHttpRequest){
         conexion=new XMLHttpRequest();
@@ -17,8 +16,6 @@ function continuar(){
 function guardarColor(str){
     var color=str;
     var noEmpleado=document.getElementById("noEmpleado").value;
-    console.log(color);
-    console.log(noEmpleado)
     var conexion;
     if (window.XMLHttpRequest){
         conexion=new XMLHttpRequest();

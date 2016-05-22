@@ -144,29 +144,39 @@
 
     <div class="container">
       <div class="row" id="row-principal">
+        <h2 class='text-left'>¿Que desea hacer?</h2><hr>
         <% 
             String cargo = (String)session.getAttribute("cargo");
-            if(cargo.equals("Administrador")){
-                out.println("<h2 class='text-left'>¿Que desea hacer?</h2><hr>");
+            if(session.getAttribute("cargo")!=null){
+                //cada accion tendra un id, asi es como el js verificara de que accion hablamos
+                if(cargo.equals("Administrador")){
     		out.println("<div class='col-md-3 accion'>");
     			out.println("<h3 class='text-center'>Administrar Personal</h3>");
-    			 out.println("<img src='recursos/imagenes/inicio/administrador/management-group.png' class='img-responsive center-block img-action'>");
+                        out.println("<input type='hidden' name='country' value='AdministrarPersonal' id='1'>");
+    			out.println("<img src='recursos/imagenes/inicio/administrador/management-group.png' name='1' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
     		out.println("</div>");
+                }
+                if(cargo.equals("Operador")){
+
+                }
+                if(cargo.equals("Despachador")){
+
+                }
+                if(cargo.equals("Gerente")){
+
+                }
+            }else{
+                response.sendRedirect("/Joint/error.jsp");
             }
-            if(cargo.equals("Operador")){
-                
-            }
-            if(cargo.equals("Despachador")){
-                
-            }
-            if(cargo.equals("Gerente")){
-                
-            }
+            
         %>
+      </div>
+      <div class="row" id="accion">
+          
       </div>
     </div>
     <!-- scripts -->
-    
+    <script src="sistema/vista/accion/js/accion.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

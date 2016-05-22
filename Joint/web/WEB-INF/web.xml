@@ -36,6 +36,10 @@
         <servlet-name>CargarConfiguracionTrabajador</servlet-name>
         <servlet-class>joint.sistema.accion.CargarConfiguracionTrabajador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RespuestaAccionAdministrador</servlet-name>
+        <servlet-class>joint.sistema.control.RespuestaAccionAdministrador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>CargarConfiguracionTrabajador</servlet-name>
         <url-pattern>/CargarConfiguracionTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RespuestaAccionAdministrador</servlet-name>
+        <url-pattern>/RespuestaAccionAdministrador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
