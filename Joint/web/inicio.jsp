@@ -171,9 +171,6 @@
             
         %>
       </div>
-      <div class="row" id="accion">
-          
-      </div>
     </div>
     <!-- scripts -->
     <script src="sistema/vista/accion/js/accion.js"></script>
