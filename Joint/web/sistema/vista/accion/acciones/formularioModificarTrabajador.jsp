@@ -3,6 +3,7 @@
     Created on : May 22, 2016, 8:39:08 PM
     Author     : jdiaz
 --%>
+<%@page import="joint.sistema.auxiliares.Cadena"%>
 <%
     if(request.getParameter("existe")!=null){//El Trabajador no existia o no estaba registrad
         
@@ -13,15 +14,19 @@
     }else{
         cargos=null;
     }
+    Cadena c=new Cadena();
     String idTrabajador=String.valueOf(request.getAttribute("idTrabajador"));
     String noEmpleado=String.valueOf(request.getAttribute("noEmpleado"));
     String registro=(String)request.getAttribute("registro");
     String nombre=(String)request.getAttribute("nombre");
     String fechaNacimiento=(String)request.getAttribute("fechaNacimiento");
+    fechaNacimiento=c.quitarSaltos(fechaNacimiento);
     String edad=String.valueOf(request.getAttribute("edad"));
     String correo=(String)request.getAttribute("correo");
+    correo=c.quitarSaltos(correo);
     String cargo=(String)request.getAttribute("cargo");
     String fechaContratacion=(String)request.getAttribute("fechaContratacion");
+    fechaContratacion=c.quitarSaltos(fechaContratacion);
     String activo=(String)request.getAttribute("activo");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

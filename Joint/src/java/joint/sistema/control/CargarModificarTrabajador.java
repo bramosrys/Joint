@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import joint.sistema.auxiliares.Cadena;
 import joint.sistema.auxiliares.Convertir;
 import joint.sistema.gestion.GestionadorTrabajador;
 import joint.sistema.principal.Trabajador;
@@ -33,6 +34,7 @@ public class CargarModificarTrabajador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         if(request.getParameter("noEmpleado")!=null){
+            Cadena c =new Cadena();
             int noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
             System.out.println(noEmpleado);
             iniciarGestionTrabajador(noEmpleado);
@@ -45,11 +47,11 @@ public class CargarModificarTrabajador extends HttpServlet {
             System.out.println(trabajador.getIdTrabajador());
             request.setAttribute("registro", trabajador.getRegistro());
             request.setAttribute("nombre", trabajador.getNombre());
-            request.setAttribute("fechaNacimiento", trabajador.getFechaNacimiento());
+            request.setAttribute("fechaNacimiento", c.quitarSaltos(trabajador.getFechaNacimiento()));
             request.setAttribute("edad", trabajador.getEdad());
-            request.setAttribute("correo", trabajador.getCorreo());
+            request.setAttribute("correo", c.quitarSaltos(trabajador.getCorreo()));
             request.setAttribute("cargo", trabajador.getCargo());
-            request.setAttribute("fechaContratacion", trabajador.getFechaContratacion());
+            request.setAttribute("fechaContratacion", c.quitarSaltos(trabajador.getFechaContratacion()));
             request.setAttribute("activo", trabajador.getActivo());
             request.setAttribute("cargos",conv.ResultSetToArray(cargos));
             request.getRequestDispatcher("sistema/vista/accion/acciones/formularioModificarTrabajador.jsp").forward(request, response);
