@@ -143,7 +143,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container container-principal">
       <div class="row" id="row-principal">
         <h2 class='text-left'>¿Que desea hacer?</h2><hr>
         <div class="col-md-3 accion">

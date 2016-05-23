@@ -43,6 +43,7 @@ public class CargarModificarTrabajador extends HttpServlet {
             cargos=gestionadorT.getCargos();
             this.trabajador=gestionadorT.getInformacionTrabajador();
             request.setAttribute("noEmpleado",trabajador.getNoEmpleado());
+            request.setAttribute("idTrabajador",trabajador.getIdTrabajador());
             request.setAttribute("registro", trabajador.getRegistro());
             request.setAttribute("nombre", trabajador.getNombre());
             request.setAttribute("fechaNacimiento", trabajador.getFechaNacimiento());
