@@ -203,7 +203,7 @@ CREATE TABLE `trabajador` (
 
 LOCK TABLES `trabajador` WRITE;
 /*!40000 ALTER TABLE `trabajador` DISABLE KEYS */;
-INSERT INTO `trabajador` VALUES (1,2015630114,'true','\'sistema/imagenesUsuario/2015630114.png\'','Julio Diaz Rodriguez','1995-06-14',20,'jdiazrdgz@gmail.com','123456',4,'11/05/2016','true'),(2,2015630113,'true','\'sistema/imagenesUsuario/userImage.png\'','Jesus Altamirano Lara','1995-02-01',21,'chuy@gmail.com','123456',3,'13/05/2016','true'),(3,2015630112,'true','imagenesUsuario/userImage.png','Brayan Ramos Reyes','1996-08-26',19,'brayanramosreyes@gmail.com','123456',2,'15/05/2016','true'),(4,2015630111,'true','imagenesUsuario/userImage.png','Gran Señor Imaginario','1995-06-14',20,'setrules@gmail.com','123456',1,'21/05/2016','true'),(5,2015630110,'true','imagenesUsuario/userImage.png','Señor Prueba s','1995-08-26',18,'pruebas@gmail.com','123456',1,'1998-02-10','true'),(6,2015630109,'false','imagenesUsuario/userImage.png',NULL,NULL,NULL,NULL,NULL,4,NULL,'true'),(7,2015630108,'false','imagenesUsuario/userImage.png',NULL,NULL,NULL,NULL,NULL,3,NULL,'true'),(8,2015630107,'false','imagenesUsuario/userImage.png',NULL,NULL,NULL,NULL,NULL,1,NULL,'false');
+INSERT INTO `trabajador` VALUES (1,2015630114,'true','\'sistema/imagenesUsuario/2015630114.png\'','Julio Diaz Rodriguez','1995-06-14',20,'jdiazrdgz@gmail.com','123456',4,'1998-02-10','true'),(2,2015630113,'true','\'sistema/imagenesUsuario/userImage.png\'','Jesus Altamirano Lara','1995-02-01',21,'chuy@gmail.com','123456',3,'1998-02-10','true'),(3,2015630112,'true','imagenesUsuario/userImage.png','Brayan Ramos Reyes','1996-08-26',19,'brayanramosreyes@gmail.com','123456',2,'1998-02-10','true'),(4,2015630111,'true','imagenesUsuario/userImage.png','Gran Señor Imaginario','1995-06-14',20,'setrules@gmail.com','123456',1,'1998-02-10','true'),(5,2015630110,'true','imagenesUsuario/userImage.png','Señor Prueba s','1995-08-26',18,'pruebas@gmail.com','123456',1,'1998-02-10','true'),(6,2015630109,'false','imagenesUsuario/userImage.png',NULL,NULL,NULL,NULL,NULL,4,NULL,'true'),(7,2015630108,'false','imagenesUsuario/userImage.png',NULL,NULL,NULL,NULL,NULL,3,NULL,'true'),(8,2015630107,'false','imagenesUsuario/userImage.png',NULL,NULL,NULL,NULL,NULL,1,NULL,'false');
 /*!40000 ALTER TABLE `trabajador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-23 13:48:41
+-- Dump completed on 2016-05-23 14:09:51
