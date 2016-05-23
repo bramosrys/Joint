@@ -7,4 +7,8 @@ function accion(str){
         var url ="/Joint/sistema/vista/accion/administrarPersonal.jsp";
         document.location=url;
     }
+    if(accion==="AdministrarViaje"){
+        var url ="/Joint/sistema/vista/accion/administrarViaje.jsp";
+        document.location=url;
+    }
 }

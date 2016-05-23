@@ -27,10 +27,9 @@
     
     <!-- Bootstrap core CSS -->
     <link href="recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
-
+    
     <!-- Custom styles for this template -->
     <link href="recursos/css/inicio.css" rel="stylesheet">
-    
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="recursos/bootstrap336/dist/js/ie-emulation-modes-warning.js"></script>
@@ -188,11 +187,12 @@
       </div>
     </div>
     <!-- scripts -->
-    <script src="sistema/vista/inicio/js/accion.js"></script>
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
+    <script src="sistema/vista/inicio/js/inicio.js"></script>
     <script src="recursos/js/jquery-2.2.3.min.js"></script>
     <script src="recursos/bootstrap336/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
