@@ -56,6 +56,10 @@
         <servlet-name>BuscarMTrabajador</servlet-name>
         <servlet-class>joint.sistema.control.BuscarMTrabajador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarTrabajador</servlet-name>
+        <servlet-class>joint.sistema.accion.ModificarTrabajador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>BuscarMTrabajador</servlet-name>
         <url-pattern>/BuscarMTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarTrabajador</servlet-name>
+        <url-pattern>/ModificarTrabajador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

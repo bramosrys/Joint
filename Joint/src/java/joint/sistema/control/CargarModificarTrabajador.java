@@ -32,9 +32,7 @@ public class CargarModificarTrabajador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("entre a modificar trabajador");
         if(request.getParameter("noEmpleado")!=null){
-            System.out.println("empleado no nulo");
             int noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
             System.out.println(noEmpleado);
             iniciarGestionTrabajador(noEmpleado);

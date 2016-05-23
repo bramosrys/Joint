@@ -109,4 +109,24 @@ function buscarMTrabajador(){
     conexion.open("POST","../../../BuscarMTrabajador?noEmpleado="+noEmpleado,true);
     conexion.send();
 }
+function modificar(str){
+    var nombreAccion=str;
+    var dato=document.getElementById(nombreAccion).value;
+    var idTrabajador=document.getElementById("idTrabajador").value;
+    console.log(nombreAccion);
+    console.log(dato);
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("respuestaModificado").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../ModificarTrabajador?nombreAccion="+nombreAccion+"&dato="+dato+"?idTrabajador="+idTrabajador,true);
+    conexion.send();
+}
 /*********************************Termina modificar Trabajador*************************************/

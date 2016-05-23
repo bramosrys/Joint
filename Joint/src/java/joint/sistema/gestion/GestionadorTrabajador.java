@@ -291,6 +291,99 @@ public class GestionadorTrabajador extends Gestionador{
         }
     }
     //******************************************************************************************************************
+    //*******************************Modificadores****************************************************************
+    public void modificarNoEmpleado(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET noEmpleado="+t.getNoEmpleado()+" WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de trabajador" + ex);
+        }
+    }
+    public void modificarValorRegistro(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET registro='"+t.getRegistro()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarNombre(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET nombre='"+t.getNombre()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarFechaNacimiento(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET fechaNacimiento='"+t.getRegistro()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarEdad(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET edad="+t.getEdad()+" WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarCorreo(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET correo='"+t.getCorreo()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarContrasenia(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET contrasenia='"+t.getContrasenia()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarCargo(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET fechaNacimiento='"+t.getRegistro()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarFechaContratacion(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET fechaContratacion='"+t.getFechaContratacion()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+    public void modificarActivo(Trabajador t){
+        try {         
+            String sentencia = "UPDATE trabajador SET activo='"+t.getActivo()+"' WHERE noEmpleado="+t.getIdTrabajador()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+        } catch (SQLException ex) {
+            System.out.println("Error en modificacion de valor de registro" + ex);
+        }
+    }
+
+    //******************************************************************************************************************
     //*******************************Eliminadores****************************************************************
     public void eliminarUsuario(Trabajador t){
         try {

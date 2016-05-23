@@ -24,31 +24,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="row">
     <h2 class="text-center">¿Que necesitas cambiar?</h2><hr>
+    <div class="col-md-12" id="respuestaModificado">
+        
+    </div>
     <div class="col-md-12">
         <h4 class="">ID del trabajador: <%out.println(idTrabajador);%></h4>
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group has-feedback has-feedback-left">
                     <label class="control-label">Número de empleado</label>
+                    <input type='hidden' value='<%out.println(idTrabajador);%>' id='idTrabajador'>
                     <input type="text" value="<%out.println(noEmpleado);%>" class="form-control" id="noEmpleado"/>
                     <i class="form-control-feedback glyphicon glyphicon-user"></i>
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="noEmpleado" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group has-feedback has-feedback-left">
-                    <label class="control-label">Primer Inicio</label>
-                    <input type="text" value="<%out.println(registro);%>" class="form-control" id="primerInicio"/>
+                    <label class="control-label">Registrado en el sistema</label>
+                    <input type="text" value="<%out.println(registro);%>" class="form-control" id="registro"/>
                     <i class="form-control-feedback glyphicon glyphicon-user"></i>
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="registro" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -61,7 +65,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="nombre" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -74,7 +78,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-               <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+               <button type="button" class="btn btn-success btn-block registrar-btn" name="fechaNacimiento" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -87,7 +91,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="edad" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -95,12 +99,12 @@
             <div class="col-md-9">
                 <div class="form-group has-feedback has-feedback-left">
                     <label class="control-label">Correo</label>
-                    <input type="email" class="form-control" value="<%out.println(correo);%>" id="email"/>
+                    <input type="email" class="form-control" value="<%out.println(correo);%>" id="correo"/>
                     <i class="form-control-feedback glyphicon glyphicon-envelope"></i>
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="correo" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -113,7 +117,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="contrasenia" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -133,7 +137,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="cargo" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -146,7 +150,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="fechaContratacion" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
@@ -154,13 +158,14 @@
             <div class="col-md-9">
                 <div class="form-group has-feedback has-feedback-left">
                     <label class="control-label">Activo en el sistema</label>
-                    <input type="text" value="<%out.println(activo);%>" class="form-control" id="primerInicio"/>
+                    <input type="text" value="<%out.println(activo);%>" class="form-control" id="activo"/>
                     <i class="form-control-feedback glyphicon glyphicon-user"></i>
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" onclick="">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="activo" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
     </div>
 </div>
+                    
