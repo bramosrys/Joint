@@ -16,8 +16,8 @@ public class BuscarMTrabajador extends HttpServlet {
     private Trabajador trabajador;
 
     private void iniciarGestionTrabajador(int noEmpleado){
-        gestionadorT = new GestionadorTrabajador();
         trabajador= new Trabajador(noEmpleado);
+        gestionadorT = new GestionadorTrabajador(trabajador);
     }
     private void limpiar(){
         gestionadorT.destruirGestionador();
@@ -32,9 +32,8 @@ public class BuscarMTrabajador extends HttpServlet {
             boolean existe;
             existe=gestionadorT.existeTrabajador();
             if(existe){
-                request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
-                RequestDispatcher a = request.getRequestDispatcher("../../../CargarModificarTrabajador");
-                a.forward(request, response);
+                request.setAttribute("noEmpleado", String.valueOf(noEmpleado));
+                request.getRequestDispatcher("CargarModificarTrabajador").forward(request, response);
             }else{
                 request.setAttribute("existe", "false");
                 RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/formularioModificarTrabajador.jsp");

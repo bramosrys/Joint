@@ -215,6 +215,7 @@ public class GestionadorTrabajador extends Gestionador{
                 this.trabajador.setCorreo(resultset.getString("correo"));
                 this.trabajador.setFechaContratacion(resultset.getString("fechaContratacion"));
                 this.trabajador.setActivo(resultset.getString("activo"));
+                this.trabajador.setCargo(getCargo(this.trabajador.getIdTrabajador()));
                 return trabajador;
             }else{
                 System.out.println("Error al informacion de trabajador");

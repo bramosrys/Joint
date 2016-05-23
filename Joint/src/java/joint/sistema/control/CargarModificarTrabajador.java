@@ -22,8 +22,8 @@ public class CargarModificarTrabajador extends HttpServlet {
     private Trabajador trabajador;
 
     private void iniciarGestionTrabajador(int noEmpleado){
-        gestionadorT = new GestionadorTrabajador();
         trabajador= new Trabajador(noEmpleado);
+        gestionadorT = new GestionadorTrabajador(trabajador);
     }
     private void limpiar(){
         gestionadorT.destruirGestionador();
@@ -34,16 +34,25 @@ public class CargarModificarTrabajador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println("entre a modificar trabajador");
         if(request.getParameter("noEmpleado")!=null){
+            System.out.println("empleado no nulo");
             int noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
+            System.out.println(noEmpleado);
             iniciarGestionTrabajador(noEmpleado);
             Convertir conv=new Convertir();
             ResultSet cargos;
             cargos=gestionadorT.getCargos();
-            
+            this.trabajador=gestionadorT.getInformacionTrabajador();
+            request.setAttribute("noEmpleado",trabajador.getNoEmpleado());
+            request.setAttribute("registro", trabajador.getRegistro());
+            request.setAttribute("nombre", trabajador.getNombre());
+            request.setAttribute("fechaNacimiento", trabajador.getFechaNacimiento());
+            request.setAttribute("edad", trabajador.getEdad());
+            request.setAttribute("correo", trabajador.getCorreo());
+            request.setAttribute("cargo", trabajador.getCargo());
+            request.setAttribute("fechaContratacion", trabajador.getFechaContratacion());
+            request.setAttribute("activo", trabajador.getActivo());
             request.setAttribute("cargos",conv.ResultSetToArray(cargos));
-            
-            RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/modificarTrabajador.jsp");
-            a.forward(request, response);
+            request.getRequestDispatcher("sistema/vista/accion/acciones/formularioModificarTrabajador.jsp").forward(request, response);
         }
     }
 

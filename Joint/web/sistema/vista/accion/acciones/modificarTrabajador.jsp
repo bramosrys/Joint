@@ -30,26 +30,4 @@
     <div class="row" id="respuestaModificacion">
         
     </div>
-    <!--<div class="row">
-        <div class="col-md-4">
-            <div class="form-group has-feedback has-feedback-left">
-                <label class="control-label">Número de empleado</label>
-                <input type="text" class="form-control" placeholder="Número de Empleado" id="noEmpleado"/>
-                <i class="form-control-feedback glyphicon glyphicon-tag"></i>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group has-feedback has-feedback-left">
-                <label class="control-label">Cargo</label>
-                <select class="form-control" id="cargo">
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <button type="button" name="submit" class="btn btn-default btn-block registrar-btn" onclick="registrarTrabajador()">Registrar Trabajador</button>
-        </div>
-    </div>
-    <div class="row" id="respuestaRegistro">
-        
-    </div>-->
 </div>
