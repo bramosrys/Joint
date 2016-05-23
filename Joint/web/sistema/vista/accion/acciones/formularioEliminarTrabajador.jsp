@@ -27,7 +27,4 @@
             <button type="button" name="submit" class="btn btn-danger btn-block registrar-btn" onclick="eliminarTrabajador()">Eliminar Trabajador</button>
         </div>
     </div>
-    <div class="row" id="respuestaRegistro">
-        
-    </div>
 </div>

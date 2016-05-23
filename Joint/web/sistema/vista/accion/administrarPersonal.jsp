@@ -153,7 +153,7 @@
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Modificar Información</h3>
-          <input type='hidden' value='ModificarInformacion' id='2'>
+          <input type='hidden' value='ModificarTrabajador' id='2'>
          <img src='../../../recursos/imagenes/inicio/administrador/edit-user.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">

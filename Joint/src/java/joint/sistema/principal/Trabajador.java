@@ -7,10 +7,12 @@ package joint.sistema.principal;
 public class Trabajador extends Persona{
    
     private int noEmpleado;
+    private int idTrabajador;
+    private String activo;
     private String cargo;
     private String fechaContratacion;
     private String contrasenia;
-
+    private String registro;
     public Trabajador(int noEmpleado, String cargo, String fechaContratacion, String contrasenia, String nombre, int edad, String fechaNacimiento, Telefono telefono, String correo, Direccion direccion) {
         super(nombre, edad, fechaNacimiento, telefono, correo, direccion);
         this.noEmpleado = noEmpleado;
@@ -35,6 +37,21 @@ public class Trabajador extends Persona{
         super(nombre,edad,correo,fechaNacimiento);
         this.noEmpleado =noEmpleado;
         this.contrasenia =contrasenia;
+    }
+    public int getIdTrabajador() {
+        return idTrabajador;
+    }
+
+    public void setIdTrabajador(int idTrabajador) {
+        this.idTrabajador = idTrabajador;
+    }
+
+    public String getActivo() {
+        return activo;
+    }
+
+    public void setActivo(String activo) {
+        this.activo = activo;
     }
     public int getNoEmpleado() {
         return noEmpleado;
@@ -74,4 +91,13 @@ public class Trabajador extends Persona{
         contrasenia=null;
         System.gc();
     }
+
+    public String getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(String registro) {
+        this.registro = registro;
+    }
+    
 }

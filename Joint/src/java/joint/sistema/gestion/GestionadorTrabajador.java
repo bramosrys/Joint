@@ -200,6 +200,31 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    public Trabajador getInformacionTrabajador(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select idTrabajador,noEmpleado,registro,nombre,"
+                    + "fechaNacimiento,edad,correo,fechaContratacion,activo from trabajador where noempleado = "+"'"+trabajador.getNoEmpleado()+"'"+";");
+            if(resultset.next()){
+                this.trabajador.setIdTrabajador(Integer.parseInt(resultset.getString("idTrabajador")));
+                this.trabajador.setNoEmpleado(Integer.parseInt(resultset.getString("noEmpleado")));
+                this.trabajador.setRegistro(resultset.getString("registro"));
+                this.trabajador.setNombre(resultset.getString("nombre"));
+                this.trabajador.setFechaNacimiento(resultset.getString("fechaNacimiento"));
+                this.trabajador.setEdad(Integer.parseInt(resultset.getString("edad")));
+                this.trabajador.setCorreo(resultset.getString("correo"));
+                this.trabajador.setFechaContratacion(resultset.getString("fechaContratacion"));
+                this.trabajador.setActivo(resultset.getString("activo"));
+                return trabajador;
+            }else{
+                System.out.println("Error al informacion de trabajador");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener informacion de trabajador " +ex);
+            return null;
+        }
+    }
     public String getEstadoInicial(){
         try {
             resultset=null;

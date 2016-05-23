@@ -20,7 +20,7 @@ function accion(str){
         conexion.send();
     }
     if(accion==="ModificarTrabajador"){
-        conexion.open("POST","../../../CargarModificarTrabajador.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/modificarTrabajador.jsp",true);
         conexion.send();
     }
     if(accion==="EliminarTrabajador"){
@@ -91,3 +91,22 @@ function eliminarTrabajador(){
     conexion.send();
 }
 /*********************************Termina Eliminar Trabajador*************************************/
+/*********************************Modificar Trabajador*************************************/
+function buscarMTrabajador(){
+    var noEmpleado=document.getElementById("noEmpleado").value;
+    console.log(noEmpleado);
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("respuestaModificacion").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../BuscarMTrabajador?noEmpleado="+noEmpleado,true);
+    conexion.send();
+}
+/*********************************Termina modificar Trabajador*************************************/

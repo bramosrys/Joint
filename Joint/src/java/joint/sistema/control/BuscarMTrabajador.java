@@ -1,23 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package joint.sistema.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.auxiliares.Convertir;
 import joint.sistema.gestion.GestionadorTrabajador;
 import joint.sistema.principal.Trabajador;
 
-public class CargarModificarTrabajador extends HttpServlet {
+
+public class BuscarMTrabajador extends HttpServlet {
     private GestionadorTrabajador gestionadorT;
     private Trabajador trabajador;
 
@@ -32,18 +26,22 @@ public class CargarModificarTrabajador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("entre a modificar trabajador");
         if(request.getParameter("noEmpleado")!=null){
             int noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
-            Convertir conv=new Convertir();
-            ResultSet cargos;
-            cargos=gestionadorT.getCargos();
-            
-            request.setAttribute("cargos",conv.ResultSetToArray(cargos));
-            
-            RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/modificarTrabajador.jsp");
-            a.forward(request, response);
+            boolean existe;
+            existe=gestionadorT.existeTrabajador();
+            if(existe){
+                request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
+                RequestDispatcher a = request.getRequestDispatcher("../../../CargarModificarTrabajador");
+                a.forward(request, response);
+            }else{
+                request.setAttribute("existe", "false");
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/formularioModificarTrabajador.jsp");
+                a.forward(request, response);
+            }
+        }else{
+            response.sendRedirect("Joint/error.jsp");
         }
     }
 
