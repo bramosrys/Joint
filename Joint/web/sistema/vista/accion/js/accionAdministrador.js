@@ -126,7 +126,7 @@ function modificar(str){
             document.getElementById("respuestaModificado").innerHTML=conexion.responseText;
         }
     }
-    conexion.open("POST","../../../ModificarTrabajador?nombreAccion="+nombreAccion+"&dato="+dato+"?idTrabajador="+idTrabajador,true);
+    conexion.open("POST","../../../ModificarTrabajador?nombreAccion="+nombreAccion+"&dato="+dato+"&idTrabajador="+idTrabajador,true);
     conexion.send();
 }
 /*********************************Termina modificar Trabajador*************************************/

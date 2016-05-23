@@ -1,7 +1,6 @@
 package joint.sistema.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,14 +29,18 @@ public class BuscarMTrabajador extends HttpServlet {
             int noEmpleado=Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
             boolean existe;
+            boolean registro;
             existe=gestionadorT.existeTrabajador();
-            if(existe){
+            registro=gestionadorT.estaRegistrado();
+            if(existe && registro){
+                request.setAttribute("existe", "true");
                 request.setAttribute("noEmpleado", String.valueOf(noEmpleado));
                 request.getRequestDispatcher("CargarModificarTrabajador").forward(request, response);
             }else{
                 request.setAttribute("existe", "false");
-                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/formularioModificarTrabajador.jsp");
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp");
                 a.forward(request, response);
+
             }
         }else{
             response.sendRedirect("Joint/error.jsp");

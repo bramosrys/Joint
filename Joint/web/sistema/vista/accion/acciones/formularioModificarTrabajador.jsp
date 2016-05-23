@@ -4,6 +4,9 @@
     Author     : jdiaz
 --%>
 <%
+    if(request.getParameter("existe")!=null){//El Trabajador no existia o no estaba registrad
+        
+    }
     Object cargos[][];
     if(request.getParameter("cargos")!=null){
         cargos=(Object[][])request.getAttribute("cargos");
@@ -34,27 +37,27 @@
                 <div class="form-group has-feedback has-feedback-left">
                     <label class="control-label">Número de empleado</label>
                     <input type='hidden' value='<%out.println(idTrabajador);%>' id='idTrabajador'>
-                    <input type="text" value="<%out.println(noEmpleado);%>" class="form-control" id="noEmpleado"/>
+                    <input type="text" value="<%out.println(noEmpleado);%>" class="form-control" id="noEmp"/>
                     <i class="form-control-feedback glyphicon glyphicon-user"></i>
                 </div>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-block registrar-btn" name="noEmpleado" onclick="modificar(this.name)">Modificar</button>
+                <button type="button" class="btn btn-success btn-block registrar-btn" name="noEmp" onclick="modificar(this.name)">Modificar</button>
             </div>
         </div>
             
-        <div class="row">
+        <!--<div class="row">
             <div class="col-md-9">
                 <div class="form-group has-feedback has-feedback-left">
                     <label class="control-label">Registrado en el sistema</label>
-                    <input type="text" value="<%out.println(registro);%>" class="form-control" id="registro"/>
+                    <input type="text" value="<%//out.println(registro);%>" class="form-control" id="registro"/>
                     <i class="form-control-feedback glyphicon glyphicon-user"></i>
                 </div>
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-success btn-block registrar-btn" name="registro" onclick="modificar(this.name)">Modificar</button>
             </div>
-        </div>
+        </div>-->
             
         <div class="row">
             <div class="col-md-9">

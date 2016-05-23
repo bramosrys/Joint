@@ -26,6 +26,7 @@ public class ModificarTrabajador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         System.out.println(request.getParameter("nombreAccion"));
         System.out.println(request.getParameter("dato"));
+        System.out.println(request.getParameter("idTrabajador"));
         String nombreAccion;
         String dato;
         int idTrabajador;
@@ -35,45 +36,127 @@ public class ModificarTrabajador extends HttpServlet {
             idTrabajador=Integer.parseInt(request.getParameter("idTrabajador"));
             iniciarGestionTrabajador();
             trabajador.setIdTrabajador(idTrabajador);
-            if(nombreAccion.equals("noEmpleado")){
+            int error;
+            if(nombreAccion.equals("noEmp")){
                 trabajador.setNoEmpleado(Integer.parseInt(dato));
-                gestionadorT.modificarNoEmpleado(trabajador);
+                error=gestionadorT.modificarNoEmpleado(trabajador);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
-            if(nombreAccion.equals("registro")){
+            /*if(nombreAccion.equals("registro")){
                 trabajador.setRegistro(dato);
                 gestionadorT.modificarValorRegistro(trabajador);
-            }
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+            }*/
             if(nombreAccion.equals("nombre")){
                 trabajador.setNombre(dato);
-                gestionadorT.modificarNombre(trabajador);
+                error=gestionadorT.modificarNombre(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("fechaNacimiento")){
                 trabajador.setFechaNacimiento(dato);
-                gestionadorT.modificarFechaNacimiento(trabajador);
+                error=gestionadorT.modificarFechaNacimiento(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("edad")){
                 trabajador.setEdad(Integer.parseInt(dato));
-                gestionadorT.modificarEdad(trabajador);
+                error=gestionadorT.modificarEdad(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("correo")){
                 trabajador.setCorreo(dato);
-                gestionadorT.modificarCorreo(trabajador);
+                error=gestionadorT.modificarCorreo(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("contrasenia")){
                 trabajador.setContrasenia(dato);
-                gestionadorT.modificarContrasenia(trabajador);
+                error=gestionadorT.modificarContrasenia(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("cargo")){
                 trabajador.setCargo(dato);
-                gestionadorT.modificarCargo(trabajador);
+                error=gestionadorT.modificarCargo(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("fechaContratacion")){
                 trabajador.setFechaContratacion(dato);
-                gestionadorT.modificarFechaContratacion(trabajador);
+                error=gestionadorT.modificarFechaContratacion(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
             if(nombreAccion.equals("activo")){
                 trabajador.setActivo(dato);
-                gestionadorT.modificarActivo(trabajador);
+                error=gestionadorT.modificarActivo(trabajador);
+                request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                if(error==1){
+                    request.setAttribute("error", "false");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
+                if(error==-1){
+                    request.setAttribute("error", "true");
+                    request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp").forward(request, response);
+                }
             }
         }
     }
