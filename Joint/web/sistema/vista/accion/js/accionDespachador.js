@@ -16,7 +16,7 @@ function accion(str){
         }
     }
     if(accion==="CrearViaje"){
-        conexion.open("POST","../../../CargarNuevoTrabajador",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCrearViaje.jsp",true);
         conexion.send();
     }
     if(accion==="ModificarViaje"){

@@ -148,6 +148,7 @@
         <% 
             String cargo = (String)session.getAttribute("cargo");
             if(session.getAttribute("cargo")!=null){
+                System.out.println(cargo);
                 //cada accion tendra un id, asi es como el js verificara de que accion hablamos
                 if(cargo.equals("Administrador")){
     		out.println("<div class='col-md-3 accion'>");

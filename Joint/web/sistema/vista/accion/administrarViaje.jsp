@@ -148,18 +148,18 @@
         <h2 class='text-left'>¿Qué desea hacer?</h2><hr>
         <div class="col-md-3 accion">
            <h3 class="text-center">Crear Viaje</h3>
-           <input type='hidden' value='RegistrarTrabajador' id='1'>
-           <img src='../../../recursos/imagenes/inicio/despachador/add-user.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
+           <input type='hidden' value='CrearViaje' id='1'>
+           <img src='../../../recursos/imagenes/inicio/despachador/crear-viaje.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Modificar Viaje</h3>
-          <input type='hidden' value='ModificarTrabajador' id='2'>
-         <img src='../../../recursos/imagenes/inicio/despachador/edit-user.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
+          <input type='hidden' value='ModificarViaje' id='2'>
+         <img src='../../../recursos/imagenes/inicio/despachador/modificar-viaje.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Cancelar Viaje</h3>
-          <input type='hidden' value='EliminarTrabajador' id='3'>
-         <img src='../../../recursos/imagenes/inicio/despachador/remove-user.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
+          <input type='hidden' value='CancelarViaje' id='3'>
+         <img src='../../../recursos/imagenes/inicio/despachador/cancelar-viaje.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
       </div>
     </div>

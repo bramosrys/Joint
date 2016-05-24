@@ -40,7 +40,7 @@ body{
 	font-family: 'roboto_condensedregular';
     background-color: rgb(255,255,255);
 }
-.container-primer-inicio{
+.row-principal{
   padding-bottom: 120px;
 }
 .btn-continuar{
