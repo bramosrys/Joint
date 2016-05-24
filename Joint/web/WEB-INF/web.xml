@@ -60,6 +60,10 @@
         <servlet-name>ModificarTrabajador</servlet-name>
         <servlet-class>joint.sistema.accion.ModificarTrabajador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CargarFormularioCalificar</servlet-name>
+        <servlet-class>joint.sistema.control.CargarFormularioCalificar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>ModificarTrabajador</servlet-name>
         <url-pattern>/ModificarTrabajador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargarFormularioCalificar</servlet-name>
+        <url-pattern>/CargarFormularioCalificar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

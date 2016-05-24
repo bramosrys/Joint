@@ -110,20 +110,21 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
-    public Collection tipoCalificacionesDisponibles(Trabajador t){
+    public Collection getTipoCalificacionesDisponibles(Trabajador t){
         Collection resultados;
         ArrayList tiposCalificaciones = new ArrayList();
         try {
             resultset=null;
-            String sentencia="select tc.tipocalificacion from tipocalificacion tc, cargo c, trabajador t"
-                    + "where t.idcargo=c.idcargo and c.idcargo=tc.idcargo and t.noEmpleado="+t.getNoEmpleado();
+            String sentencia="select tc.nombretipocalificacion from tipocalificacion tc, tipocalificacioncargo tcc, "
+                    + "cargo c, trabajador t where t.idcargo=c.idcargo and c.idcargo=tcc.idcargo and tcc.idtipocalificacion=tc.idtipocalificacion"
+                    + " and t.noEmpleado="+t.getNoEmpleado()+";";
             System.out.println(sentencia);
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){
-                tiposCalificaciones.add(resultset.getString("tipocalificacion"));
+                tiposCalificaciones.add(resultset.getString("nombretipocalificacion"));
             }
             while(resultset.next()){
-                tiposCalificaciones.add(resultset.getString("tipocalificacion"));
+                tiposCalificaciones.add(resultset.getString("nombretipocalificacion"));
             }
             resultados = tiposCalificaciones;
             return resultados;

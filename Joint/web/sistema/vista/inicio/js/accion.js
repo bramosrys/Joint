@@ -12,7 +12,7 @@ function accion(str){
         document.location=url;
     }
     if(accion==="Calificar"){
-        var url ="/Joint/sistema/vista/accion/calificar.jsp";
+        var url ="CargarFormularioCalificar";
         document.location=url;
     }
 }

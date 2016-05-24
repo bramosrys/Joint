@@ -25,11 +25,12 @@ DROP TABLE IF EXISTS `calificacion`;
 CREATE TABLE `calificacion` (
   `idcalificacion` int(11) NOT NULL,
   `fecha` varchar(45) DEFAULT NULL,
-  `tipo` varchar(45) DEFAULT NULL,
+  `tipo` varchar(15) DEFAULT NULL,
   `valor` varchar(45) DEFAULT NULL,
   `comentario` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idcalificacion`),
-  KEY `calicaciontipo_idx` (`tipo`)
+  KEY `calicaciontipo_idx` (`tipo`),
+  CONSTRAINT `ttc` FOREIGN KEY (`tipo`) REFERENCES `tipocalificacion` (`nombreTipoCalificacion`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,14 +180,10 @@ DROP TABLE IF EXISTS `tipocalificacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipocalificacion` (
-  `idtipocalificacion` int(11) NOT NULL AUTO_INCREMENT,
-  `idcargo` int(11) NOT NULL,
-  `tipocalificacion` varchar(45) NOT NULL,
-  PRIMARY KEY (`idtipocalificacion`),
-  KEY `cargo_idx` (`idcargo`),
-  KEY `tipo_idx` (`tipocalificacion`),
-  CONSTRAINT `cargo` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`idcargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `tipo` FOREIGN KEY (`tipocalificacion`) REFERENCES `calificacion` (`tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `idtipoCalificacion` int(11) NOT NULL,
+  `nombreTipoCalificacion` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`idtipoCalificacion`),
+  KEY `tcc_idx` (`nombreTipoCalificacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -196,7 +193,36 @@ CREATE TABLE `tipocalificacion` (
 
 LOCK TABLES `tipocalificacion` WRITE;
 /*!40000 ALTER TABLE `tipocalificacion` DISABLE KEYS */;
+INSERT INTO `tipocalificacion` VALUES (2,'Comportamiento'),(1,'Puntualidad'),(3,'Viaje');
 /*!40000 ALTER TABLE `tipocalificacion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tipocalificacioncargo`
+--
+
+DROP TABLE IF EXISTS `tipocalificacioncargo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tipocalificacioncargo` (
+  `idcargo` int(11) NOT NULL,
+  `idtipocalificacion` int(11) NOT NULL,
+  PRIMARY KEY (`idtipocalificacion`,`idcargo`),
+  KEY `tipo_idx` (`idtipocalificacion`),
+  KEY `tc_idx` (`idcargo`),
+  CONSTRAINT `tc` FOREIGN KEY (`idcargo`) REFERENCES `cargo` (`idcargo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tt` FOREIGN KEY (`idtipocalificacion`) REFERENCES `tipocalificacion` (`idtipoCalificacion`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipocalificacioncargo`
+--
+
+LOCK TABLES `tipocalificacioncargo` WRITE;
+/*!40000 ALTER TABLE `tipocalificacioncargo` DISABLE KEYS */;
+INSERT INTO `tipocalificacioncargo` VALUES (2,1),(3,1),(4,1),(2,2),(3,2),(4,2),(3,3),(4,3);
+/*!40000 ALTER TABLE `tipocalificacioncargo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -281,15 +307,12 @@ CREATE TABLE `viaje` (
   `horaentrada` varchar(45) DEFAULT NULL,
   `idchofer` int(11) NOT NULL,
   `idlogistica` int(11) NOT NULL,
-  `idcalificacion` int(11) DEFAULT NULL,
   PRIMARY KEY (`idviaje`,`fechasalida`,`horasalida`,`idchofer`,`idlogistica`,`iddestino`),
   KEY `trabajadorchofer_idx` (`idchofer`),
   KEY `trabajadorlogistica_idx` (`idlogistica`),
-  KEY `viajecalificacion_idx` (`idcalificacion`),
   KEY `viajedestino_idx` (`iddestino`),
   CONSTRAINT `trabajadorchofer` FOREIGN KEY (`idchofer`) REFERENCES `trabajador` (`idtrabajador`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `trabajadorlogistica` FOREIGN KEY (`idlogistica`) REFERENCES `trabajador` (`idtrabajador`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `viajecalificacion` FOREIGN KEY (`idcalificacion`) REFERENCES `calificacion` (`idcalificacion`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `viajedestino` FOREIGN KEY (`iddestino`) REFERENCES `direccion` (`iddireccion`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -312,4 +335,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-24 14:59:28
+-- Dump completed on 2016-05-24 18:58:00

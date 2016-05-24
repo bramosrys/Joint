@@ -40,8 +40,10 @@ function regresar(str){
         document.location=url;
     }*/
 }
-/*********************************Nuevo Trabajador*************************************/
-function formularioTrabajador(){
+/*********************************Calificar*************************************/
+function elegirCalificacion(str){
+    console.log("entre a elegir");
+    var tipoelegido=str;
     var conexion;
     if (window.XMLHttpRequest){
         conexion=new XMLHttpRequest();
@@ -53,84 +55,9 @@ function formularioTrabajador(){
             document.getElementById("row-principal").innerHTML=conexion.responseText;
         }
     }
-        conexion.open("POST","../../../CargarNuevoTrabajador",true);
+    if(tipoelegido==="Viaje"){
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCalificarViaje.jsp",true);
         conexion.send();
+    }
 }
-function registrarTrabajador(){
-    var noEmpleado=document.getElementById("noEmpleado").value;
-    var cargo=document.getElementById("cargo").value;
-    console.log(noEmpleado);
-    console.log(cargo);
-    var conexion;
-    if (window.XMLHttpRequest){
-        conexion=new XMLHttpRequest();
-    }else{
-        conexion=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    conexion.onreadystatechange=function(){
-        if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("accion").innerHTML=conexion.responseText;
-        }
-    }
-    conexion.open("POST","../../../NuevoTrabajador?noEmpleado="+noEmpleado+"&cargo="+cargo,true);
-    conexion.send();
-}
-/*********************************Termina Trabajador*************************************/
-/*********************************Eliminar Trabajador*************************************/
-function eliminarTrabajador(){
-    var noEmpleado=document.getElementById("noEmpleado").value;
-    console.log(noEmpleado);
-    var conexion;
-    if (window.XMLHttpRequest){
-        conexion=new XMLHttpRequest();
-    }else{
-        conexion=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    conexion.onreadystatechange=function(){
-        if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("accion").innerHTML=conexion.responseText;
-        }
-    }
-    conexion.open("POST","../../../EliminarTrabajador?noEmpleado="+noEmpleado,true);
-    conexion.send();
-}
-/*********************************Termina Eliminar Trabajador*************************************/
-/*********************************Modificar Trabajador*************************************/
-function buscarMTrabajador(){
-    var noEmpleado=document.getElementById("noEmpleado").value;
-    console.log(noEmpleado);
-    var conexion;
-    if (window.XMLHttpRequest){
-        conexion=new XMLHttpRequest();
-    }else{
-        conexion=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    conexion.onreadystatechange=function(){
-        if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("respuestaModificacion").innerHTML=conexion.responseText;
-        }
-    }
-    conexion.open("POST","../../../BuscarMTrabajador?noEmpleado="+noEmpleado,true);
-    conexion.send();
-}
-function modificar(str){
-    var nombreAccion=str;
-    var dato=document.getElementById(nombreAccion).value;
-    var idTrabajador=document.getElementById("idTrabajador").value;
-    console.log(nombreAccion);
-    console.log(dato);
-    var conexion;
-    if (window.XMLHttpRequest){
-        conexion=new XMLHttpRequest();
-    }else{
-        conexion=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    conexion.onreadystatechange=function(){
-        if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("respuestaModificado").innerHTML=conexion.responseText;
-        }
-    }
-    conexion.open("POST","../../../ModificarTrabajador?nombreAccion="+nombreAccion+"&dato="+dato+"&idTrabajador="+idTrabajador,true);
-    conexion.send();
-}
-/*********************************Termina modificar Trabajador*************************************/
+/*********************************Termina Calificar*************************************/

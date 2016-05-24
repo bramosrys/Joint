@@ -4,6 +4,7 @@
     Author     : jdiaz
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String noEmpleado = (String)session.getAttribute("noEmpleado");
@@ -22,20 +23,20 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Sistema de evaluación">
     <meta name="author" content="ReaTeam">
-    <link rel="icon" href="../../../recursos/imagenes/navegacion/favicon.ico">
+    <link rel="icon" href="recursos/imagenes/navegacion/favicon.ico">
     
     <title>Sistema de Evaluación</title>
-    <script src="../../../sistema/vista/inicio/js/inicio.js"></script>
+    <script src="sistema/vista/inicio/js/inicio.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="../../../recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../../recursos/css/inicio.css" rel="stylesheet">
-    <link href="../../../recursos/css/accion.css" rel="stylesheet">
+    <link href="recursos/css/inicio.css" rel="stylesheet">
+    <link href="recursos/css/accion.css" rel="stylesheet">
     
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../../recursos/bootstrap336/dist/js/ie-emulation-modes-warning.js"></script>
+    <script src="recursos/bootstrap336/dist/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -63,22 +64,22 @@
                 <ul class="nav navbar-nav pull-left">
                   <li>
                       <a class="text-center">
-                          <img src='../../../recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
+                          <img src='recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='../../../recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
+                          <img src='recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='../../../recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
+                          <img src='recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='../../../recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
+                          <img src='recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                 </ul>
@@ -104,13 +105,13 @@
                   </li>
                   <li>
                       <a class="text-center"> 
-                          <img src='../../../recursos/imagenes/inicio/nav/settings.png' class='img-responsive center-block img-nabvar'>
+                          <img src='recursos/imagenes/inicio/nav/settings.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                            <form method="POST" onsubmit="window.location.href = '../../../CerrarSesion'; return false;">
-                                <input type="image" name="submit" src='../../../recursos/imagenes/inicio/nav/exit.png' border="0" alt="Submit" class='img-responsive center-block img-nabvar'/>
+                            <form method="POST" onsubmit="window.location.href = 'CerrarSesion'; return false;">
+                                <input type="image" name="submit" src='recursos/imagenes/inicio/nav/exit.png' border="0" alt="Submit" class='img-responsive center-block img-nabvar'/>
                             </form>
                       </a>
                   </li>
@@ -134,7 +135,7 @@
           <ul class="nav navbar-nav">
             <li>
                 <a class="text-center" href="#inicio">
-                    <img src="../../../recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
+                    <img src="recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
                 </a>
             </li>
           </ul>
@@ -147,26 +148,36 @@
       <div class="row" id="row-principal">
           <div class="col-md-6"><h2 class='text-left'>¿Qué tipo de calificación desea hacer?</h2></div>
           <div class="col-md-6">
-              <select class="form-control">
+              <select class="form-control center-thing-up" onchange="elegirCalificacion(this.value)">   
                   <%
-                  
+                  if(request.getAttribute("tiposCalificaciones")!=null){
+                      System.out.println("no era nulo tipos");
+                      ArrayList tiposCalificaciones;
+                      tiposCalificaciones=(ArrayList)request.getAttribute("tiposCalificaciones");
+                      int i =0;
+                      while(i<tiposCalificaciones.size()){
+                           out.println("<option>"+tiposCalificaciones.get(i++).toString()+"</option>");
+                      }
+                  }else{
+                      out.println("<option>Ocurrio un error al obtener los tipos disponibles para calificar</option>");
+                  }
                   %>
               </select>
           </div>
-          <hr>
-       
+          
       </div>
+       <hr>
     </div>
     <!-- scripts -->
-    <script src="../../../sistema/vista/accion/js/accionDespachador.js"></script>
+    <script src="sistema/vista/accion/js/accionDespachador.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="../../../recursos/js/jquery-2.2.3.min.js"></script>
-    <script src="../../../recursos/bootstrap336/dist/js/bootstrap.min.js"></script>
+    <script src="recursos/js/jquery-2.2.3.min.js"></script>
+    <script src="recursos/bootstrap336/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../../recursos/bootstrap336/dist/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="recursos/bootstrap336/dist/js/ie10-viewport-bug-workaround.js"></script>
     
   </body>
 </html>
