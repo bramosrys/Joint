@@ -1,3 +1,18 @@
+<%-- 
+    Document   : administrarPersonal
+    Created on : May 21, 2016, 7:14:26 PM
+    Author     : jdiaz
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String noEmpleado = (String)session.getAttribute("noEmpleado");
+    String nombre = (String)session.getAttribute("nombreUsuario");
+    if(noEmpleado==null){
+        response.sendRedirect("/Joint/index.jsp");
+    }
+    String color=(String)session.getAttribute("color");
+%>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -7,19 +22,20 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Sistema de evaluación">
     <meta name="author" content="ReaTeam">
-    <link rel="icon" href="recursos/imagenes/navegacion/favicon.ico">
+    <link rel="icon" href="../../../recursos/imagenes/navegacion/favicon.ico">
     
     <title>Sistema de Evaluación</title>
-    <script src="sistema/vista/inicio/js/inicio.js"></script>
+    <script src="../../../sistema/vista/inicio/js/inicio.js"></script>
     <!-- Bootstrap core CSS -->
-    <link href="recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="recursos/css/inicio.css" rel="stylesheet">
+    <link href="../../../recursos/css/inicio.css" rel="stylesheet">
+    <link href="../../../recursos/css/accion.css" rel="stylesheet">
     
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="recursos/bootstrap336/dist/js/ie-emulation-modes-warning.js"></script>
+    <script src="../../../recursos/bootstrap336/dist/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,22 +63,22 @@
                 <ul class="nav navbar-nav pull-left">
                   <li>
                       <a class="text-center">
-                          <img src='recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
+                          <img src='../../../recursos/imagenes/index/navbar/question.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
+                          <img src='../../../recursos/imagenes/index/navbar/place.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
+                          <img src='../../../recursos/imagenes/index/navbar/send.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                          <img src='recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
+                          <img src='../../../recursos/imagenes/index/navbar/help.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                 </ul>
@@ -71,12 +87,12 @@
 
             <div class="col-md-4 visible-lg">
                 <ul class="nav navbar-nav">
-                  <h2 class="text-center nav-titulo">Home</h2>
+                  <h2 class="text-center nav-titulo">Calificar</h2>
                 </ul>
             </div>
             <div class="col-md-4 visible-xs">
                 <ul class="nav navbar-nav">
-                  <h2 class="text-center nav-titulo">Home</h2>
+                  <h2 class="text-center nav-titulo">Calificar</h2>
                 </ul>
             </div>
 
@@ -84,17 +100,17 @@
               <div class="navbar-collapse collapse bottom-collapse-right">
                 <ul class="nav navbar-nav pull-right">
                   <li>
-                    <h4 class="text-center nombre-usuario">Usuario</h4>
+                    <h4 class="text-center nombre-usuario"><%out.println(nombre);%></h4>
                   </li>
                   <li>
                       <a class="text-center"> 
-                          <img src='recursos/imagenes/inicio/nav/settings.png' class='img-responsive center-block img-nabvar'>
+                          <img src='../../../recursos/imagenes/inicio/nav/settings.png' class='img-responsive center-block img-nabvar'>
                       </a>
                   </li>
                   <li>
                       <a class="text-center">
-                            <form method="POST" onsubmit="window.location.href = 'CerrarSesion'; return false;">
-                                <input type="image" name="submit" src='recursos/imagenes/inicio/nav/exit.png' border="0" alt="Submit" class='img-responsive center-block img-nabvar'/>
+                            <form method="POST" onsubmit="window.location.href = '../../../CerrarSesion'; return false;">
+                                <input type="image" name="submit" src='../../../recursos/imagenes/inicio/nav/exit.png' border="0" alt="Submit" class='img-responsive center-block img-nabvar'/>
                             </form>
                       </a>
                   </li>
@@ -107,7 +123,7 @@
     </div>
 
     <!-- Static bottom navbar -->
-    <div class="navbar navbar-default navbar-fixed-bottom" style="background:#303030">
+    <div class="navbar navbar-default navbar-fixed-bottom" style="background:#<%out.println(color);%>;">
       <div class="container">
       	<div class="navbar-header">
   	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bottom-collapse-2"> <!-- NOTE! data-target was changed to .bottom-collapse -->
@@ -118,7 +134,7 @@
           <ul class="nav navbar-nav">
             <li>
                 <a class="text-center" href="#inicio">
-                    <img src="recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
+                    <img src="../../../recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
                 </a>
             </li>
           </ul>
@@ -127,20 +143,38 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container container-principal">
       <div class="row" id="row-principal">
+        <h2 class='text-left'>¿Qué tipo de calificación desea hacer?</h2><hr>
+        <!--<div class="col-md-3 accion">
+           <h3 class="text-center">Crear Viaje</h3>
+           <input type='hidden' value='CrearViaje' id='1'>
+           <img src='../../../recursos/imagenes/inicio/despachador/crear-viaje.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
+        </div>
+        <div class="col-md-3 accion">
+          <h3 class="text-center">Modificar Viaje</h3>
+          <input type='hidden' value='ModificarViaje' id='2'>
+         <img src='../../../recursos/imagenes/inicio/despachador/modificar-viaje.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
+        </div>
+        <div class="col-md-3 accion">
+          <h3 class="text-center">Cancelar Viaje</h3>
+          <input type='hidden' value='CancelarViaje' id='3'>
+         <img src='../../../recursos/imagenes/inicio/despachador/cancelar-viaje.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
+        </div>-->
       </div>
     </div>
     <!-- scripts -->
-    
+    <script src="../../../sistema/vista/accion/js/accionDespachador.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="recursos/js/jquery-2.2.3.min.js"></script>
-    <script src="recursos/bootstrap336/dist/js/bootstrap.min.js"></script>
+    <script src="../../../recursos/js/jquery-2.2.3.min.js"></script>
+    <script src="../../../recursos/bootstrap336/dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="recursos/bootstrap336/dist/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../../recursos/bootstrap336/dist/js/ie10-viewport-bug-workaround.js"></script>
     
   </body>
 </html>
+
+  

@@ -11,4 +11,8 @@ function accion(str){
         var url ="/Joint/sistema/vista/accion/administrarViaje.jsp";
         document.location=url;
     }
+    if(accion==="Calificar"){
+        var url ="/Joint/sistema/vista/accion/calificar.jsp";
+        document.location=url;
+    }
 }

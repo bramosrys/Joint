@@ -153,22 +153,35 @@
                 if(cargo.equals("Administrador")){
     		out.println("<div class='col-md-3 accion'>");
     			out.println("<h3 class='text-center'>Administrar Personal</h3>");
-                        out.println("<input type='hidden' name='country' value='AdministrarPersonal' id='1'>");
+                        out.println("<input type='hidden' value='AdministrarPersonal' id='1'>");
     			out.println("<img src='recursos/imagenes/inicio/administrador/management-group.png' name='1' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
     		out.println("</div>");
                 }
                 if(cargo.equals("Operador")){
-                    
+                    out.println("<div class='col-md-3 accion'>");
+    			out.println("<h3 class='text-center'>Calificar</h3>");
+                        out.println("<input type='hidden' name='country' value='Calificar' id='1'>");
+    			out.println("<img src='recursos/imagenes/inicio/operador/calificar.png' name='1' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
+                    out.println("</div>");
                 }
                 if(cargo.equals("Despachador")){
                     out.println("<div class='col-md-3 accion'>");
     			out.println("<h3 class='text-center'>Administrar Viaje</h3>");
-                        out.println("<input type='hidden' name='country' value='AdministrarViaje' id='1'>");
+                        out.println("<input type='hidden' value='AdministrarViaje' id='1'>");
     			out.println("<img src='recursos/imagenes/inicio/despachador/administrar-viaje.png' name='1' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
+                    out.println("</div>");
+                    out.println("<div class='col-md-3 accion'>");
+    			out.println("<h3 class='text-center'>Calificar</h3>");
+                        out.println("<input type='hidden' name='country' value='Calificar' id='2'>");
+    			out.println("<img src='recursos/imagenes/inicio/despachador/calificar.png' name='2' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
                     out.println("</div>");
                 }
                 if(cargo.equals("Gerente")){
-
+                    out.println("<div class='col-md-3 accion'>");
+    			out.println("<h3 class='text-center'>Calificar</h3>");
+                        out.println("<input type='hidden' name='country' value='Calificar' id='2'>");
+    			out.println("<img src='recursos/imagenes/inicio/gerente/calificar.png' name='2' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
+                    out.println("</div>");
                 }
             }else{
                 response.sendRedirect("/Joint/error.jsp");
