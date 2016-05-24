@@ -145,22 +145,16 @@
 
     <div class="container container-principal">
       <div class="row" id="row-principal">
-        <h2 class='text-left'>¿Qué tipo de calificación desea hacer?</h2><hr>
-        <!--<div class="col-md-3 accion">
-           <h3 class="text-center">Crear Viaje</h3>
-           <input type='hidden' value='CrearViaje' id='1'>
-           <img src='../../../recursos/imagenes/inicio/despachador/crear-viaje.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
-        </div>
-        <div class="col-md-3 accion">
-          <h3 class="text-center">Modificar Viaje</h3>
-          <input type='hidden' value='ModificarViaje' id='2'>
-         <img src='../../../recursos/imagenes/inicio/despachador/modificar-viaje.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
-        </div>
-        <div class="col-md-3 accion">
-          <h3 class="text-center">Cancelar Viaje</h3>
-          <input type='hidden' value='CancelarViaje' id='3'>
-         <img src='../../../recursos/imagenes/inicio/despachador/cancelar-viaje.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
-        </div>-->
+          <div class="col-md-6"><h2 class='text-left'>¿Qué tipo de calificación desea hacer?</h2></div>
+          <div class="col-md-6">
+              <select class="form-control">
+                  <%
+                  
+                  %>
+              </select>
+          </div>
+          <hr>
+       
       </div>
     </div>
     <!-- scripts -->

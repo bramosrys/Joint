@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import joint.sistema.principal.Trabajador;
@@ -17,6 +20,7 @@ public class GestionadorTrabajador extends Gestionador{
     private ResultSet resultset;
     private Connection con;
     private Trabajador trabajador;
+    
 
     public GestionadorTrabajador(Trabajador trabajador) {
         this.trabajador=trabajador;
@@ -104,6 +108,29 @@ public class GestionadorTrabajador extends Gestionador{
         } catch (SQLException ex) {
             System.out.println("Error al obtener fecha de contratación " +ex);
             return null;
+        }
+    }
+    public Collection tipoCalificacionesDisponibles(Trabajador t){
+        Collection resultados;
+        ArrayList tiposCalificaciones = new ArrayList();
+        try {
+            resultset=null;
+            String sentencia="select tc.tipocalificacion from tipocalificacion tc, cargo c, trabajador t"
+                    + "where t.idcargo=c.idcargo and c.idcargo=tc.idcargo and t.noEmpleado="+t.getNoEmpleado();
+            System.out.println(sentencia);
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){
+                tiposCalificaciones.add(resultset.getString("tipocalificacion"));
+            }
+            while(resultset.next()){
+                tiposCalificaciones.add(resultset.getString("tipocalificacion"));
+            }
+            resultados = tiposCalificaciones;
+            return resultados;
+        } catch (SQLException ex) {
+            resultados=null;
+            System.out.println(ex +"Error al obtener tipos de calificacion disponibles ");
+            return resultados;
         }
     }
     public Trabajador getCargo(){

@@ -12,7 +12,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import joint.sistema.principal.Calificacion;
-import joint.sistema.principal.Trabajador;
 
 /**
  *
