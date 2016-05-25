@@ -144,8 +144,8 @@
       </div>
     </div>
 
-    <div class="container container-principal">
-      <div class="row" id="row-principal">
+    <div class="container container-principal" id="row-principal">
+      <div class="row" >
           <div class="col-md-6"><h2 class='text-left'>¿Qué tipo de calificación desea hacer?</h2></div>
           <div class="col-md-6">
               <select class="form-control center-thing-up" onchange="elegirCalificacion(this.value)">   
@@ -164,9 +164,8 @@
                   %>
               </select>
           </div>
-          
       </div>
-       <hr>
+              <hr>
     </div>
     <!-- scripts -->
     <script src="sistema/vista/accion/js/accionDespachador.js"></script>
