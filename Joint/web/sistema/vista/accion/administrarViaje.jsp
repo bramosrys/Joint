@@ -28,6 +28,7 @@
     <script src="../../../sistema/vista/inicio/js/inicio.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="../../../recursos/bootstrap336/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../../../recursos/fuentes/fontawesome463/css/font-awesome.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../../recursos/css/inicio.css" rel="stylesheet">
@@ -153,7 +154,7 @@
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Finalizar Viaje</h3>
-          <input type='hidden' value='ModificarViaje' id='2'>
+          <input type='hidden' value='FinalizarViaje' id='2'>
          <img src='../../../recursos/imagenes/inicio/despachador/finalizar-viaje.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">

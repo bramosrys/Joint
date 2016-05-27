@@ -19,12 +19,16 @@ function accion(str){
         conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCrearViaje.jsp",true);
         conexion.send();
     }
+    if(accion==="FinalizarViaje"){
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioFinalizarViaje.jsp",true);
+        conexion.send();
+    }
     if(accion==="ModificarViaje"){
         conexion.open("POST","/Joint/sistema/vista/accion/acciones/modificarTrabajador.jsp",true);
         conexion.send();
     }
     if(accion==="CancelarViaje"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/formularioEliminarTrabajador.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCancelarViaje.jsp",true);
         conexion.send();
     }
 }
