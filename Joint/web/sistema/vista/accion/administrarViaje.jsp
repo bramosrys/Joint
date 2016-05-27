@@ -152,14 +152,19 @@
            <img src='../../../recursos/imagenes/inicio/despachador/crear-viaje.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
-          <h3 class="text-center">Modificar Viaje</h3>
+          <h3 class="text-center">Finalizar Viaje</h3>
           <input type='hidden' value='ModificarViaje' id='2'>
-         <img src='../../../recursos/imagenes/inicio/despachador/modificar-viaje.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
+         <img src='../../../recursos/imagenes/inicio/despachador/finalizar-viaje.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
+        </div>
+        <div class="col-md-3 accion">
+          <h3 class="text-center">Modificar Viaje</h3>
+          <input type='hidden' value='ModificarViaje' id='3'>
+         <img src='../../../recursos/imagenes/inicio/despachador/modificar-viaje.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Cancelar Viaje</h3>
-          <input type='hidden' value='CancelarViaje' id='3'>
-         <img src='../../../recursos/imagenes/inicio/despachador/cancelar-viaje.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
+          <input type='hidden' value='CancelarViaje' id='4'>
+         <img src='../../../recursos/imagenes/inicio/despachador/cancelar-viaje.png' name='4' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
       </div>
     </div>

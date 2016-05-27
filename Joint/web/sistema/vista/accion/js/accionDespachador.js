@@ -35,6 +35,10 @@ function regresar(str){
         var url ="/Joint/sistema/vista/accion/administrarViaje.jsp";
         document.location=url;
     }
+    if(accion==="Calificar"){
+        var url ="/Joint/inicio.jsp";
+        document.location=url;
+    }
     /*if(accion==="otro"){
         var url ="/Joint/sistema/vista/accion/otro.jsp";
         document.location=url;

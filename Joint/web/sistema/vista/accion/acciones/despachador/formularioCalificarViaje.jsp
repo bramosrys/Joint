@@ -7,10 +7,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="row" id="header">
     <div class="col-md-6">
-        <h2 class="text-left">Crear Viaje</h2>
+        <h2 class="text-left">Calificar Viaje</h2>
     </div>
     <div class="col-md-6">
-        <button type="button" name="AdministrarViaje" class="btn btn-primary pull-right regresar" onclick="regresar(this.name)">Regresar</button>
+        <button type="button" name="Calificar" class="btn btn-primary pull-right regresar" onclick="regresar(this.name)">Regresar</button>
     </div>
 </div>
 <hr>
