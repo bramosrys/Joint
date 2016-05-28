@@ -16,7 +16,7 @@ function accion(str){
         }
     }
     if(accion==="CrearViaje"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCrearViaje.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/crearViaje.jsp",true);
         conexion.send();
     }
     if(accion==="FinalizarViaje"){
@@ -72,18 +72,35 @@ function elegirCalificacion(str){
 /****************************viaje***************************************/
 function buscarOperador(str){
     var noEmpleado=str;
-    var conexion;
-    if (window.XMLHttpRequest){
-        conexion=new XMLHttpRequest();
-    }else{
-        conexion=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    conexion.onreadystatechange=function(){
-        if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("row-principal").innerHTML=conexion.responseText;
+    if(noEmpleado.length>=7){
+        var conexion;
+        if (window.XMLHttpRequest){
+            conexion=new XMLHttpRequest();
+        }else{
+            conexion=new ActiveXObject("Microsoft.XMLHTTP");
         }
+        conexion.onreadystatechange=function(){
+            if (conexion.readyState===4 && conexion.status===200){
+                document.getElementById("respuestaOperador").innerHTML=conexion.responseText;
+            }
+        }
+        conexion.open("POST","../../../BuscarOperador?noEmpleado="+noEmpleado,true);
+        conexion.send();
     }
-    conexion.open("POST","BuscarOperador?noEmpleado="+noEmpleado,true);
-    conexion.send();
+}
+function mostrarFormularioCrearViaje(){
+    var conexion;
+        if (window.XMLHttpRequest){
+            conexion=new XMLHttpRequest();
+        }else{
+            conexion=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        conexion.onreadystatechange=function(){
+            if (conexion.readyState===4 && conexion.status===200){
+                document.getElementById("formularioCrearViaje").innerHTML=conexion.responseText;
+            }
+        }
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCrearViaje.jsp",true);
+        conexion.send();
 }
 /****************************termina viaje********************************/

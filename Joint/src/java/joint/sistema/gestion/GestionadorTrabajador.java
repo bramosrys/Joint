@@ -96,10 +96,11 @@ public class GestionadorTrabajador extends Gestionador{
         try {
             resultset=null;
             String sentencia="select c.cargo from trabajador t,cargo c where t.idcargo=c.idcargo and t.noempleado ="+trabajador.getNoEmpleado()+";";
+            System.out.println(sentencia);
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){
-                String activo=resultset.getString("cargo");
-                if(activo.equals("Operador")){
+                String cargo=resultset.getString("cargo");
+                if(cargo.equals("Operador")){
                     return true;
                 }else{
                     return false;
@@ -108,7 +109,7 @@ public class GestionadorTrabajador extends Gestionador{
                 return false;
             }
         } catch (SQLException ex) {
-            System.out.println("No se pudo recuperar el activo del trabajador" + ex);
+            System.out.println("No se pudo recuperar el cargo del trabajador" + ex);
             return false;
         }
     }

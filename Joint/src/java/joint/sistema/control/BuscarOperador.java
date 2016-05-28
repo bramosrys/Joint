@@ -30,7 +30,7 @@ public class BuscarOperador extends HttpServlet {
             noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
             
-            if(gestionadorT.estaRegistrado()&&gestionadorT.estaActivo()){
+            if(gestionadorT.existeTrabajador()&&gestionadorT.estaRegistrado()&&gestionadorT.estaActivo()){
                if(gestionadorT.esOperador()){
                    request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaBuscarOperador.jsp").forward(request, response);
                }
