@@ -29,7 +29,7 @@ public class CrearViaje extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession();
         if(request.getParameter("idOperador")!=null&&sesion.getAttribute("idTrabajador")!=null){
-            if(request.getParameter("fechaSalida")!=null&&request.getParameter("horaSalida")!=null){
+            if(request.getParameter("fechasalida")!=null&&request.getParameter("horasalida")!=null){
                 if(request.getParameter("calle")!=null&&request.getParameter("numero")!=null&&request.getParameter("colonia")!=null){
                     if(request.getParameter("delegacion")!=null&&request.getParameter("estado")!=null&&request.getParameter("cp")!=null){
                        System.out.println("entre a crear viaje");
@@ -37,8 +37,8 @@ public class CrearViaje extends HttpServlet {
                        operador.setIdTrabajador(Integer.parseInt(request.getParameter("idOperador")));
                        Trabajador despachador=new Trabajador();
                        despachador.setIdTrabajador((Integer)sesion.getAttribute("idTrabajador"));
-                       String fechaSalida=request.getParameter("fechaSalida");
-                       String horaSalida=request.getParameter("horaSalida");
+                       String fechaSalida=request.getParameter("fechasalida");
+                       String horaSalida=request.getParameter("horasalida");
                        String calle=request.getParameter("calle");
                        String numero=request.getParameter("numero");
                        String colonia=request.getParameter("colonia");
@@ -50,9 +50,11 @@ public class CrearViaje extends HttpServlet {
                        iniciarGestionViaje(viaje);
                        int error=gviaje.crearViaje(viaje);
                        if(error==-1){//hubo un error
-                           
+                           request.setAttribute("error","true");
+                           request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaCrearViaje.jsp").forward(request, response);
                        }else{
-                           
+                           request.setAttribute("idViaje",error);
+                           request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaCrearViaje.jsp").forward(request, response);
                        }
                     }
                 }

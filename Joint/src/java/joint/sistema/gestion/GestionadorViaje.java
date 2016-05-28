@@ -109,7 +109,6 @@ public class GestionadorViaje extends Gestionador{
             }
             return 1;
         } catch (SQLException ex) {
-            
             System.out.println("Error en crear nuevo trabajador"+ ex);
             return -1;
         }

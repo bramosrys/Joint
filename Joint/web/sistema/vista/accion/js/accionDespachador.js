@@ -105,15 +105,15 @@ function mostrarFormularioCrearViaje(){
 }
 function crearViaje(){
     var idOperador=document.getElementById("idOperador").value;
-    var fechaSalida=document.getElementById("fechaSalida").value;
-    var horaSalida=document.getElementById("horaSalida").value;
+    var fechaSalida=document.getElementById("fechasalida").value;
+    var horaSalida=document.getElementById("horasalida").value;
     var calle=document.getElementById("calle").value;
     var numero=document.getElementById("numero").value;
     var colonia=document.getElementById("colonia").value;
     var delegacion=document.getElementById("delegacion").value;
     var estado=document.getElementById("estado").value;
     var cp=document.getElementById("cp").value;
-    var parametrosUrl="idOperador="+idOperador+"&fechaSalida="+fechaSalida+"&horaSalida="+horaSalida+"&calle="+calle+"&numero="+numero+"&colonia="+colonia+"&delegacion="+delegacion+"&estado="+estado+"&cp="+cp;
+    var parametrosUrl="idOperador="+idOperador+"&fechasalida="+fechaSalida+"&horasalida="+horaSalida+"&calle="+calle+"&numero="+numero+"&colonia="+colonia+"&delegacion="+delegacion+"&estado="+estado+"&cp="+cp;
     var conexion;
     if (window.XMLHttpRequest){
         conexion=new XMLHttpRequest();
