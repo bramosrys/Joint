@@ -12,7 +12,8 @@ public class Direccion {
     private int cp;
     private String delegacion;
 
-    public Direccion(String estado, String colonia, String no, int cp, String delegacion) {
+    public Direccion(String calle,String estado, String colonia, String no, int cp, String delegacion) {
+        this.calle=calle;
         this.estado = estado;
         this.colonia = colonia;
         this.no = no;

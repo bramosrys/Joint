@@ -11,11 +11,15 @@
         out.println("<strong>Atención!</strong> El trabajador no se encuentra, o no es un operador");
         out.println("</div>");
     }else{
+        if(request.getAttribute("idOperador")!=null){
         out.println("<div class='col-md-8 alert alert-success'>");
+            out.println("<input type='hidden' value='"+request.getAttribute("idOperador")+"' id='idOperador'/>");
             out.println("<strong>Empleado Encontrado </strong> Complete el formulario");
         out.println("</div>");
         out.println("<div class='col-md-4'>");
-            out.println("<button type='button' class='btn btn-success btn-block center-btn' onclick=mostrarFormularioCrearViaje()>Ver Formulario</button>");
+            out.println("<button type='button' class='btn btn-success btn-block centergit a-btn' onclick=mostrarFormularioCrearViaje()>Ver Formulario</button>");
         out.println("</div>");
+        }
+        
     }
 %>

@@ -103,4 +103,29 @@ function mostrarFormularioCrearViaje(){
         conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCrearViaje.jsp",true);
         conexion.send();
 }
+function crearViaje(){
+    var idOperador=document.getElementById("idOperador").value;
+    var fechaSalida=document.getElementById("fechaSalida").value;
+    var horaSalida=document.getElementById("horaSalida").value;
+    var calle=document.getElementById("calle").value;
+    var numero=document.getElementById("numero").value;
+    var colonia=document.getElementById("colonia").value;
+    var delegacion=document.getElementById("delegacion").value;
+    var estado=document.getElementById("estado").value;
+    var cp=document.getElementById("cp").value;
+    var parametrosUrl="idOperador="+idOperador+"&fechaSalida="+fechaSalida+"&horaSalida="+horaSalida+"&calle="+calle+"&numero="+numero+"&colonia="+colonia+"&delegacion="+delegacion+"&estado="+estado+"&cp="+cp;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("formularioCrearViaje").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../CrearViaje?"+parametrosUrl,true);
+    conexion.send();
+}
 /****************************termina viaje********************************/

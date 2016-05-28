@@ -32,6 +32,8 @@ public class BuscarOperador extends HttpServlet {
             
             if(gestionadorT.existeTrabajador()&&gestionadorT.estaRegistrado()&&gestionadorT.estaActivo()){
                if(gestionadorT.esOperador()){
+                   int idOperador = gestionadorT.getIdTrabajador(trabajador);
+                   request.setAttribute("idOperador",idOperador);
                    request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaBuscarOperador.jsp").forward(request, response);
                }
             }else{

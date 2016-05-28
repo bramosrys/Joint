@@ -24,6 +24,13 @@ public class Viaje {
         this.chofer = chofer;
         this.despachador = despachador;
     }
+    public Viaje(Direccion direccion, String fechaSalida, String horaSalida, Trabajador chofer, Trabajador despachador) {
+        this.direccion = direccion;
+        this.fechaSalida = fechaSalida;
+        this.horaSalida = horaSalida;
+        this.chofer = chofer;
+        this.despachador = despachador;
+    }
     
     
     public Direccion getDireccion() {

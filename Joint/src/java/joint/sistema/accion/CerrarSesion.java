@@ -21,7 +21,7 @@ public class CerrarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession sesion = request.getSession(true);
+        HttpSession sesion = request.getSession();
         request.getSession().removeAttribute("sesionActual");
         sesion.invalidate();
         response.sendRedirect("/Joint/index.jsp");

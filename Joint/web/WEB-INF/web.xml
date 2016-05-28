@@ -68,6 +68,10 @@
         <servlet-name>BuscarOperador</servlet-name>
         <servlet-class>joint.sistema.control.BuscarOperador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearViaje</servlet-name>
+        <servlet-class>joint.sistema.accion.CrearViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>BuscarOperador</servlet-name>
         <url-pattern>/BuscarOperador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearViaje</servlet-name>
+        <url-pattern>/CrearViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
