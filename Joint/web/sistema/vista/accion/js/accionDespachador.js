@@ -69,3 +69,21 @@ function elegirCalificacion(str){
     }
 }
 /*********************************Termina Calificar*************************************/
+/****************************viaje***************************************/
+function buscarOperador(str){
+    var noEmpleado=str;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("row-principal").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","BuscarOperador?noEmpleado="+noEmpleado,true);
+    conexion.send();
+}
+/****************************termina viaje********************************/

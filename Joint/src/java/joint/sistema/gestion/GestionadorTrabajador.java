@@ -92,6 +92,26 @@ public class GestionadorTrabajador extends Gestionador{
             return false;
         }
     }
+    public boolean esOperador(){
+        try {
+            resultset=null;
+            String sentencia="select c.cargo from trabajador t,cargo c where t.idcargo=c.idcargo and t.noempleado ="+trabajador.getNoEmpleado()+";";
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){
+                String activo=resultset.getString("cargo");
+                if(activo.equals("Operador")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("No se pudo recuperar el activo del trabajador" + ex);
+            return false;
+        }
+    }
     //*****************************************************************************************************
     //*************************************************Getters*********************************************
     public Trabajador getFechaContratacion(){

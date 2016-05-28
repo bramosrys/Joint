@@ -7,14 +7,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.principal.Trabajador;
 import joint.sistema.gestion.GestionadorTrabajador;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class RespuestaRegistro extends HttpServlet {
+public class BuscarOperador extends HttpServlet {
     private GestionadorTrabajador gestionadorT;
     private Trabajador trabajador;
     private int noEmpleado;
@@ -22,36 +22,22 @@ public class RespuestaRegistro extends HttpServlet {
     private void iniciarGestionTrabajador(int noEmpleado){
         trabajador=new Trabajador(noEmpleado);
         gestionadorT = new GestionadorTrabajador(trabajador);
-    }
-    private void limpiar(){
-        gestionadorT.destruirGestionador();
-        trabajador.destruirTrabajador();
-        noEmpleado=0;
-        System.gc();
-    }
+    }   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         if(request.getParameter("noEmpleado")!=null){
             noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
             iniciarGestionTrabajador(noEmpleado);
             
-            if(gestionadorT.estaRegistrado()){
-                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaYaRegistrado.jsp");
-                a.forward(request, response);
+            if(gestionadorT.estaRegistrado()&&gestionadorT.estaActivo()){
+               if(gestionadorT.esOperador()){
+                   request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaBuscarOperador.jsp").forward(request, response);
+               }
             }else{
-                trabajador=gestionadorT.getFechaContratacion();
-                String fechaContratacion =trabajador.getFechaContratacion();
-                trabajador=gestionadorT.getCargo();
-                String cargo = trabajador.getCargo();
-                request.setAttribute("noEmpleado", request.getParameter("noEmpleado"));
-                request.setAttribute("fechaContratacion", fechaContratacion);
-                request.setAttribute("cargo", cargo);
-                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/registro/respuestaRegistro.jsp");
-                a.forward(request, response);
-            }
-            
+                request.setAttribute("error","false");
+                request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaBuscarOperador.jsp").forward(request, response);
+            }  
         }
     }
 

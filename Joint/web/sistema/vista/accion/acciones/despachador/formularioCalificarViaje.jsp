@@ -16,6 +16,28 @@
 <hr>
 <div class="row" id="accion">
     <div class="row">
-        
+        <div class='col-md-12'>
+            <h3 class="text-center">Viajes por Calificar</h3><hr>
+            <div class="row" id="respuestaViajesPendientes">
+                <div class="col-md-12"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="text-center">Datos del viaje</h3><hr>
+        </div>
+        <div class="col-md-6">
+            <h3 class="text-center">Calificar Viaje</h3><hr>
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+                <div class="col-md-12">
+                        <label class="control-label">Comentarios</label>
+                        <textarea class="form-control " rows="3" style="resize:none"></textarea>     
+                </div>
+            </div>
+        </div>
     </div>
 </div>
