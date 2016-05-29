@@ -43,6 +43,12 @@ public class Viaje {
         this.chofer = chofer;
         this.despachador = despachador;
     }
+    public Viaje(String fechaLlegada, String horaentrada, int kilometraje, int idViaje) {
+        this.kilometraje=kilometraje;
+        this.fechaLlegada = fechaLlegada;
+        this.horaLlegada = horaentrada;
+        this.idViaje=idViaje;
+    }
     public Viaje(int idViaje) {
         this.idViaje=idViaje;
     }

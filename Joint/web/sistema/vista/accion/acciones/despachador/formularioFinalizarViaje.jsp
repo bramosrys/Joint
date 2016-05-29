@@ -60,5 +60,5 @@
 </div>
 
 <div class="col-md-12">
-    <button type="button" class="btn btn-primary btn-block">Finalizar Viaje</button>
+    <button type="button" class="btn btn-primary btn-block" onclick="finalizarViaje()">Finalizar Viaje</button>
 </div>

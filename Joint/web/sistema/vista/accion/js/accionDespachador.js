@@ -164,4 +164,24 @@ function crearViaje(){
     conexion.open("POST","../../../CrearViaje?"+parametrosUrl,true);
     conexion.send();
 }
+function finalizarViaje(){
+    var idViaje=document.getElementById("idViaje").value;
+    var fechallegada=document.getElementById("fechallegada").value;
+    var horaentrada=document.getElementById("horaentrada").value;
+    var kilometraje=document.getElementById("kilometraje").value;
+    var parametrosUrl="idViaje="+idViaje+"&fechallegada="+fechallegada+"&horaentrada="+horaentrada+"&kilometraje="+kilometraje;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("formularioFinalizarViaje").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../FinalizarViaje?"+parametrosUrl,true);
+    conexion.send();
+}
 /****************************termina viaje********************************/

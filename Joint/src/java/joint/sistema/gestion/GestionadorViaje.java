@@ -183,16 +183,17 @@ public class GestionadorViaje extends Gestionador{
             return -1;
         }
     }
-    /*public void registrarTrabajador(Trabajador t){
+    public int finalizarViaje(Viaje v){
         try {         
-            String sentencia = "UPDATE trabajador SET nombre='"+t.getNombre()+"', fechaNacimiento='"+t.getFechaNacimiento()+"',"
-                    + " edad="+t.getEdad()+", correo='"+t.getCorreo()+"', contrasenia='"+t.getContrasenia()+"', "
-                    + "registro='true' WHERE noEmpleado="+t.getNoEmpleado()+";";
+            String sentencia = "UPDATE viaje SET fechallegada='"+v.getFechaLlegada()+"', horaentrada='"+v.getHoraLlegada()+"',"
+                    + " kilometraje='"+v.getKilometraje()+"', finalizado='true' WHERE idViaje="+v.getIdViaje()+";";
             System.out.println(sentencia);
             statement.executeUpdate(sentencia);
+            return 1;
         } catch (SQLException ex) {
-            System.out.println("Error en registro de trabajador" + ex);
+            System.out.println("Error en finalizacion de viaje" + ex);
+            return -1;
         }
-    }*/
+    }
     //*****************************************************Termina Registradores************************************************
 }
