@@ -168,7 +168,7 @@
               <hr>
     </div>
     <!-- scripts -->
-    <script src="sistema/vista/accion/js/accionDespachador.js"></script>
+    <script src="sistema/vista/accion/js/accionCalificar.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

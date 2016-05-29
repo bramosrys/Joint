@@ -28,7 +28,7 @@ public class CargarFormularioFinalizarViaje extends HttpServlet {
             int idViaje=Integer.parseInt(request.getParameter("idViaje"));
             iniciarGestionViaje(idViaje);
             String infoViaje[];
-            infoViaje=gviaje.getInfoViajeNoFinalizado(viaje);
+            infoViaje=gviaje.getInfoViajeBasica(viaje);
             String fechaSalida=infoViaje[0];
             String horaSalida=infoViaje[1];
             int idOperador=Integer.parseInt(infoViaje[2]);

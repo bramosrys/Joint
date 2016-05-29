@@ -43,11 +43,29 @@ public class GestionadorViaje extends Gestionador{
         }
     }
     /******************************getters****************************/
-    public String[] getInfoViajeNoFinalizado(Viaje v){ // devuelve fecha en el primer espacio despues la hora de salida y al ultimo el id del operador encargado
+    public String[] getInfoViajeBasica(Viaje v){ // devuelve fecha en el primer espacio despues la hora de salida y al ultimo el id del operador encargado
         String [] resultados =new String[3];
         try {
             resultset=null;
             resultset=statement.executeQuery("select fechasalida,horasalida,idchofer from viaje where idViaje ="+viaje.getIdViaje()+";");
+            if(resultset.next()){
+                resultados[0]=resultset.getString("fechasalida");
+                resultados[1]=resultset.getString("horasalida");
+                resultados[2]=resultset.getString("idchofer");
+                return resultados;
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar existencia de viaje" + ex);
+            return null;
+        }
+    }
+    public String[] getInfoViajeBasica(int idViaje){ // devuelve fecha en el primer espacio despues la hora de salida y al ultimo el id del operador encargado
+        String [] resultados =new String[3];
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select fechasalida,horasalida,idchofer from viaje where idViaje ="+idViaje+";");
             if(resultset.next()){
                 resultados[0]=resultset.getString("fechasalida");
                 resultados[1]=resultset.getString("horasalida");

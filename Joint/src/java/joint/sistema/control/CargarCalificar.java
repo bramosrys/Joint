@@ -1,42 +1,40 @@
 package joint.sistema.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import joint.sistema.gestion.GestionadorCalificacion;
+import joint.sistema.gestion.GestionadorTrabajador;
 import joint.sistema.principal.Trabajador;
-import joint.sistema.principal.Viaje;
 
-public class CargarFormularioCalificar extends HttpServlet {
-    
+public class CargarCalificar extends HttpServlet {
+    private GestionadorTrabajador gestionadorT;
+    private Trabajador trabajador;
+
+    private void iniciarGestionTrabajador(int noEmpleado){
+        trabajador=new Trabajador(noEmpleado);
+        gestionadorT = new GestionadorTrabajador(trabajador);
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession sesion = request.getSession();
-        int idTrabajador =(Integer)sesion.getAttribute("idTrabajador");
-        Trabajador t=new Trabajador();
-        t.setIdTrabajador(idTrabajador);
-        GestionadorCalificacion gc=new GestionadorCalificacion();
-        /* obtener id de los viajes y viajes sin calificar*/
-            ArrayList idViajes; 
-            idViajes=(ArrayList)gc.getViajesNoCalificadosTrabajador(t);
-            ArrayList viajes= new ArrayList();
-            int i=0;
-            while(i<idViajes.size()){
-               int idviaje=Integer.parseInt(idViajes.get(i++).toString());
-               Viaje viaje=new Viaje();
-               viaje=gc.getInfoViajeNoCalificado(idviaje, idTrabajador);
-               viajes.add(viaje);
-            }
-        /***********************************************************/    
-        request.setAttribute("viajes", viajes);//los viajes ya incluyen el id de su calificacion
-        request.getRequestDispatcher("sistema/vista/accion/acciones/General/formularioCalificarViaje.jsp").forward(request, response);
+        if(sesion.getAttribute("noEmpleado")!=null){
+            int noEmpleado=Integer.parseInt((String)sesion.getAttribute("noEmpleado"));
+            iniciarGestionTrabajador(noEmpleado);
+            ArrayList tiposCalificaciones; 
+            tiposCalificaciones=(ArrayList)gestionadorT.getTipoCalificacionesDisponibles(trabajador);
+            request.setAttribute("tiposCalificaciones", tiposCalificaciones);
+            request.getRequestDispatcher("sistema/vista/accion/calificar.jsp").forward(request, response); 
+        }else{
+            response.sendRedirect("error.jsp");
+        }
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

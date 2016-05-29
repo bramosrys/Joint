@@ -12,7 +12,7 @@ function accion(str){
         document.location=url;
     }
     if(accion==="Calificar"){
-        var url ="CargarFormularioCalificar";
+        var url ="CargarCalificar";
         document.location=url;
     }
 }

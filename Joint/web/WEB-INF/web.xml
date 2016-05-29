@@ -61,8 +61,8 @@
         <servlet-class>joint.sistema.accion.ModificarTrabajador</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CargarFormularioCalificar</servlet-name>
-        <servlet-class>joint.sistema.control.CargarFormularioCalificar</servlet-class>
+        <servlet-name>CargarCalificar</servlet-name>
+        <servlet-class>joint.sistema.control.CargarCalificar</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuscarOperador</servlet-name>
@@ -83,6 +83,10 @@
     <servlet>
         <servlet-name>FinalizarViaje</servlet-name>
         <servlet-class>joint.sistema.accion.FinalizarViaje</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CargarFormularioCalificar</servlet-name>
+        <servlet-class>joint.sistema.control.CargarFormularioCalificar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
@@ -145,8 +149,8 @@
         <url-pattern>/ModificarTrabajador</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CargarFormularioCalificar</servlet-name>
-        <url-pattern>/CargarFormularioCalificar</url-pattern>
+        <servlet-name>CargarCalificar</servlet-name>
+        <url-pattern>/CargarCalificar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BuscarOperador</servlet-name>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>FinalizarViaje</servlet-name>
         <url-pattern>/FinalizarViaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CargarFormularioCalificar</servlet-name>
+        <url-pattern>/CargarFormularioCalificar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

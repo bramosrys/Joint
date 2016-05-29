@@ -14,7 +14,20 @@ public class Viaje {
     private String horaLlegada;
     private Trabajador chofer;
     private Trabajador despachador;
+    private int idcalificacion;
 
+
+    public Viaje(){
+        this.idViaje=0;
+        this.direccion=null;
+        this.fechaSalida="";
+        this.fechaLlegada="";
+        this.kilometraje=0;
+        this.horaSalida="";
+        this.horaLlegada="";
+        this.chofer=null;
+        this.despachador=null;
+    }
     public Viaje(int idViaje,Direccion direccion, String fechaSalida, String fechaLlegada, int kilometraje, String horaSalida, String horaLlegada, Trabajador chofer, Trabajador despachador) {
         this.direccion = direccion;
         this.fechaSalida = fechaSalida;
@@ -55,7 +68,13 @@ public class Viaje {
     public int getIdViaje() {
         return idViaje;
     }
+    public int getCalificacion() {
+        return idcalificacion;
+    }
 
+    public void setCalificacion(int calificacion) {
+        this.idcalificacion = calificacion;
+    }
     public void setIdViaje(int idViaje) {
         this.idViaje = idViaje;
     }
