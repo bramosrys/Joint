@@ -5,6 +5,7 @@ package joint.sistema.principal;
  * @author jdiaz
  */
 public class Viaje {
+    private int idViaje;
     private Direccion direccion;
     private String fechaSalida;
     private String fechaLlegada;
@@ -14,6 +15,17 @@ public class Viaje {
     private Trabajador chofer;
     private Trabajador despachador;
 
+    public Viaje(int idViaje,Direccion direccion, String fechaSalida, String fechaLlegada, int kilometraje, String horaSalida, String horaLlegada, Trabajador chofer, Trabajador despachador) {
+        this.direccion = direccion;
+        this.fechaSalida = fechaSalida;
+        this.fechaLlegada = fechaLlegada;
+        this.kilometraje = kilometraje;
+        this.horaSalida = horaSalida;
+        this.horaLlegada = horaLlegada;
+        this.chofer = chofer;
+        this.despachador = despachador;
+        this.idViaje=idViaje;
+    }
     public Viaje(Direccion direccion, String fechaSalida, String fechaLlegada, int kilometraje, String horaSalida, String horaLlegada, Trabajador chofer, Trabajador despachador) {
         this.direccion = direccion;
         this.fechaSalida = fechaSalida;
@@ -31,7 +43,16 @@ public class Viaje {
         this.chofer = chofer;
         this.despachador = despachador;
     }
-    
+    public Viaje(int idViaje) {
+        this.idViaje=idViaje;
+    }
+    public int getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(int idViaje) {
+        this.idViaje = idViaje;
+    }
     
     public Direccion getDireccion() {
         return direccion;

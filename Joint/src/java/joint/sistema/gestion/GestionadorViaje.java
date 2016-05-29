@@ -42,8 +42,43 @@ public class GestionadorViaje extends Gestionador{
             Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //********************Verificadores*************************************************
+    public boolean existeViaje(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select * from viaje where idViaje ="+viaje.getIdViaje()+";");
+            if(resultset.next()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar existencia de viaje" + ex);
+            return false;
+        }
+    }
+    public boolean viajeFinalizado(){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select finalizado from viaje where idViaje ="+viaje.getIdViaje()+";");
+            if(resultset.next()){
+                if(resultset.getString("finalizado").equals("true")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar existencia de viaje" + ex);
+            return false;
+        }
+    }
+    //***************************termina Verificadores*****************************
     //*****************************************************Registradores************************************************
     public int crearViaje(Viaje v){
+        int idviaje;
         try {
             //direccion
             statement.execute("INSERT INTO direccion " +
@@ -69,7 +104,7 @@ public class GestionadorViaje extends Gestionador{
                     + "" + v.getChofer().getIdTrabajador() + ","
                     + "" + v.getDespachador().getIdTrabajador() + ");" );
                 //parte calificacion
-    int idviaje=-1;
+    idviaje=-1;
                 resultset =  statement.executeQuery("SELECT last_insert_id() as idViaje;");
                 if(resultset.next()){
                     idviaje=Integer.parseInt(resultset.getString("idViaje"));
@@ -106,8 +141,9 @@ public class GestionadorViaje extends Gestionador{
                         + "" + idviaje + ");" );
                     }
                 }
+            return idviaje;
             }
-            return 1;
+            return -1;
         } catch (SQLException ex) {
             System.out.println("Error en crear nuevo trabajador"+ ex);
             return -1;

@@ -16,7 +16,7 @@
             out.println("<strong>Correcto</strong> El registro se llevo a cabo correctamente");
             out.println("</div>");
             out.println("<div class='alert alert-info'>");
-            out.println("<strong>El viaje se ha creado con el ID"+request.getAttribute("idViaje")+"</strong>");
+            out.println("El viaje se ha creado con el ID <strong>"+request.getAttribute("idViaje")+"</strong>");
             out.println("</div>");
         }
         

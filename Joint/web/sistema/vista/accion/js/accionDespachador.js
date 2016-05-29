@@ -20,7 +20,7 @@ function accion(str){
         conexion.send();
     }
     if(accion==="FinalizarViaje"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioFinalizarViaje.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/finalizarViaje.jsp",true);
         conexion.send();
     }
     if(accion==="ModificarViaje"){
@@ -88,6 +88,26 @@ function buscarOperador(str){
         conexion.send();
     }
 }
+function buscarViaje(str){
+    var idViaje=str;
+    if(idViaje.lenght==0){
+        
+    }else{
+        var conexion;
+        if (window.XMLHttpRequest){
+            conexion=new XMLHttpRequest();
+        }else{
+            conexion=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        conexion.onreadystatechange=function(){
+            if (conexion.readyState===4 && conexion.status===200){
+                document.getElementById("respuestaViaje").innerHTML=conexion.responseText;
+            }
+        }
+        conexion.open("POST","../../../BuscarViaje?idViaje="+idViaje,true);
+        conexion.send();
+    }
+}
 function mostrarFormularioCrearViaje(){
     var conexion;
         if (window.XMLHttpRequest){
@@ -101,6 +121,21 @@ function mostrarFormularioCrearViaje(){
             }
         }
         conexion.open("POST","/Joint/sistema/vista/accion/acciones/despachador/formularioCrearViaje.jsp",true);
+        conexion.send();
+}
+function mostrarFormularioFinalizarViaje(){
+    var conexion;
+        if (window.XMLHttpRequest){
+            conexion=new XMLHttpRequest();
+        }else{
+            conexion=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        conexion.onreadystatechange=function(){
+            if (conexion.readyState===4 && conexion.status===200){
+                document.getElementById("formularioCrearViaje").innerHTML=conexion.responseText;
+            }
+        }
+        conexion.open("POST","../../../CargarFormularioFinalizarViaje",true);
         conexion.send();
 }
 function crearViaje(){
