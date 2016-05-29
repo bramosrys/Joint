@@ -1,11 +1,11 @@
 package joint.sistema.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import joint.sistema.gestion.GestionadorTrabajador;
 import joint.sistema.gestion.GestionadorViaje;
 import joint.sistema.principal.Viaje;
 
@@ -24,7 +24,21 @@ public class CargarFormularioFinalizarViaje extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        if(request.getParameter("idViaje")!=null){
+            int idViaje=Integer.parseInt(request.getParameter("idViaje"));
+            iniciarGestionViaje(idViaje);
+            String infoViaje[];
+            infoViaje=gviaje.getInfoViajeNoFinalizado(viaje);
+            String fechaSalida=infoViaje[0];
+            String horaSalida=infoViaje[1];
+            int idOperador=Integer.parseInt(infoViaje[2]);
+            GestionadorTrabajador gt=new GestionadorTrabajador();
+            String nombreOperador=gt.getNombre(idOperador);
+            request.setAttribute("fechaSalida", fechaSalida);
+            request.setAttribute("horaSalida", horaSalida);
+            request.setAttribute("operador", nombreOperador);
+            request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/formularioFinalizarViaje.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

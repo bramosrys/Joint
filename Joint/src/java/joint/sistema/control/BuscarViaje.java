@@ -5,7 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import joint.sistema.gestion.GestionadorViaje;
+import joint.sistema.principal.Trabajador;
 import joint.sistema.principal.Viaje;
 
 public class BuscarViaje extends HttpServlet {
@@ -22,7 +24,10 @@ private void iniciarGestionViaje(int idViaje){
         if(request.getParameter("idViaje")!=null){
             int idViaje=Integer.parseInt(request.getParameter("idViaje"));
             iniciarGestionViaje(idViaje);
-            if(gviaje.existeViaje() && gviaje.viajeFinalizado()==false){
+            HttpSession sesion = request.getSession();
+            Trabajador t=new Trabajador();
+            t.setIdTrabajador((Integer)sesion.getAttribute("idTrabajador"));
+            if(gviaje.existeViaje() && gviaje.viajeFinalizado()==false && gviaje.correspondeViaje(viaje, t)){
                 request.setAttribute("idViaje",idViaje);
                 request.getRequestDispatcher("sistema/vista/accion/acciones/despachador/respuestaBuscarViaje.jsp").forward(request, response);
             }else{

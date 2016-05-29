@@ -249,6 +249,21 @@ public class GestionadorTrabajador extends Gestionador{
             return null;
         }
     }
+    public String getNombre(int idTrabajador){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select nombre from trabajador where idTrabajador = "+idTrabajador+";");
+            if(resultset.next()){
+                return resultset.getString("nombre");
+            }else{
+                System.out.println("Error al obtener nombre");
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener nombre " +ex);
+            return null;
+        }
+    }
     public Trabajador getInformacionTrabajador(){
         try {
             resultset=null;

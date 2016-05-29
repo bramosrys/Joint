@@ -124,6 +124,7 @@ function mostrarFormularioCrearViaje(){
         conexion.send();
 }
 function mostrarFormularioFinalizarViaje(){
+    var idViaje=document.getElementById("idViaje").value;
     var conexion;
         if (window.XMLHttpRequest){
             conexion=new XMLHttpRequest();
@@ -132,10 +133,10 @@ function mostrarFormularioFinalizarViaje(){
         }
         conexion.onreadystatechange=function(){
             if (conexion.readyState===4 && conexion.status===200){
-                document.getElementById("formularioCrearViaje").innerHTML=conexion.responseText;
+                document.getElementById("formularioFinalizarViaje").innerHTML=conexion.responseText;
             }
         }
-        conexion.open("POST","../../../CargarFormularioFinalizarViaje",true);
+        conexion.open("POST","../../../CargarFormularioFinalizarViaje?idViaje="+idViaje,true);
         conexion.send();
 }
 function crearViaje(){

@@ -8,7 +8,7 @@
 <%
     if(request.getAttribute("error")!=null){
         out.println("<div class='alert alert-warning'>");
-        out.println("<strong>Atención!</strong> El Viaje no se ha encontrado o ya se encuentra finalizado");
+        out.println("<strong>Atención!</strong> El Viaje no se ha encontrado, no fue creado por usted o ya se encuentra finalizado");
         out.println("</div>");
     }else{
         if(request.getAttribute("idViaje")!=null){

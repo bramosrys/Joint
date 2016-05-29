@@ -42,6 +42,26 @@ public class GestionadorViaje extends Gestionador{
             Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /******************************getters****************************/
+    public String[] getInfoViajeNoFinalizado(Viaje v){ // devuelve fecha en el primer espacio despues la hora de salida y al ultimo el id del operador encargado
+        String [] resultados =new String[3];
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select fechasalida,horasalida,idchofer from viaje where idViaje ="+viaje.getIdViaje()+";");
+            if(resultset.next()){
+                resultados[0]=resultset.getString("fechasalida");
+                resultados[1]=resultset.getString("horasalida");
+                resultados[2]=resultset.getString("idchofer");
+                return resultados;
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar existencia de viaje" + ex);
+            return null;
+        }
+    }
+    //***********************************************************
     //********************Verificadores*************************************************
     public boolean existeViaje(){
         try {
@@ -72,6 +92,20 @@ public class GestionadorViaje extends Gestionador{
             }
         } catch (SQLException ex) {
             System.out.println("Error al comprobar existencia de viaje" + ex);
+            return false;
+        }
+    }
+    public boolean correspondeViaje(Viaje v,Trabajador t){
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select * from trabajadorviajecalificacion where idtrabajador="+t.getIdTrabajador()+" and idViaje ="+viaje.getIdViaje()+";");
+            if(resultset.next()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar correspondencia de viaje" + ex);
             return false;
         }
     }
