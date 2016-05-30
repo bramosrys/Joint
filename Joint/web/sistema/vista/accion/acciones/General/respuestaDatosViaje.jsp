@@ -18,7 +18,7 @@
             out.println("<h4 class='text-justify'>Hora de entrada: <strong>"+viaje[5]+"</strong></h4>");
             out.println("<h4 class='text-justify'>Operador: <strong>"+viaje[6]+"</strong></h4>");
             out.println("<h4 class='text-justify'>Despachador: <strong>"+viaje[7]+"</strong></h4>");
-            out.println("<input type='hidden' id='"+request.getAttribute("idCalificacion")+"'>");
+            out.println("<input type='hidden' value='"+request.getAttribute("idCalificacion")+"' id='idCalificacion'>");
         out.println("</div>");
         out.println("<div class='col-md-12'>");
         out.println("<br>");

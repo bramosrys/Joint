@@ -26,15 +26,20 @@ public class CargarFormularioCalificar extends HttpServlet {
             idViajes=(ArrayList)gc.getViajesNoCalificadosTrabajador(t);
             ArrayList viajes= new ArrayList();
             int i=0;
-            while(i<idViajes.size()){
-               int idviaje=Integer.parseInt(idViajes.get(i++).toString());
-               Viaje viaje=new Viaje();
-               viaje=gc.getInfoViajeNoCalificado(idviaje, idTrabajador);
-               viajes.add(viaje);
+            if(idViajes==null){//no hay que calificar
+               request.setAttribute("error", "vacio");//los viajes ya incluyen el id de su calificacion
+               request.getRequestDispatcher("sistema/vista/accion/acciones/General/formularioCalificarViaje.jsp").forward(request, response); 
+            }else{
+                while(i<idViajes.size()){
+                    int idviaje=Integer.parseInt(idViajes.get(i++).toString());
+                    Viaje viaje=new Viaje();
+                    viaje=gc.getInfoViajeNoCalificado(idviaje, idTrabajador);
+                    viajes.add(viaje);
+                }
+                request.setAttribute("viajes", viajes);//los viajes ya incluyen el id de su calificacion
+                request.getRequestDispatcher("sistema/vista/accion/acciones/General/formularioCalificarViaje.jsp").forward(request, response);
             }
-        /***********************************************************/    
-        request.setAttribute("viajes", viajes);//los viajes ya incluyen el id de su calificacion
-        request.getRequestDispatcher("sistema/vista/accion/acciones/General/formularioCalificarViaje.jsp").forward(request, response);
+        
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

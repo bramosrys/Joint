@@ -66,6 +66,9 @@ function setValorCalificacion(str){
     conexion.send();
 }
 function calificar(){
+    var puntuacion=document.getElementById("valorCalificacion").value;
+    var idCalificacion=document.getElementById("idCalificacion").value;
+    var comentarios=document.getElementById("comentarios").value;
     var conexion;
     if (window.XMLHttpRequest){
         conexion=new XMLHttpRequest();
@@ -77,7 +80,7 @@ function calificar(){
             document.getElementById("accion").innerHTML=conexion.responseText;
         }
     }
-    conexion.open("POST","Calificar",true);
+    conexion.open("POST","Calificar?puntuacion="+puntuacion+"&comentarios="+comentarios+"&idCalificacion="+idCalificacion,true);
     conexion.send();
 }
 /*********************************Termina Calificar*************************************/

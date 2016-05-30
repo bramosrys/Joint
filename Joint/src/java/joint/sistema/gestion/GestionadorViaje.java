@@ -187,18 +187,18 @@ public class GestionadorViaje extends Gestionador{
                 if(resultset.next()){
                     idviaje=Integer.parseInt(resultset.getString("idViaje"));
                     statement.execute("INSERT INTO calificacion " +
-                    "(calificado)" +
+                    "(idtipo,calificado)" +
                     "VALUES("
-                    + "'false');" );
+                    + "3,'false');" );
                 }
     int idcalificacionOperador=-1;
                 resultset =  statement.executeQuery("SELECT last_insert_id() as idCalificacion;");
                 if(resultset.next()){
                     idcalificacionOperador=Integer.parseInt(resultset.getString("idCalificacion"));
                     statement.execute("INSERT INTO calificacion " +
-                    "(calificado)" +
+                    "(idtipo,calificado)" +
                     "VALUES("
-                    + "'false');" );
+                    + "3,'false');" );
     int idcalificacionDespachador=-1;
                     resultset =  statement.executeQuery("SELECT last_insert_id() as idCalificacion;");
                     if(resultset.next()){

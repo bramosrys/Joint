@@ -147,5 +147,17 @@ public class GestionadorCalificacion extends Gestionador{
     /*****************************comprobadores**********************************/
     ///////////////////////////////////////////////////////////////////////////
     /**********************registradores***************************************/
+    public int CrearCalificacionViaje(Calificacion c){
+        try {         
+            String sentencia = "UPDATE calificacion SET fecha='"+c.getFecha()+"', valor="+c.getValor()+","
+                    + " comentario='"+c.getComentario()+"', calificado='true' WHERE idcalificacion="+c.getIdCalificacion()+";";
+            System.out.println(sentencia);
+            statement.executeUpdate(sentencia);
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("Error en creacion de calificacion de viaje" + ex);
+            return -1;
+        }
+    }
     /////////////////////////////////////////////////////////////////////////////
 }
