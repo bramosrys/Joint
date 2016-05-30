@@ -52,15 +52,9 @@
         </div>
         <div class="col-md-6">
             <h3 class="text-center">Calificar Viaje</h3><hr>
-            <div class="row">
-                <div class="col-md-12">
-                    
-                </div>
-                <div class="col-md-12">
-                        <label class="control-label">Comentarios</label>
-                        <textarea class="form-control " rows="3" style="resize:none"></textarea>     
-                </div>
-            </div>
+            <div class="col-md-12" id="formularioCalificar">
+                
+            </div>  
         </div>
     </div>
 </div>

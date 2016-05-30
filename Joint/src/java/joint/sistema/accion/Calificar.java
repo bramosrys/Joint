@@ -1,40 +1,32 @@
-package joint.sistema.control;
+package joint.sistema.accion;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.gestion.GestionadorCalificacion;
-import joint.sistema.gestion.GestionadorViaje;
-import joint.sistema.principal.Viaje;
 
 /**
  *
  * @author jdiaz
  */
-public class MostrarDatosViaje extends HttpServlet {
-private Viaje viaje;
-private GestionadorViaje gviaje;
-
-private void iniciarGestionViaje(int idViaje){
-    viaje=new Viaje(idViaje);
-    gviaje=new GestionadorViaje(viaje);
-}
+public class Calificar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(request.getParameter("idCalificacion")!=null){
-            int idCalificacion=Integer.parseInt(request.getParameter("idCalificacion"));
-            GestionadorCalificacion gc=new GestionadorCalificacion();
-            int idViaje=gc.getIDViajeCalificacion(idCalificacion);
-            iniciarGestionViaje(idViaje);
-            String viaje[]=gviaje.getInfoViajeFinalizado(this.viaje);
-            /*Cambiar los id de trabajador por su nombre*/
-            request.setAttribute("viaje",viaje);
-            request.setAttribute("idCalificacion", idCalificacion);
-            request.getRequestDispatcher("sistema/vista/accion/acciones/General/respuestaDatosViaje.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Calificar</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Calificar at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

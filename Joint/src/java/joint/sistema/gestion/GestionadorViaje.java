@@ -61,22 +61,23 @@ public class GestionadorViaje extends Gestionador{
             return null;
         }
     }
-    public String[] getInfoViajeFinalizado(Viaje v){ // devuelve fecha en el primer espacio despues la hora de salida y al ultimo el id del operador encargado
-        String [] resultados =new String[7];
+    public String[] getInfoViajeFinalizado(Viaje v){
+        String [] resultados =new String[8];
         GestionadorTrabajador gt=new GestionadorTrabajador();
         try {
             resultset=null;
-            String sentencia ="select fechasalida,fechallegada,kilometraje,horaentrada,idlogistica,horasalida,idchofer from viaje where idViaje ="+viaje.getIdViaje()+";";
+            String sentencia ="select idViaje,fechasalida,fechallegada,kilometraje,horaentrada,idlogistica,horasalida,idchofer from viaje where idViaje ="+viaje.getIdViaje()+";";
             resultset=statement.executeQuery(sentencia);
             System.out.println(sentencia);
             if(resultset.next()){
-                resultados[0]=resultset.getString("fechasalida");
-                resultados[1]=resultset.getString("fechallegada");
-                resultados[2]=resultset.getString("kilometraje");
-                resultados[3]=resultset.getString("horasalida");
-                resultados[4]=resultset.getString("horaentrada");
-                resultados[5]=gt.getNombre(Integer.parseInt(resultset.getString("idchofer")));
-                resultados[6]=gt.getNombre(Integer.parseInt(resultset.getString("idlogistica")));
+                resultados[0]=resultset.getString("idviaje");
+                resultados[1]=resultset.getString("fechasalida");
+                resultados[2]=resultset.getString("fechallegada");
+                resultados[3]=resultset.getString("kilometraje");
+                resultados[4]=resultset.getString("horasalida");
+                resultados[5]=resultset.getString("horaentrada");
+                resultados[6]=gt.getNombre(Integer.parseInt(resultset.getString("idchofer")));
+                resultados[7]=gt.getNombre(Integer.parseInt(resultset.getString("idlogistica")));
                 return resultados;
             }else{
                 return null;
