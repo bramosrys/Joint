@@ -139,7 +139,6 @@ public class GestionadorTrabajador extends Gestionador{
             String sentencia="select tc.nombretipocalificacion from tipocalificacion tc, tipocalificacioncargo tcc, "
                     + "cargo c, trabajador t where t.idcargo=c.idcargo and c.idcargo=tcc.idcargo and tcc.idtipocalificacion=tc.idtipocalificacion"
                     + " and t.noEmpleado="+t.getNoEmpleado()+";";
-            System.out.println(sentencia);
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){
                 tiposCalificaciones.add(resultset.getString("nombretipocalificacion"));

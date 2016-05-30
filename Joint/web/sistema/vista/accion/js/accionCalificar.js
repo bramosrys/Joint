@@ -34,5 +34,23 @@ function elegirCalificacion(str){
         conexion.send();
     }
 }
+
 /*********************************Termina Calificar*************************************/
 /****************************viaje***************************************/
+function mostrarDatosViaje(str){
+    console.log(str);
+    var idCalificacion=str;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("datosviaje").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","MostrarDatosViaje?idCalificacion="+idCalificacion,true);
+    conexion.send();
+}

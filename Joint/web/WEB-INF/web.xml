@@ -88,6 +88,10 @@
         <servlet-name>CargarFormularioCalificar</servlet-name>
         <servlet-class>joint.sistema.control.CargarFormularioCalificar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MostrarDatosViaje</servlet-name>
+        <servlet-class>joint.sistema.control.MostrarDatosViaje</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>CargarFormularioCalificar</servlet-name>
         <url-pattern>/CargarFormularioCalificar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarDatosViaje</servlet-name>
+        <url-pattern>/MostrarDatosViaje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

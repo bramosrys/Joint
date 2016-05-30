@@ -51,7 +51,7 @@ public class GestionadorCalificacion extends Gestionador{
         try {
             resultset=null;
             String sentencia="select v.idviaje from viaje v, trabajadorviajecalificacion tvc, calificacion c "
-                    + "where tvc.idtrabajador="+t.getIdTrabajador()+" and tvc.idviaje=v.idviaje and tvc.idcalificacion=c.idcalificacion and c.calificado='false';";
+                    + "where tvc.idtrabajador="+t.getIdTrabajador()+" and tvc.idviaje=v.idviaje and tvc.idcalificacion=c.idcalificacion and v.finalizado='true' and c.calificado='false';";
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){
                 idViajes.add(resultset.getString("idviaje"));
@@ -71,16 +71,20 @@ public class GestionadorCalificacion extends Gestionador{
     public Viaje getInfoViajeNoCalificado(int idViaje, int idTrabajador){
         try {
             resultset=null;
-            resultset=statement.executeQuery("select fechasalida,horasalida,idchofer from viaje where idViaje ="+idViaje+";");
+            resultset=statement.executeQuery("select fechasalida,fechallegada,idchofer,idlogistica from viaje where idViaje ="+idViaje+";");
             if(resultset.next()){
                 Viaje v=new Viaje();
                 v.setFechaSalida(resultset.getString("fechasalida"));
-                v.setHoraSalida(resultset.getString("horasalida"));
+                v.setFechaLlegada(resultset.getString("fechallegada"));
                 int idChofer=Integer.parseInt(resultset.getString("idchofer"));
+                int idLogistica=Integer.parseInt(resultset.getString("idlogistica"));
                 GestionadorTrabajador gt=new GestionadorTrabajador();
-                Trabajador t=new Trabajador();
-                t.setNombre(gt.getNombre(idChofer));
-                v.setChofer(t);
+                Trabajador tO=new Trabajador();
+                Trabajador tL=new Trabajador();
+                tO.setNombre(gt.getNombre(idChofer));
+                v.setChofer(tO);
+                tL.setNombre(gt.getNombre(idLogistica));
+                v.setDespachador(tL);
                 v.setCalificacion(getIDCalificacionViaje(idViaje,idTrabajador));
                 return v;
             }else{
@@ -88,6 +92,24 @@ public class GestionadorCalificacion extends Gestionador{
             }
         } catch (SQLException ex) {
             System.out.println("Error al obtener info de viaje" + ex);
+            return null;
+        }
+    }
+    public String[] getInfoViajeBasica(int idViaje){ // devuelve fecha en el primer espacio despues la hora de salida y al ultimo el id del operador encargado
+        String [] resultados =new String[3];
+        try {
+            resultset=null;
+            resultset=statement.executeQuery("select fechasalida,horasalida,idchofer from viaje where idViaje ="+idViaje+";");
+            if(resultset.next()){
+                resultados[0]=resultset.getString("fechasalida");
+                resultados[1]=resultset.getString("horasalida");
+                resultados[2]=resultset.getString("idchofer");
+                return resultados;
+            }else{
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar existencia de viaje" + ex);
             return null;
         }
     }
@@ -103,6 +125,21 @@ public class GestionadorCalificacion extends Gestionador{
             }
         } catch (SQLException ex) {
             System.out.println("Error al obtener id de calificacion de viaje" + ex);
+            return -1;
+        }
+    }
+    public int getIDViajeCalificacion(int idCalificacion){ 
+        try {
+            resultset=null;
+            String sentencia="select idviaje from trabajadorviajecalificacion where idCalificacion="+idCalificacion+";";
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){
+                return Integer.parseInt(resultset.getString("idviaje"));
+            }else{
+                return -1;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener id de viaje por calificacion" + ex);
             return -1;
         }
     }

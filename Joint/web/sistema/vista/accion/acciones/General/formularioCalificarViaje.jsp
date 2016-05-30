@@ -30,8 +30,8 @@
                           while(i<viajes.size()){
                                Viaje v=new Viaje();
                                v=(Viaje)viajes.get(i++);
-                               out.println("<h5 class='text-center' value='"+v.getCalificacion()+"' onclick='mostrarFormularioCalificarViaje(this.value)'>");
-                                out.println("Hora de salida: <strong>"+v.getFechaSalida()+"</strong> Hora de Salida: <strong>"+v.getHoraSalida()+"</strong> Operador: <strong>"+v.getChofer().getNombre()+"</strong>");
+                               out.println("<h5 class='text-center viaje-calificar' id='"+v.getCalificacion()+"' onclick='mostrarDatosViaje(this.id)'>");
+                                out.println("Fecha de salida: <strong>"+v.getFechaSalida()+"</strong> Fecha de llegada: <strong>"+v.getFechaLlegada()+"</strong> Operador: <strong>"+v.getChofer().getNombre()+"</strong> Despachador: <strong>"+v.getDespachador().getNombre()+"</strong>");
                                out.println("</h5>");
                           }
                       }else{
@@ -46,6 +46,9 @@
     <div class="row">
         <div class="col-md-6">
             <h3 class="text-center">Datos del viaje</h3><hr>
+            <div class="col-md-12" id="datosviaje">
+                
+            </div>
         </div>
         <div class="col-md-6">
             <h3 class="text-center">Calificar Viaje</h3><hr>
