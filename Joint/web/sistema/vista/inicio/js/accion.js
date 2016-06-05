@@ -19,6 +19,10 @@ function accion(str){
         var url ="/Joint/sistema/vista/accion/administrarAvisos.jsp";
         document.location=url;
     }
+    if(accion==="Estadistica"){
+        var url ="/Joint/sistema/vista/accion/estadisticas.jsp";
+        document.location=url;
+    }
     if(accion==="Publicacion"){
         var url ="/Joint/sistema/vista/accion/administrarReportes.jsp";
         document.location=url;
