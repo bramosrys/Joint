@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import joint.sistema.principal.Calificacion;
@@ -153,6 +155,18 @@ public class GestionadorCalificacion extends Gestionador{
                     + " comentario='"+c.getComentario()+"', calificado='true' WHERE idcalificacion="+c.getIdCalificacion()+";";
             System.out.println(sentencia);
             statement.executeUpdate(sentencia);
+            Calendar fecha = new GregorianCalendar();
+            int anio = fecha.get(Calendar.YEAR);
+            int mes = fecha.get(Calendar.MONTH);
+            int dia = fecha.get(Calendar.DAY_OF_MONTH);
+            statement.execute("INSERT INTO fechacalificacion " +
+            "(idcalificacion,anio,mes,dia)" +
+            "VALUES("
+            + "" + c.getIdCalificacion() + ","
+            + "" + anio + ","
+            + "" + mes+1 + ","
+            + "" + dia + ");" );
+            /////////////////////////////////////////////////////////////////////
             return 1;
         } catch (SQLException ex) {
             System.out.println("Error en creacion de calificacion de viaje" + ex);

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import joint.sistema.principal.Trabajador;
 
 /**
  *
@@ -27,25 +26,53 @@ public class GestionEstadistica extends Gestionador{
             Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public Collection getMejorDesempenioMes(int mes){ 
+    public Collection getMejorDesempenioGeneralMes(int mes, int anio){ 
         Collection idtrabajadores;
         ArrayList resultados = new ArrayList();
         try {
             resultset=null;
-            String sentencia="select t.idtrabajador from trabajador t, ";
+            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc"
+                    + "where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and fc.idcalificacion=c.idcalificacion and"
+                    + " fc.anio="+anio+" and fc.mes="+mes+" c.valor >=4;";
+            System.out.println(sentencia);
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){
-                resultados.add(resultset.getString("idviaje"));
+                resultados.add(resultset.getString("idtrabajador"));
             }else{
                 return null;
             }
             while(resultset.next()){
-                resultados.add(resultset.getString("idviaje"));
+                resultados.add(resultset.getString("idtrabajador"));
             }
             idtrabajadores=resultados;
             return idtrabajadores;
         } catch (SQLException ex) {
             System.out.println("Error al obtener mejor desempeño" + ex);
+            return null;
+        }
+    }
+    public Collection getPeorDesempenioGeneralMes(int mes, int anio){ 
+        Collection idtrabajadores;
+        ArrayList resultados = new ArrayList();
+        try {
+            resultset=null;
+            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc"
+                    + "where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and fc.idcalificacion=c.idcalificacion and"
+                    + " fc.anio="+anio+" and fc.mes="+mes+" c.valor <=2;";
+            System.out.println(sentencia);
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){
+                resultados.add(resultset.getString("idtrabajador"));
+            }else{
+                return null;
+            }
+            while(resultset.next()){
+                resultados.add(resultset.getString("idtrabajador"));
+            }
+            idtrabajadores=resultados;
+            return idtrabajadores;
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener peor desempeño" + ex);
             return null;
         }
     }

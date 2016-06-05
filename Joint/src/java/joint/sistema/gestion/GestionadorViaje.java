@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import joint.sistema.principal.Calificacion;
@@ -232,6 +234,7 @@ public class GestionadorViaje extends Gestionador{
                     + "" + v.getChofer().getIdTrabajador() + ","
                     + "" + v.getDespachador().getIdTrabajador() + ");" );
                     ////////////////////////////////////////////////////////////////////////// 
+                    
                 }
             return idviaje;
             }

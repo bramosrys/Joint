@@ -148,17 +148,17 @@
         <h2 class='text-left'>¿Que desea obtener?</h2><hr>
         <div class="col-md-3 accion">
            <h3 class="text-center">Empleado del mes</h3>
-           <input type='hidden' value='HacerAviso' id='1'>
+           <input type='hidden' value='EmpleadoMes' id='1'>
            <img src='../../../recursos/imagenes/inicio/gerente/mejorDesempeño.png' name='1' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Mejor Desempeño</h3>
-          <input type='hidden' value='EditarAviso' id='2'>
+          <input type='hidden' value='MejorDesempenio' id='2'>
          <img src='../../../recursos/imagenes/inicio/gerente/empleado-del-mes.png' name='2' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
         <div class="col-md-3 accion">
           <h3 class="text-center">Peor Desempeño</h3>
-          <input type='hidden' value='EliminarAviso' id='3'>
+          <input type='hidden' value='PeorDesempenio' id='3'>
          <img src='../../../recursos/imagenes/inicio/gerente/peorDesempeño.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
       </div>

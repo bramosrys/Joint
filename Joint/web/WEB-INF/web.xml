@@ -96,6 +96,10 @@
         <servlet-name>Calificar</servlet-name>
         <servlet-class>joint.sistema.accion.Calificar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MejorDesempenio</servlet-name>
+        <servlet-class>joint.sistema.control.MejorDesempenio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>Calificar</servlet-name>
         <url-pattern>/Calificar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MejorDesempenio</servlet-name>
+        <url-pattern>/MejorDesempenio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
