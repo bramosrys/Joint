@@ -15,4 +15,12 @@ function accion(str){
         var url ="CargarCalificar";
         document.location=url;
     }
+    if(accion==="Aviso"){
+        var url ="/Joint/sistema/vista/accion/administrarAvisos.jsp";
+        document.location=url;
+    }
+    if(accion==="Publicacion"){
+        var url ="/Joint/sistema/vista/accion/administrarReportes.jsp";
+        document.location=url;
+    }
 }

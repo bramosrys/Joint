@@ -179,18 +179,18 @@
                 if(cargo.equals("Gerente")){
                     out.println("<div class='col-md-3 accion'>");
     			out.println("<h3 class='text-center'>Avisos</h3>");
-                        out.println("<input type='hidden' name='country' value='Calificar' id='2'>");
-    			out.println("<img src='recursos/imagenes/inicio/gerente/aviso.png' name='2' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
+                        out.println("<input type='hidden' name='country' value='Aviso' id='1'>");
+    			out.println("<img src='recursos/imagenes/inicio/gerente/aviso.png' name='1' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
                     out.println("</div>");
                     out.println("<div class='col-md-3 accion'>");
     			out.println("<h3 class='text-center'>Reportes</h3>");
-                        out.println("<input type='hidden' name='country' value='Calificar' id='2'>");
+                        out.println("<input type='hidden' name='country' value='Reporte' id='2'>");
     			out.println("<img src='recursos/imagenes/inicio/gerente/report.png' name='2' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
                     out.println("</div>");
                     out.println("<div class='col-md-3 accion'>");
     			out.println("<h3 class='text-center'>Calificar</h3>");
-                        out.println("<input type='hidden' name='country' value='Calificar' id='2'>");
-    			out.println("<img src='recursos/imagenes/inicio/gerente/calificar.png' name='2' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
+                        out.println("<input type='hidden' name='country' value='Calificar' id='3'>");
+    			out.println("<img src='recursos/imagenes/inicio/gerente/calificar.png' name='3' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
                     out.println("</div>");
                 }
             }else{
