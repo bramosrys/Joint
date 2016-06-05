@@ -41,7 +41,7 @@ public class CargarNuevoTrabajador extends HttpServlet {
         ResultSet cargos;
         cargos=gestionadorT.getCargos();
         request.setAttribute("cargos",conv.ResultSetToArray(cargos));
-        RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaRegistrarTrabajador.jsp");
+        RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/Administrador/respuestaRegistrarTrabajador.jsp");
         a.forward(request, response);
     }
 

@@ -41,7 +41,7 @@ public class GuardarPrimerInicio extends HttpServlet {
             int idTrabajador=gt.getIdTrabajador(t);
             GestionInterfaz gi=new GestionInterfaz();
             gi.registrarTerminoConfiguracionInicial(idTrabajador);
-            response.sendRedirect("/Joint/inicio.jsp");
+            request.getRequestDispatcher("CargarConfiguracionTrabajador").forward(request, response); 
         }
     }
 

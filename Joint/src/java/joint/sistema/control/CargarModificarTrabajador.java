@@ -54,7 +54,7 @@ public class CargarModificarTrabajador extends HttpServlet {
             request.setAttribute("fechaContratacion", c.quitarSaltos(trabajador.getFechaContratacion()));
             request.setAttribute("activo", trabajador.getActivo());
             request.setAttribute("cargos",conv.ResultSetToArray(cargos));
-            request.getRequestDispatcher("sistema/vista/accion/acciones/formularioModificarTrabajador.jsp").forward(request, response);
+            request.getRequestDispatcher("sistema/vista/accion/acciones//Administrador/formularioModificarTrabajador.jsp").forward(request, response);
         }
     }
 

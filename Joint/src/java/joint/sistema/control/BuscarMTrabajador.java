@@ -38,7 +38,7 @@ public class BuscarMTrabajador extends HttpServlet {
                 request.getRequestDispatcher("CargarModificarTrabajador").forward(request, response);
             }else{
                 request.setAttribute("existe", "false");
-                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/respuestaModificarTrabajador.jsp");
+                RequestDispatcher a = request.getRequestDispatcher("sistema/vista/accion/acciones/Administrador/respuestaModificarTrabajador.jsp");
                 a.forward(request, response);
 
             }

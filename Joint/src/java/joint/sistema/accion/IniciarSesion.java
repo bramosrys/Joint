@@ -80,7 +80,7 @@ public class IniciarSesion extends HttpServlet {
                         sesion.setAttribute("idTrabajador", idTrabajador);
                         String estado =gestionadorT.getEstadoInicial();
                             if(estado.equals("false")){
-                                request.getRequestDispatcher("/Joint/primerInicio.jsp").forward(request, response); 
+                                request.getRequestDispatcher("/primerInicio.jsp").forward(request, response); 
                             }else{
                                 request.getRequestDispatcher("CargarConfiguracionTrabajador").forward(request, response); 
                             }

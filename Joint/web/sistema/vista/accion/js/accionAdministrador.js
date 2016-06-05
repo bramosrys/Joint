@@ -20,11 +20,11 @@ function accion(str){
         conexion.send();
     }
     if(accion==="ModificarTrabajador"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/modificarTrabajador.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/Administrador/modificarTrabajador.jsp",true);
         conexion.send();
     }
     if(accion==="EliminarTrabajador"){
-        conexion.open("POST","/Joint/sistema/vista/accion/acciones/formularioEliminarTrabajador.jsp",true);
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/Administrador/formularioEliminarTrabajador.jsp",true);
         conexion.send();
     }
 }
