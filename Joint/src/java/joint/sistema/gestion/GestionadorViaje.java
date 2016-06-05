@@ -218,6 +218,20 @@ public class GestionadorViaje extends Gestionador{
                         + "" + idcalificacionDespachador + ","
                         + "" + idviaje + ");" );
                     }
+                    /////////////////////////////////////////////////////////////////////////
+                    statement.execute("INSERT INTO trabajadorcalificacion " +
+                    "(idcalificacion,idcalificador,idcalificado)" +
+                    "VALUES("
+                    + "" + idcalificacionOperador + ","
+                    + "" + v.getDespachador().getIdTrabajador() + ","
+                    + "" + v.getChofer().getIdTrabajador() + ");" );
+                    statement.execute("INSERT INTO trabajadorcalificacion " +
+                    "(idcalificacion,idcalificador,idcalificado)" +
+                    "VALUES("
+                    + "" + idcalificacionDespachador + ","
+                    + "" + v.getChofer().getIdTrabajador() + ","
+                    + "" + v.getDespachador().getIdTrabajador() + ");" );
+                    ////////////////////////////////////////////////////////////////////////// 
                 }
             return idviaje;
             }
