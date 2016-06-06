@@ -287,8 +287,10 @@ public class GestionadorTrabajador extends Gestionador{
     public Trabajador getInformacionTrabajador(){
         try {
             resultset=null;
-            resultset=statement.executeQuery("select idTrabajador,noEmpleado,registro,nombre,"
-                    + "fechaNacimiento,edad,correo,fechaContratacion,activo from trabajador where noempleado = "+trabajador.getNoEmpleado()+";");
+            String sentencia="select idTrabajador,noEmpleado,registro,nombre,"
+                    + "fechaNacimiento,edad,correo,fechaContratacion,activo from trabajador where noempleado = "+trabajador.getNoEmpleado()+";";
+            resultset=statement.executeQuery(sentencia);
+            System.out.println(sentencia);
             if(resultset.next()){
                 this.trabajador.setIdTrabajador(Integer.parseInt(resultset.getString("idTrabajador")));
                 this.trabajador.setNoEmpleado(Integer.parseInt(resultset.getString("noEmpleado")));

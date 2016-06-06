@@ -12,10 +12,10 @@
     if(request.getAttribute("fechaContratacion")!=null){
         fechaContratacion=(String)request.getAttribute("fechaContratacion");
     }
-    if(request.getAttribute("fechaContratacion")!=null){
+    if(request.getAttribute("cargo")!=null){
         cargo=(String)request.getAttribute("cargo");
     }
-    if(request.getAttribute("fechaContratacion")!=null){
+    if(request.getAttribute("noEmpleado")!=null){
         noEmp=(String)request.getAttribute("noEmpleado");
     }
 %>
