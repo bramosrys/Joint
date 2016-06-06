@@ -37,11 +37,14 @@
         </div>
         <h4 class="text-center">Contenido</h4><hr>
         <div class="col-md-12">
-            <textarea class="form-control " rows="5" style="resize:none" id="publicacion"></textarea> 
+            <textarea class="form-control " rows="5" style="resize:none" id="contenido"></textarea> 
         </div>
     </div>
     <div class="col-md-12">
         <br>
-        <button type="button" name="CrearPublicacion" class="btn btn-primary btn-block" onclick="crearPublicacion()">Crear Aviso</button>
+        <button type="button" name="CrearPublicacion" class="btn btn-primary btn-block" onclick="crearAviso()">Crear Aviso</button>
+    </div>
+    <div class="col-md-12" id="respuestaaviso">
+        
     </div>
 </div>

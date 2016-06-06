@@ -101,4 +101,22 @@ function mostrarCalificacionIndividual(){
     conexion.open("POST","../../../CalificacionIndividual?idTrabajador="+idTrabajador,true);
     conexion.send();
 }
+function crearAviso(){
+    console.log("entre a crear aviso");
+    var titulo=document.getElementById("titulo").value;
+    var contenido=document.getElementById("contenido").value;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("respuestaaviso").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../CrearAviso?titulo="+titulo+"&contenido="+contenido,true);
+    conexion.send();
+}
 

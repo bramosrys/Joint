@@ -49,6 +49,20 @@ public class GestionadorPublicacion extends Gestionador{
     
     //***************************termina Verificadores*****************************
     //*****************************************************Registradores************************************************
-    
+    public int nuevoAviso(Publicacion p,Trabajador t){
+        try {
+            System.out.println("entre a crear publicacion");
+            statement.execute("INSERT INTO publicacion " +
+                    "(idTrabajador,titulo,contenido)" +
+                    "VALUES("
+                    + "" + t.getIdTrabajador() + ","
+                    + "'" + p.getTitulo() + "',"
+                    + "'" + p.getContenido() + "');" );
+            return 1;
+        } catch (SQLException ex) {
+            System.out.println("Error en crear nuevo aviso"+ ex);
+            return -1;
+        }
+    }
     //*****************************************************Termina Registradores************************************************
 }

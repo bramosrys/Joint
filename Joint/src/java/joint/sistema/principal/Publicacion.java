@@ -35,4 +35,8 @@ public class Publicacion {
         this.contenido = contenido;
         this.urlImagen = urlImagen;
     }
+    public Publicacion(String titulo, String contenido) {
+        this.titulo = titulo;
+        this.contenido = contenido;
+    }
 }

@@ -112,6 +112,10 @@
         <servlet-name>peorDesempenio</servlet-name>
         <servlet-class>joint.sistema.control.peorDesempenio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CrearAviso</servlet-name>
+        <servlet-class>joint.sistema.accion.CrearAviso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -223,6 +227,10 @@
     <servlet-mapping>
         <servlet-name>peorDesempenio</servlet-name>
         <url-pattern>/peorDesempenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearAviso</servlet-name>
+        <url-pattern>/CrearAviso</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
