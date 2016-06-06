@@ -13,11 +13,11 @@
     }else{
         if(request.getAttribute("idOperador")!=null){
         out.println("<div class='col-md-8 alert alert-success'>");
-            out.println("<input type='hidden' value='"+request.getAttribute("idOperador")+"' id='idOperador'/>");
+            out.println("<input type='hidden' value='"+request.getAttribute("idOperador")+"' id='idTrabajador'/>");
             out.println("<strong>Empleado Encontrado </strong> Complete el formulario");
         out.println("</div>");
         out.println("<div class='col-md-4'>");
-            out.println("<button type='button' class='btn btn-success btn-block center-btn' onclick=mostrarCalificacionIndividual()>Ver Formulario</button>");
+            out.println("<button type='button' class='btn btn-success btn-block center-btn' onclick=mostrarCalificacionIndividual()>Ver Calificación</button>");
         out.println("</div>");
         }
         

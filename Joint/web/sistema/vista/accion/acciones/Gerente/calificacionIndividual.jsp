@@ -11,16 +11,12 @@
 <hr>
 <div class="row" id="accion">
     <div class="col-md-12">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="form-group has-feedback has-feedback-left">
                 <label class="control-label">Número de empleado del operador</label>
                 <input type="text" class="form-control" placeholder="Introdusca el número de empleado del operador" id="noEmpleadoOperador" onkeyup="buscarEmpleado(this.value)"/>
                 <i class="form-control-feedback glyphicon glyphicon-user"></i>
             </div>
-        </div>
-        <div class="col-md-4">
-            <br>
-            <button type="button" class="btn btn-default btn-block" onclick="obtenerCalificacioIndividual(this.name)">Buscar</button>
         </div>
     </div>
     <div class="col-md-12" id="respuestaBuscarEmpleado"></div>

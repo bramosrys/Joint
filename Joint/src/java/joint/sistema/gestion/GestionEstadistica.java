@@ -26,6 +26,31 @@ public class GestionEstadistica extends Gestionador{
             Logger.getLogger(GestionadorTrabajador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public int getPromedioTrabajador(int idTrabajador){ 
+        try {
+            resultset=null;
+            int promedio=0;
+            int nocalif=0;
+            String sentencia="select c.valor from calificacion c, trabajadorcalificacion tc, trabajador t "
+                    + "where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and c.calificado='true' and t.idtrabajador="+idTrabajador+";";
+            System.out.println(sentencia);
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){//inicial, primer valor
+                promedio=Integer.parseInt(resultset.getString("valor"));
+                nocalif++;
+                while(resultset.next()){
+                    promedio=Integer.parseInt(resultset.getString("valor"));
+                    nocalif++;
+                }
+                return promedio/nocalif;
+            }else{
+                return 0;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener promedio de empleado" + ex);
+            return -1;
+        }
+    }
     public Collection getMejorDesempenioGeneralMes(int mes, int anio){ 
         Collection idtrabajadores;
         ArrayList resultados = new ArrayList();

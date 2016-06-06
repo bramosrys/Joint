@@ -85,4 +85,20 @@ function buscarEmpleado(str){
     conexion.open("POST","../../../BuscarETrabajador?noEmpleado="+noEmpleado,true);
     conexion.send();
 }
+function mostrarCalificacionIndividual(){
+    var idTrabajador=document.getElementById("idTrabajador").value;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("respuestaBuscarEmpleado").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../CalificacionIndividual?idTrabajador="+idTrabajador,true);
+    conexion.send();
+}
 
