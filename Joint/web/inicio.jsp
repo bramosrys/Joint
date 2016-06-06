@@ -192,11 +192,6 @@
                         out.println("<input type='hidden' name='country' value='Reporte' id='3'>");
     			out.println("<img src='recursos/imagenes/inicio/gerente/report.png' name='3' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
                     out.println("</div>");
-                    out.println("<div class='col-md-3 accion'>");
-    			out.println("<h3 class='text-center'>Calificar</h3>");
-                        out.println("<input type='hidden' name='country' value='Calificar' id='4'>");
-    			out.println("<img src='recursos/imagenes/inicio/gerente/calificar.png' name='4' class='img-responsive center-block img-action' onclick='accion(this.name)'>");
-                    out.println("</div>");
                 }
             }else{
                 response.sendRedirect("/Joint/error.jsp");

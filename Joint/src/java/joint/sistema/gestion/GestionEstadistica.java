@@ -31,9 +31,9 @@ public class GestionEstadistica extends Gestionador{
         ArrayList resultados = new ArrayList();
         try {
             resultset=null;
-            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc"
+            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc "
                     + "where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and fc.idcalificacion=c.idcalificacion and"
-                    + " fc.anio="+anio+" and fc.mes="+mes+" c.valor >=4;";
+                    + " fc.anio="+anio+" and fc.mes="+mes+" and c.valor >=4;";
             System.out.println(sentencia);
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){
@@ -56,9 +56,59 @@ public class GestionEstadistica extends Gestionador{
         ArrayList resultados = new ArrayList();
         try {
             resultset=null;
-            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc"
+            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc "
                     + "where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and fc.idcalificacion=c.idcalificacion and"
-                    + " fc.anio="+anio+" and fc.mes="+mes+" c.valor <=2;";
+                    + " fc.anio="+anio+" and fc.mes="+mes+"  and c.valor <=2;";
+            System.out.println(sentencia);
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){
+                resultados.add(resultset.getString("idtrabajador"));
+            }else{
+                return null;
+            }
+            while(resultset.next()){
+                resultados.add(resultset.getString("idtrabajador"));
+            }
+            idtrabajadores=resultados;
+            return idtrabajadores;
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener peor desempeño" + ex);
+            return null;
+        }
+    }
+    public Collection getMejorDesempenioGeneralAnual(int anio){ 
+        Collection idtrabajadores;
+        ArrayList resultados = new ArrayList();
+        try {
+            resultset=null;
+            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc "
+                    + "where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and fc.idcalificacion=c.idcalificacion and"
+                    + " fc.anio="+anio+" and c.valor >=4;";
+            System.out.println(sentencia);
+            resultset=statement.executeQuery(sentencia);
+            if(resultset.next()){
+                resultados.add(resultset.getString("idtrabajador"));
+            }else{
+                return null;
+            }
+            while(resultset.next()){
+                resultados.add(resultset.getString("idtrabajador"));
+            }
+            idtrabajadores=resultados;
+            return idtrabajadores;
+        } catch (SQLException ex) {
+            System.out.println("Error al obtener mejor desempeño" + ex);
+            return null;
+        }
+    }
+    public Collection getPeorDesempenioGeneralAnual(int anio){ 
+        Collection idtrabajadores;
+        ArrayList resultados = new ArrayList();
+        try {
+            resultset=null;
+            String sentencia="select t.idtrabajador from trabajador t, trabajadorcalificacion tc, calificacion c, fechacalificacion fc "
+                    + " where t.idtrabajador=tc.idcalificado and tc.idcalificacion=c.idcalificacion and fc.idcalificacion=c.idcalificacion and"
+                    + " fc.anio="+anio+" and  c.valor <=2;";
             System.out.println(sentencia);
             resultset=statement.executeQuery(sentencia);
             if(resultset.next()){

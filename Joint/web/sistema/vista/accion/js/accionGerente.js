@@ -35,6 +35,10 @@ function accion(str){
         conexion.open("POST","/Joint/sistema/vista/accion/acciones/Gerente/peorDesempenio.jsp",true);
         conexion.send();
     }
+    if(accion==="Individual"){
+        conexion.open("POST","/Joint/sistema/vista/accion/acciones/Gerente/calificacionIndividual.jsp",true);
+        conexion.send();
+    }
 }
 function regresar(str){
     var accion=str;
@@ -49,7 +53,7 @@ function regresar(str){
     }
 }
 function mejorDesempenio(){
-    var periodo=document.getElementById("periodo").value;;
+    var periodo=document.getElementById("periodo").value;
     var anio=document.getElementById("anio").value;;
     var conexion;
     if (window.XMLHttpRequest){
@@ -62,6 +66,23 @@ function mejorDesempenio(){
             document.getElementById("respuesta-desempenio").innerHTML=conexion.responseText;
         }
     }
-        conexion.open("POST","../../../obtenerMejorDesempenio",true);
-        conexion.send();
+    conexion.open("POST","../../../MejorDesempenio?anio="+anio+"&periodo="+periodo,true);
+    conexion.send();
 }
+function buscarEmpleado(str){
+    var noEmpleado=str;
+    var conexion;
+    if (window.XMLHttpRequest){
+        conexion=new XMLHttpRequest();
+    }else{
+        conexion=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    conexion.onreadystatechange=function(){
+        if (conexion.readyState===4 && conexion.status===200){
+            document.getElementById("respuestaBuscarEmpleado").innerHTML=conexion.responseText;
+        }
+    }
+    conexion.open("POST","../../../BuscarETrabajador?noEmpleado="+noEmpleado,true);
+    conexion.send();
+}
+

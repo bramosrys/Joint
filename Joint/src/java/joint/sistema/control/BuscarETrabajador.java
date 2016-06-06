@@ -7,47 +7,48 @@ package joint.sistema.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import joint.sistema.gestion.GestionEstadistica;
+import joint.sistema.gestion.GestionadorTrabajador;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class MejorDesempenio extends HttpServlet {
-    private GestionEstadistica ge;
-    private void iniciarGestionEstadistica(){
-        ge=new GestionEstadistica();
-    }
+public class BuscarETrabajador extends HttpServlet {
+    private GestionadorTrabajador gestionadorT;
+    private Trabajador trabajador;
+    private int noEmpleado;
+
+    private void iniciarGestionTrabajador(int noEmpleado){
+        trabajador=new Trabajador(noEmpleado);
+        gestionadorT = new GestionadorTrabajador(trabajador);
+    }   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(request.getParameter("periodo")!=null && request.getParameter("anio")!=null){
-            Calendar fecha = new GregorianCalendar();
-            int aniosistema = fecha.get(Calendar.YEAR);
-            int mes = (fecha.get(Calendar.MONTH))+1;
-            String periodo = request.getParameter("periodo");
-            int anio=Integer.parseInt(request.getParameter("anio"));
-            if(periodo.equals("Mensual")){
-                iniciarGestionEstadistica();
-                ArrayList idtrabajadores; 
-                idtrabajadores=(ArrayList)ge.getMejorDesempenioGeneralMes(mes, anio);
-                int i =0;
-                while(i<idtrabajadores.size()){
-                     System.out.println(idtrabajadores.get(i++).toString());
-                }
-                /*request.setAttribute("tiposCalificaciones", tiposCalificaciones);
-                request.getRequestDispatcher("sistema/vista/accion/calificar.jsp").forward(request, response);*/
-            }
-            if(periodo.equals("Anual")){
-                iniciarGestionEstadistica();
-                ge.getMejorDesempenioGeneralAnual(anio);
+        if(request.getParameter("noEmpleado")!=null){
+            noEmpleado = Integer.parseInt(request.getParameter("noEmpleado"));
+            iniciarGestionTrabajador(noEmpleado);
+            
+            if(gestionadorT.existeTrabajador()&&gestionadorT.estaRegistrado()&&gestionadorT.estaActivo()){
+               if(gestionadorT.esOperador()){
+                   int idOperador = gestionadorT.getIdTrabajador(trabajador);
+                   request.setAttribute("idOperador",idOperador);
+                   request.getRequestDispatcher("sistema/vista/accion/acciones/Gerente/respuestaBuscarOperador.jsp").forward(request, response);
+               }else{
+                    if(gestionadorT.esDespachador()){
+                        int idOperador = gestionadorT.getIdTrabajador(trabajador);
+                        request.setAttribute("idOperador",idOperador);
+                        request.getRequestDispatcher("sistema/vista/accion/acciones/Gerente/respuestaBuscarOperador.jsp").forward(request, response);
+                    }else{
+                       request.setAttribute("error","false");
+                       request.getRequestDispatcher("sistema/vista/accion/acciones/Gerente/respuestaBuscarOperador.jsp").forward(request, response);
+                    }
+               }
             }
         }
     }

@@ -10,7 +10,7 @@
         <h2 class="text-left">Hacer aviso</h2>
     </div>
     <div class="col-md-6">
-        <button type="button" name="AdministrarAviso" class="btn btn-primary pull-right regresar" onclick="regresar(this.name)">Regresar</button>
+        <button type="button" name="AdministrarAvisos" class="btn btn-primary pull-right regresar" onclick="regresar(this.name)">Regresar</button>
     </div>
 </div>
 <hr>

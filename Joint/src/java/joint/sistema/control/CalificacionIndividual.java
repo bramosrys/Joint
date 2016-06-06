@@ -1,55 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package joint.sistema.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import joint.sistema.gestion.GestionEstadistica;
+import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class MejorDesempenio extends HttpServlet {
+public class CalificacionIndividual extends HttpServlet {
     private GestionEstadistica ge;
+    private Trabajador t;
     private void iniciarGestionEstadistica(){
         ge=new GestionEstadistica();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(request.getParameter("periodo")!=null && request.getParameter("anio")!=null){
-            Calendar fecha = new GregorianCalendar();
-            int aniosistema = fecha.get(Calendar.YEAR);
-            int mes = (fecha.get(Calendar.MONTH))+1;
-            String periodo = request.getParameter("periodo");
-            int anio=Integer.parseInt(request.getParameter("anio"));
-            if(periodo.equals("Mensual")){
-                iniciarGestionEstadistica();
-                ArrayList idtrabajadores; 
-                idtrabajadores=(ArrayList)ge.getMejorDesempenioGeneralMes(mes, anio);
-                int i =0;
-                while(i<idtrabajadores.size()){
-                     System.out.println(idtrabajadores.get(i++).toString());
-                }
-                /*request.setAttribute("tiposCalificaciones", tiposCalificaciones);
-                request.getRequestDispatcher("sistema/vista/accion/calificar.jsp").forward(request, response);*/
-            }
-            if(periodo.equals("Anual")){
-                iniciarGestionEstadistica();
-                ge.getMejorDesempenioGeneralAnual(anio);
-            }
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

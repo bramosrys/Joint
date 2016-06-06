@@ -161,6 +161,11 @@
           <input type='hidden' value='PeorDesempenio' id='3'>
          <img src='../../../recursos/imagenes/inicio/gerente/peorDesempeño.png' name='3' class='img-responsive center-block img-action' onclick="accion(this.name)">
         </div>
+        <div class="col-md-3 accion">
+          <h3 class="text-center">Calificación Individual</h3>
+          <input type='hidden' value='Individual' id='4'>
+         <img src='../../../recursos/imagenes/inicio/gerente/individual.png' name='4' class='img-responsive center-block img-action' onclick="accion(this.name)">
+        </div>
       </div>
     </div>
     <!-- scripts -->

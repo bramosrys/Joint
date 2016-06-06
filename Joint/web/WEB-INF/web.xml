@@ -100,6 +100,14 @@
         <servlet-name>MejorDesempenio</servlet-name>
         <servlet-class>joint.sistema.control.MejorDesempenio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CalificacionIndividual</servlet-name>
+        <servlet-class>joint.sistema.control.CalificacionIndividual</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarETrabajador</servlet-name>
+        <servlet-class>joint.sistema.control.BuscarETrabajador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IniciarSesion</servlet-name>
         <url-pattern>/IniciarSesion</url-pattern>
@@ -199,6 +207,14 @@
     <servlet-mapping>
         <servlet-name>MejorDesempenio</servlet-name>
         <url-pattern>/MejorDesempenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CalificacionIndividual</servlet-name>
+        <url-pattern>/CalificacionIndividual</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarETrabajador</servlet-name>
+        <url-pattern>/BuscarETrabajador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

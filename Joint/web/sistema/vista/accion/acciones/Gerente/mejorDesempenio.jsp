@@ -27,9 +27,8 @@
         </div>
         <div class="col-md-2">
             <br><br><br>
-            <button type="button" class="btn btn-success btn-block" onclick="mejorDesempenio(this.name)">Buscar</button>
+            <button type="button" class="btn btn-success btn-block" onclick="mejorDesempenio()">Buscar</button>
         </div>
-        <
     </div>
     <div class="col-md-12" id="respuesta-desempenio"></div>
 </div>
