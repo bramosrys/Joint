@@ -20,4 +20,5 @@
         </div>
     </div>
     <div class="col-md-12" id="respuestaBuscarEmpleado"></div>
+    <div class="col-md-12" id="respuestaCalificacion"></div>
 </div>

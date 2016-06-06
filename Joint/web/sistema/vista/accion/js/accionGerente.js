@@ -95,7 +95,7 @@ function mostrarCalificacionIndividual(){
     }
     conexion.onreadystatechange=function(){
         if (conexion.readyState===4 && conexion.status===200){
-            document.getElementById("respuestaBuscarEmpleado").innerHTML=conexion.responseText;
+            document.getElementById("respuestaCalificacion").innerHTML=conexion.responseText;
         }
     }
     conexion.open("POST","../../../CalificacionIndividual?idTrabajador="+idTrabajador,true);

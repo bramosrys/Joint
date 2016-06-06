@@ -316,6 +316,7 @@ public class GestionadorTrabajador extends Gestionador{
             resultset=statement.executeQuery("select idTrabajador,noEmpleado,registro,nombre,"
                     + "fechaNacimiento,edad,correo,fechaContratacion,activo from trabajador where idTrabajador ="+idTrabajador+";");
             if(resultset.next()){
+                trabajador=new Trabajador();
                 this.trabajador.setIdTrabajador(Integer.parseInt(resultset.getString("idTrabajador")));
                 this.trabajador.setNoEmpleado(Integer.parseInt(resultset.getString("noEmpleado")));
                 this.trabajador.setRegistro(resultset.getString("registro"));

@@ -1,38 +1,47 @@
 package joint.sistema.control;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import joint.sistema.gestion.GestionEstadistica;
-import joint.sistema.gestion.GestionadorTrabajador;
-import joint.sistema.principal.Trabajador;
 
 /**
  *
  * @author jdiaz
  */
-public class CalificacionIndividual extends HttpServlet {
+public class peorDesempenio extends HttpServlet {
     private GestionEstadistica ge;
-    private GestionadorTrabajador gt;
-    private Trabajador t;
-    private void iniciarGestion(){
+    private void iniciarGestionEstadistica(){
         ge=new GestionEstadistica();
-        gt=new GestionadorTrabajador();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(request.getParameter("idTrabajador")!=null){
-            int idTrabajador=Integer.parseInt(request.getParameter("idTrabajador"));
-            iniciarGestion();
-            int promedio=ge.getPromedioTrabajador(idTrabajador);
-            request.setAttribute("promedio", promedio);
-            System.out.println(promedio);
-            t=gt.getInformacionTrabajador(idTrabajador);
-            request.setAttribute("trabajador", t);
-             request.getRequestDispatcher("sistema/vista/accion/acciones/Gerente/respuestaCalificacionIndividual.jsp").forward(request, response); 
+        if(request.getParameter("periodo")!=null && request.getParameter("anio")!=null){
+            Calendar fecha = new GregorianCalendar();
+            int aniosistema = fecha.get(Calendar.YEAR);
+            int mes = (fecha.get(Calendar.MONTH))+1;
+            String periodo = request.getParameter("periodo");
+            int anio=Integer.parseInt(request.getParameter("anio"));
+            if(periodo.equals("Mensual")){
+                iniciarGestionEstadistica();
+                ArrayList idtrabajadores; 
+                idtrabajadores=(ArrayList)ge.getPeorDesempenioGeneralMes(mes, anio);
+                int i =0;
+                while(i<idtrabajadores.size()){
+                     System.out.println(idtrabajadores.get(i++).toString());
+                }
+            }
+            if(periodo.equals("Anual")){
+                iniciarGestionEstadistica();
+                ge.getPeorDesempenioGeneralAnual(anio);
+            }
         }
     }
 
