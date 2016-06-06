@@ -187,14 +187,14 @@ DROP TABLE IF EXISTS `publicacion`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publicacion` (
   `idpublicacion` int(11) NOT NULL AUTO_INCREMENT,
-  `idTrabajador` int(11) NOT NULL,
+  `idTrabajador` int(11) DEFAULT NULL,
   `titulo` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `urlImagen` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `urlImagen` varchar(45) CHARACTER SET utf8 DEFAULT 'imagenesUsuario/image.png',
   `Contenido` varchar(500) COLLATE utf8_bin DEFAULT NULL,
-  PRIMARY KEY (`idpublicacion`,`idTrabajador`),
+  PRIMARY KEY (`idpublicacion`),
   KEY `trabajador publicacion_idx` (`idTrabajador`),
   CONSTRAINT `trabajador publicacion` FOREIGN KEY (`idTrabajador`) REFERENCES `trabajador` (`idtrabajador`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +203,7 @@ CREATE TABLE `publicacion` (
 
 LOCK TABLES `publicacion` WRITE;
 /*!40000 ALTER TABLE `publicacion` DISABLE KEYS */;
+INSERT INTO `publicacion` VALUES (4,3,'Empleado del mes (Junio 2016)','imagenesUsuario/image.png','Pancho Pérez Pérez ha obtenido el mejor desempeño, al haber conseguido el mayor numero de viajes, con el menor kilometraje. Obteniendo un ahorro en gasolina. Adémas de un reconocimiento en puntualidad y guapura.');
 /*!40000 ALTER TABLE `publicacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -426,4 +427,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-06  0:28:45
+-- Dump completed on 2016-06-06 11:39:51

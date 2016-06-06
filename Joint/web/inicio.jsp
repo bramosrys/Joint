@@ -133,7 +133,7 @@
           <ul class="nav navbar-nav">
             <li>
                 <a class="text-center" href="#inicio">
-                    <img src="recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" data-toggle="modal" data-target="#myModal" data-title="Acceder al sistema">
+                    <img src="recursos/imagenes/index/logo.png" class="img-logo img-responsive center-block" id="logo" onclick="location='inicio.jsp'">
                 </a>
             </li>
           </ul>
